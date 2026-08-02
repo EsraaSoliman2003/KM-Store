@@ -23,7 +23,7 @@ export default async function RootLayout({
   const role = (await cookies()).get("role")?.value || null;
 
   return (
-    <html lang={locale} dir={locale == "ar" ? "rtl" : "ltr"}>
+    <html lang={locale} dir={locale == "ar" ? "rtl" : "ltr"} className="dark">
       <body>
         <ResponsiveToaster />
         <NextIntlClientProvider messages={messages}>

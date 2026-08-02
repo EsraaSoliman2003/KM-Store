@@ -15,7 +15,7 @@ interface Props {
 
 export default function Navbar({ locale }: Props) {
   const t = useTranslations();
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Check for user's preferred color scheme on mount
