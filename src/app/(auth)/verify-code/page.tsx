@@ -97,13 +97,13 @@ export default function VerifyCodePage() {
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-10">
-      <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
-        <h1 className="text-center text-3xl font-bold text-gray-900">
+    <main className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-10 dark:bg-gray-950">
+      <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        <h1 className="text-center text-3xl font-bold text-gray-900 dark:text-white">
           {t("verificationTitle")}
         </h1>
 
-        <p className="mt-2 text-center text-sm leading-6 text-gray-500">
+        <p className="mt-2 text-center text-sm leading-6 text-gray-500 dark:text-gray-400">
           {t("verificationSubtitle")}
         </p>
 
@@ -123,27 +123,27 @@ export default function VerifyCodePage() {
                 onChange={(e) => handleChange(e.target.value, index)}
                 onKeyDown={(e) => handleKeyDown(e, index)}
                 onPaste={handlePaste}
-                className="h-14 w-14 rounded-xl border border-gray-300 text-center text-xl font-semibold outline-none transition focus:border-[#259DF3] focus:ring-2 focus:ring-[#259DF3]/20"
+                className="h-14 w-14 rounded-xl border border-gray-300 bg-white text-center text-xl font-semibold text-gray-900 outline-none transition focus:border-[#259DF3] focus:ring-2 focus:ring-[#259DF3]/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
               />
             ))}
           </div>
 
           <button
             type="submit"
-            className="mt-8 h-12 w-full rounded-xl bg-[#259DF3] font-medium text-white transition hover:bg-[#1782d1]"
+            className="mt-8 h-12 w-full rounded-xl bg-[#259DF3] font-medium text-white transition hover:bg-[#1782d1] dark:bg-[#4DB8FF] dark:hover:bg-[#3BA3E6]"
           >
             {t("verifyCode")}
           </button>
         </form>
 
         <div className="mt-6 text-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             {t("didntReceiveCode")}
           </p>
 
           <button
             type="button"
-            className="mt-2 font-medium text-[#259DF3] hover:underline"
+            className="mt-2 font-medium text-[#259DF3] hover:underline dark:text-[#4DB8FF]"
           >
             {t("resendCode")}
           </button>
@@ -152,7 +152,7 @@ export default function VerifyCodePage() {
         <div className="mt-6 text-center">
           <Link
             href="/login"
-            className="text-sm font-medium text-[#259DF3] hover:underline"
+            className="text-sm font-medium text-[#259DF3] hover:underline dark:text-[#4DB8FF]"
           >
             {t("backToLogin")}
           </Link>
