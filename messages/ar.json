@@ -36,5 +36,13 @@
   "verifyCode": "تأكيد الرمز",
   "didntReceiveCode": "لم تستلم الرمز؟",
   "resendCode": "إعادة إرسال الرمز",
-  "backToLogin": "العودة إلى تسجيل الدخول"
+  "backToLogin": "العودة إلى تسجيل الدخول",
+  "lightMode": "الوضع الفاتح",
+  "darkMode": "الوضع الداكن",
+  "home": "الرئيسية",
+  "products": "المنتجات",
+  "about": "من نحن",
+  "contact": "اتصل بنا",
+  "profile": "الملف الشخصي",
+  "language": "اللغة"
 }

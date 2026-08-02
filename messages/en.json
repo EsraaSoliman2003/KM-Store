@@ -36,5 +36,13 @@
   "verifyCode": "Verify Code",
   "didntReceiveCode": "Didn't receive the code?",
   "resendCode": "Resend Code",
-  "backToLogin": "Back to Login"
+  "backToLogin": "Back to Login",
+  "lightMode": "Light Mode",
+  "darkMode": "Dark Mode",
+  "home": "Home",
+  "products": "Products",
+  "about": "About",
+  "contact": "Contact",
+  "profile": "Profile",
+  "language": "Language"
 }
