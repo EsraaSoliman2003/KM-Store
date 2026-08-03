@@ -19,21 +19,35 @@ export default function SideBar({
     darkMode,
     toggleDarkMode,
 }: Props) {
-
     const t = useTranslations();
+
     return (
         <div
-            className={`lg:hidden sidebar fixed inset-0 z-50 ${isSidebarOpen ? "pointer-events-auto" : "pointer-events-none"}`}
+            className={`
+                lg:hidden sidebar fixed inset-0 z-50
+                ${isSidebarOpen ? "pointer-events-auto" : "pointer-events-none"}
+            `}
         >
-            {/* Overlay - Animation only */}
+
+            {/* Overlay */}
             <div
-                className={`absolute inset-0 bg-black/60 backdrop-blur-sm ${isSidebarOpen ? "overlay-fade-in" : "overlay-fade-out"}`}
+                className={`
+                    absolute inset-0 bg-black/60 backdrop-blur-sm
+                    ${isSidebarOpen ? "opacity-100" : "opacity-0"}
+                    transition-opacity duration-300
+                `}
                 onClick={() => setIsSidebarOpen(false)}
             />
 
             {/* Sidebar Content - Animation only */}
             <div
-                className={`absolute ${t("dir") === "rtl" ? "left-0" : "right-0"} top-0 h-full w-80 max-w-[85vw] bg-white dark:bg-gray-900 shadow-2xl ${isSidebarOpen ? "sidebar-open" : "sidebar-close"}`}
+                className={`
+                    absolute ${locale === "ar" ? "left-0" : "right-0"} 
+                    top-0 h-full w-80 max-w-[85vw] 
+                    bg-white dark:bg-gray-900 shadow-2xl
+                    sidebar-content
+                    ${isSidebarOpen ? "sidebar-open" : "sidebar-close"}
+                `}
             >
                 {/* باقي المحتوى كما هو دون أي تغيير */}
                 <div className="flex items-center justify-between border-b border-gray-200/80 dark:border-gray-700/80 p-5 bg-gradient-to-r from-[#259DF3]/5 to-transparent dark:from-[#4DB8FF]/5">
