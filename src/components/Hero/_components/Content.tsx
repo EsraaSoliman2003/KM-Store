@@ -1,5 +1,6 @@
 import { motion, type Variants } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 type Props = {
     activeProduct: any;
@@ -29,6 +30,7 @@ const contentVariants: Variants = {
 };
 
 export default function Content({ activeProduct }: Props) {
+    const t = useTranslations();
     return (
         <motion.div
             variants={contentVariants}
@@ -111,10 +113,15 @@ export default function Content({ activeProduct }: Props) {
                     style={{ backgroundColor: activeProduct.color }}
                 >
                     <span>Buy now</span>
-                    <ArrowRight
-                        size={20}
-                        className="transition-transform duration-300 group-hover:translate-x-1"
-                    />
+                    {
+                        t("dir") === "rtl" ? <ArrowLeft
+                            size={20}
+                            className="transition-transform duration-300 group-hover:-translate-x-1"
+                        /> : <ArrowRight
+                            size={20}
+                            className="transition-transform duration-300 group-hover:translate-x-1"
+                        />
+                    }
                 </button>
 
                 <button
