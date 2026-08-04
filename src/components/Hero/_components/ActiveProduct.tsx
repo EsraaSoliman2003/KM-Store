@@ -1,8 +1,32 @@
-import React from "react";
+import { motion, type Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 type Props = {
     activeProduct: any;
+};
+
+
+const containerVariants: Variants = {
+    hidden: {
+        opacity: 0,
+        scale: 0.95,
+    },
+    visible: {
+        opacity: 1,
+        scale: 1,
+        transition: {
+            duration: 0.4,
+            ease: "easeOut",
+        },
+    },
+    exit: {
+        opacity: 0,
+        scale: 0.95,
+        transition: {
+            duration: 0.35,
+            ease: "easeIn",
+        },
+    },
 };
 
 export default function ActiveProduct({ activeProduct }: Props) {
@@ -10,7 +34,11 @@ export default function ActiveProduct({ activeProduct }: Props) {
     const isRtl = t("dir") === "rtl";
 
     return (
-        <div
+        <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
             className={`relative z-20 flex h-full items-center ${
                 isRtl
                     ? "-mr-10 min-[1280px]:mr-20"
@@ -41,6 +69,6 @@ export default function ActiveProduct({ activeProduct }: Props) {
                     }}
                 />
             </div>
-        </div>
+        </motion.div>
     );
 }

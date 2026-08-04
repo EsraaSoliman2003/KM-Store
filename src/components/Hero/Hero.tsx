@@ -11,6 +11,7 @@ import Content from "./_components/Content";
 import Orbits from "./_components/Orbits";
 import FloatCards from "./_components/FloatCards";
 import ActiveProduct from "./_components/ActiveProduct";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Hero() {
     const t = useTranslations();
@@ -39,11 +40,13 @@ export default function Hero() {
 
             {/* ═══ BACKGROUND LAYERS ═══ */}
             <div className="absolute inset-0 z-0">
-                <div
+                <motion.div
                     className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[180px]"
                     style={{
                         backgroundColor: `${activeProduct.color}22`,
                     }}
+                    animate={{ backgroundColor: `${activeProduct.color}22` }}
+                    transition={{ duration: 0.6 }}
                 />
 
                 <div
@@ -62,7 +65,9 @@ export default function Hero() {
             <div className="container relative z-10 flex min-h-screen items-center justify-between flex-col lg:flex-row">
 
                 {/* ─── LEFT CONTENT ─── */}
-                <Content activeProduct={activeProduct} />
+                <AnimatePresence mode="wait">
+                    <Content key={activeProduct.id} activeProduct={activeProduct} />
+                </AnimatePresence>
 
                 {/* ───────────────── RIGHT SIDE ───────────────── */}
                 <div className="relative w-full lg:w-[48%] flex items-center justify-center lg:block mb-15 lg:mb-0">
@@ -71,7 +76,9 @@ export default function Hero() {
                         setActiveProduct={setActiveProduct}
                     />
 
-                    <ActiveProduct activeProduct={activeProduct} />
+                    <AnimatePresence mode="wait">
+                        <ActiveProduct key={activeProduct.id} activeProduct={activeProduct} />
+                    </AnimatePresence>
 
                     <div className="absolute inset-0 pointer-events-none block min-[1024px]:hidden min-[1280px]:block">
                         <FloatCards activeProduct={activeProduct} />

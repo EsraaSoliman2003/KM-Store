@@ -1,13 +1,42 @@
+import { motion, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 type Props = {
     activeProduct: any;
-}
+};
+
+const contentVariants: Variants = {
+    hidden: {
+        opacity: 0,
+        y: 20,
+    },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.35,
+            ease: "easeOut" as const,
+        },
+    },
+    exit: {
+        opacity: 0,
+        y: -20,
+        transition: {
+            duration: 0.3,
+            ease: "easeIn" as const,
+        },
+    },
+};
 
 export default function Content({ activeProduct }: Props) {
     return (
-        <div className="flex w-full flex-col justify-center py-20 lg:w-[48%] lg:py-0 items-center lg:items-start">
-
+        <motion.div
+            variants={contentVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="flex w-full flex-col justify-center py-20 lg:w-[48%] lg:py-0 items-center lg:items-start"
+        >
             {/* Badge */}
             <div
                 className="inline-flex w-fit items-center gap-2 rounded-full px-4 py-2"
@@ -18,15 +47,11 @@ export default function Content({ activeProduct }: Props) {
             >
                 <span
                     className="h-2 w-2 rounded-full animate-pulse"
-                    style={{
-                        backgroundColor: activeProduct.color,
-                    }}
+                    style={{ backgroundColor: activeProduct.color }}
                 />
                 <span
                     className="text-[12px] font-[510] uppercase tracking-[1px]"
-                    style={{
-                        color: activeProduct.color,
-                    }}
+                    style={{ color: activeProduct.color }}
                 >
                     OnePlus · New Arrival
                 </span>
@@ -52,7 +77,6 @@ export default function Content({ activeProduct }: Props) {
                 <span className="text-[32px] font-bold text-(--text-primary)">
                     ${Number(activeProduct.price).toLocaleString("en-US")}
                 </span>
-
                 <span className="text-[12px] text-(--text-muted)">
                     Starting price
                 </span>
@@ -81,12 +105,9 @@ export default function Content({ activeProduct }: Props) {
                         hover:shadow-[0_15px_40px_rgba(239,68,68,.35)]
                         active:scale-95
                     "
-                    style={{
-                        backgroundColor: activeProduct.color,
-                    }}
+                    style={{ backgroundColor: activeProduct.color }}
                 >
                     <span>Buy now</span>
-
                     <ArrowRight
                         size={20}
                         className="transition-transform duration-300 group-hover:translate-x-1"
@@ -97,14 +118,14 @@ export default function Content({ activeProduct }: Props) {
                     className="
                         inline-flex items-center justify-center gap-2
                         rounded-[12px]
-                        border-[rgba(var(--border-color-rgb),0.12)]
-                        bg-[rgba(var(--bg-secondary-rgb),0.06)]
+                        border border-white/[0.12]
+                        bg-white/[0.06]
                         px-9 py-4
-                        text-[18px] font-medium leading-none text-(--text-primary)
+                        text-[18px] font-medium leading-none text-white
                         backdrop-blur-md
                         transition-all duration-300
-                        hover:border-[rgba(var(--border-color-rgb),0.20)]
-                        hover:bg-[rgba(var(--bg-secondary-rgb),0.10)]
+                        hover:border-white/[0.20]
+                        hover:bg-white/[0.10]
                         active:scale-95
                     "
                 >
@@ -115,7 +136,7 @@ export default function Content({ activeProduct }: Props) {
             {/* Feature Chips */}
             <div className="mt-8 flex flex-wrap gap-3">
 
-                {activeProduct.properties.map((item : any) => (
+                {activeProduct.properties.map((item: any) => (
                     <span
                         key={item}
                         className="
@@ -132,7 +153,6 @@ export default function Content({ activeProduct }: Props) {
                 ))}
 
             </div>
-
-        </div>
-    )
+        </motion.div>
+    );
 }
