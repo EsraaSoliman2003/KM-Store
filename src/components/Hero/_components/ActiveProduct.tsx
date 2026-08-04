@@ -40,8 +40,8 @@ export default function ActiveProduct({ activeProduct }: Props) {
             animate="visible"
             exit="exit"
             className={`relative z-20 flex h-full items-center ${isRtl
-                    ? "lg:-mr-10 min-[1280px]:mr-20"
-                    : "lg:-ml-10 min-[1280px]:ml-20"
+                    ? "min-[1024px]:-mr-10 min-[1280px]:mr-20"
+                    : "min-[1024px]:-ml-10 min-[1280px]:ml-20"
                 }`}
         >
             {/* Glow */}
