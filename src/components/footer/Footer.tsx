@@ -17,11 +17,11 @@ export default function Footer() {
             href="/"
             className="text-xl font-bold tracking-tight text-[#259DF3] dark:text-[#4DB8FF]"
           >
-            MK Store
+            KM Store
           </Link>
 
           <span className="text-sm text-gray-500 dark:text-gray-400">
-            © {year} MK Store. {t("footerAllRights")}
+            © {year} KM Store. {t("footerAllRights")}
           </span>
         </div>
 

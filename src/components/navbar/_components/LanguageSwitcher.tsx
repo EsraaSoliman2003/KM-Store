@@ -23,7 +23,19 @@ export default function LanguageSwitcher({ currentLocale }: Props) {
   return (
     <button
       onClick={toggleLanguage}
-      className="flex h-8 items-center gap-1 rounded-full border-2 border-gray-200 bg-transparent px-2.5 text-xs font-medium text-gray-600 transition hover:border-[#259DF3] hover:bg-[#259DF3]/10 hover:text-[#259DF3] focus:outline-none focus:ring-2 focus:ring-[#259DF3]/50 md:h-9 md:px-3.5 md:text-sm"
+      aria-label={t("language")}
+      className="
+        flex h-8 items-center gap-1 rounded-full
+        border border-(--border-color)
+        bg-(--bg-primary)
+        px-3
+        text-xs font-medium
+        text-(--text-primary)
+        transition-all duration-200
+        hover:border-(--main)
+        hover:text-(--main)
+        md:h-9 md:px-4 md:text-sm
+      "
     >
       <span>{localeName}</span>
     </button>

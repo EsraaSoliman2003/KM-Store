@@ -4,26 +4,78 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --main: #259DF3;
-  --secondary: #1782d1;
+  /* Brand */
+  --main: #EF4444;
+  --main-hover: #DC2626;
+  --main-light: #FEE2E2;
+  --secondary: #EF44441F;
+
+  /* Background */
   --bg-primary: #ffffff;
   --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+
+  /* Text */
   --text-primary: #111827;
   --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --text-white: #ffffff;
+
+  /* Border */
   --border-color: #e5e7eb;
+  --border-light: #f3f4f6;
+
+  /* Status */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
+
+  /* Shadow */
   --shadow-color: rgba(0, 0, 0, 0.05);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+
+  /* Transition */
+  --transition: 0.3s ease;
 }
 
 /* Dark mode variables */
 .dark {
-  --main: #4DB8FF;
-  --secondary: #3BA3E6;
-  --bg-primary: #111827;
+  --main: #EF4444;
+  --main-hover: #F87171;
+  --main-light: #7F1D1D;
+  --secondary: #EF44441F;
+
+  --bg-primary: #1A1A1A;
   --bg-secondary: #1f2937;
+  --bg-tertiary: #111827;
+
   --text-primary: #f9fafb;
-  --text-secondary: #9ca3af;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --text-white: #ffffff;
+
   --border-color: #374151;
+  --border-light: #4b5563;
+
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --error: #f87171;
+  --info: #60a5fa;
+
   --shadow-color: rgba(0, 0, 0, 0.3);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+
+  --transition: 0.3s ease;
 }
 
 html {
@@ -69,19 +121,64 @@ body {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   .container {
-    width: 1200px;
+    width: 1280px;
   }
 }
 
-/* Colors */
+/* ================= Colors ================= */
+
 .bg-main {
-  background-color: var(--main);
+  background: var(--main);
+}
+
+.bg-main-light {
+  background: var(--main-light);
+}
+
+.bg-primary {
+  background: var(--bg-primary);
+}
+
+.bg-secondary {
+  background: var(--bg-secondary);
+}
+
+.bg-tertiary {
+  background: var(--bg-tertiary);
 }
 
 .text-main {
   color: var(--main);
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-white {
+  color: var(--text-white);
+}
+
+.border-main {
+  border-color: var(--main);
+}
+
+.border-default {
+  border-color: var(--border-color);
+}
+
+.border-light {
+  border-color: var(--border-light);
 }
 
 button {
@@ -248,7 +345,7 @@ html[dir="rtl"] .react-tel-input .form-control {
 /* ===== Sidebar Animations ===== */
 @keyframes sidebarSlideInRight {
   from {
-    transform: translateX(100%);
+    transform: translateX(-100%);
     opacity: 0;
   }
 
@@ -260,7 +357,7 @@ html[dir="rtl"] .react-tel-input .form-control {
 
 @keyframes sidebarSlideInLeft {
   from {
-    transform: translateX(-100%);
+    transform: translateX(100%);
     opacity: 0;
   }
 
@@ -277,7 +374,7 @@ html[dir="rtl"] .react-tel-input .form-control {
   }
 
   to {
-    transform: translateX(100%);
+    transform: translateX(-100%);
     opacity: 0;
   }
 }
@@ -289,13 +386,13 @@ html[dir="rtl"] .react-tel-input .form-control {
   }
 
   to {
-    transform: translateX(-100%);
+    transform: translateX(100%);
     opacity: 0;
   }
 }
 
 .sidebar-close {
-  transform: translateX(100%);
+  transform: translateX(-100%);
   opacity: 0;
   pointer-events: none;
 }
@@ -347,4 +444,13 @@ html[dir="rtl"] .sidebar-close {
 
 .overlay-fade-out {
   animation: overlayFadeOut 300ms ease-in forwards;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
