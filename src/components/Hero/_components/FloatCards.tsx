@@ -36,7 +36,7 @@ export default function FloatCards({ activeProduct }: Props) {
     };
 
     return (
-        <div className="pointer-events-none absolute inset-0">
+        <div className="pointer-events-none absolute inset-0 z-50">
             {/* Top Left */}
             <div
                 className={`pointer-events-auto absolute top-6 animate-float rounded-2xl px-4 py-3 backdrop-blur-xl transition-all duration-300
