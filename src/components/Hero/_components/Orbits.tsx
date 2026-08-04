@@ -97,14 +97,13 @@ export default function Orbits({ activeProduct, setActiveProduct }: Props) {
                                 borderColor: isActive ? activeProduct.color : undefined,
                                 left: `calc(50% + ${x}px)`,
                                 top: `calc(50% + ${y}px)`,
-                                transform: `translate(-50%, -50%) rotate(${rotate}deg) scale(${isActive ? 1.15 : 1
-                                    })`,
+                                transform: `translate(-50%, -50%) rotate(${rotate}deg)`,
                             }}
                         >
                             <img
                                 src={item.image}
                                 alt={item.title}
-                                className="relative h-15 w-10 object-contain transition-transform duration-300 group-hover:scale-110"
+                                className="relative h-15 w-10 object-contain transition-transform duration-300"
                                 style={{
                                 }}
                             />
