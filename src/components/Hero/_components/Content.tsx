@@ -73,13 +73,15 @@ export default function Content({ activeProduct }: Props) {
             </p>
 
             {/* Price */}
-            <div className="mt-10 flex items-end gap-3">
+            <div className="mt-10 flex flex-col items-center gap-3 text-center lg:flex-row lg:items-end lg:justify-start lg:text-left">
                 <span className="text-[32px] font-bold text-(--text-primary)">
                     ${Number(activeProduct.price).toLocaleString("en-US")}
                 </span>
+
                 <span className="text-[12px] text-(--text-muted)">
                     Starting price
                 </span>
+
                 <span
                     className="rounded-sm px-3 py-1 text-[14px] font-semibold"
                     style={{
@@ -93,18 +95,19 @@ export default function Content({ activeProduct }: Props) {
             </div>
 
             {/* Buttons */}
-            <div className="mt-10 flex flex-wrap gap-5">
+            <div className="mt-10 flex gap-5">
                 <button
                     className="
-                        group
-                        inline-flex items-center justify-center gap-2
-                        rounded-[12px]
-                        px-9 py-4
-                        text-[18px] font-medium leading-none text-white
-                        transition-all duration-300
-                        hover:shadow-[0_15px_40px_rgba(239,68,68,.35)]
-                        active:scale-95
-                    "
+            group
+            inline-flex flex-1 items-center justify-center gap-2
+            rounded-[12px]
+            px-9 py-4
+            text-[18px] font-medium leading-none text-white
+            transition-all duration-300
+            hover:shadow-[0_15px_40px_rgba(239,68,68,.35)]
+            active:scale-95
+            whitespace-nowrap
+        "
                     style={{ backgroundColor: activeProduct.color }}
                 >
                     <span>Buy now</span>
@@ -116,25 +119,26 @@ export default function Content({ activeProduct }: Props) {
 
                 <button
                     className="
-                        inline-flex items-center justify-center gap-2
-                        rounded-[12px]
-                        border border-white/[0.12]
-                        bg-white/[0.06]
-                        px-9 py-4
-                        text-[18px] font-medium leading-none text-white
-                        backdrop-blur-md
-                        transition-all duration-300
-                        hover:border-white/[0.20]
-                        hover:bg-white/[0.10]
-                        active:scale-95
-                    "
+            inline-flex flex-1 items-center justify-center gap-2
+            rounded-[12px]
+            border border-white/[0.12]
+            bg-white/[0.06]
+            px-9 py-4
+            text-[18px] font-medium leading-none text-white
+            backdrop-blur-md
+            transition-all duration-300
+            hover:border-white/[0.20]
+            hover:bg-white/[0.10]
+            active:scale-95
+            whitespace-nowrap
+        "
                 >
                     Learn more
                 </button>
             </div>
 
             {/* Feature Chips */}
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3 justify-center lg:justify-start">
 
                 {activeProduct.properties.map((item: any) => (
                     <span
