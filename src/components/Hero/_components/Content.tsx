@@ -35,7 +35,7 @@ export default function Content({ activeProduct }: Props) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="flex w-full flex-col justify-center py-20 lg:w-[48%] lg:py-0 items-center lg:items-start"
+            className="flex w-full flex-col justify-center py-20 lg:w-[48%] lg:py-0 items-center lg:items-start order-2 lg:order-1"
         >
             {/* Badge */}
             <div

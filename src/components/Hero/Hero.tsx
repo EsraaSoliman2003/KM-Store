@@ -70,7 +70,7 @@ export default function Hero() {
                 </AnimatePresence>
 
                 {/* ───────────────── RIGHT SIDE ───────────────── */}
-                <div className="relative w-full lg:w-[48%] flex items-center justify-center lg:block mb-15 lg:mb-0">
+                <div className="relative w-full lg:w-[48%] flex items-center justify-center lg:block mt-22 lg:mt-0 order-1 lg:order-2">
                     <Orbits
                         activeProduct={activeProduct}
                         setActiveProduct={setActiveProduct}
