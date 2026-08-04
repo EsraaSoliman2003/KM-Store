@@ -18,7 +18,7 @@
   /* Text */
   --text-primary: #111827;
   --text-secondary: #6b7280;
-  --text-muted: #9ca3af;
+  --text-muted: #6b7280;
   --text-white: #ffffff;
 
   /* Border */
@@ -42,9 +42,17 @@
 
   /* Transition */
   --transition: 0.3s ease;
+
+  /* ── RGB versions for opacity ── */
+  --border-color-rgb: 191, 198, 209;
+  --bg-primary-rgb: 255, 255, 255;
+  --bg-secondary-rgb: 249, 250, 251;
+  --bg-tertiary-rgb: 243, 244, 246;
+  --text-primary-rgb: 17, 24, 39;
+  --text-secondary-rgb: 107, 114, 128;
+  --text-muted-rgb: 156, 163, 175;
 }
 
-/* Dark mode variables */
 .dark {
   --main: #EF4444;
   --main-hover: #F87171;
@@ -76,6 +84,15 @@
   --radius-xl: 32px;
 
   --transition: 0.3s ease;
+
+  /* ── RGB versions for dark ── */
+  --border-color-rgb: 55, 65, 81;
+  --bg-primary-rgb: 26, 26, 26;
+  --bg-secondary-rgb: 31, 41, 55;
+  --bg-tertiary-rgb: 17, 24, 39;
+  --text-primary-rgb: 249, 250, 251;
+  --text-secondary-rgb: 209, 213, 219;
+  --text-muted-rgb: 156, 163, 175;
 }
 
 html {

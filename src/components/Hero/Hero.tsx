@@ -35,7 +35,7 @@ export default function Hero() {
     }, []);
 
     return (
-        <section className="relative min-h-screen overflow-hidden bg-[#05080E]">
+        <section className="relative min-h-screen overflow-hidden bg-(--bg-primary)">
 
             {/* ═══ BACKGROUND LAYERS ═══ */}
             <div className="absolute inset-0 z-0">
@@ -49,7 +49,7 @@ export default function Hero() {
                 <div
                     className="absolute inset-0"
                     style={{
-                        background: `radial-gradient(circle at 50% 30%, ${activeProduct.color}22 0%, #05080E 70%)`,
+                        background: `radial-gradient(circle at 50% 30%, ${activeProduct.color}22 0%, var(--bg-primary) 70%)`,
                     }}
                 />
 
@@ -78,7 +78,6 @@ export default function Hero() {
                     </div>
                 </div>
             </div>
-
 
         </section>
     );

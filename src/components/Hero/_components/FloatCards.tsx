@@ -51,7 +51,7 @@ export default function FloatCards({ activeProduct }: Props) {
             >
                 <div className="flex items-center gap-3 whitespace-nowrap">
                     <FiHeadphones size={20} color={activeProduct.color} />
-                    <p className="text-sm font-semibold text-white">
+                    <p className="text-sm font-semibold text-(--text-primary)">
                         AirPods Pro 3
                     </p>
                 </div>
@@ -71,7 +71,7 @@ export default function FloatCards({ activeProduct }: Props) {
             >
                 <div className="flex items-center gap-3 whitespace-nowrap">
                     <FiBatteryCharging size={20} color={activeProduct.color} />
-                    <p className="text-sm font-semibold text-white">
+                    <p className="text-sm font-semibold text-(--text-primary)">
                         Fast Charge
                     </p>
                 </div>
@@ -91,7 +91,7 @@ export default function FloatCards({ activeProduct }: Props) {
             >
                 <div className="flex items-center gap-3 whitespace-nowrap">
                     <FiZap size={20} color={activeProduct.color} />
-                    <p className="text-sm font-semibold text-white">
+                    <p className="text-sm font-semibold text-(--text-primary)">
                         65W MagSafe
                     </p>
                 </div>
@@ -111,7 +111,7 @@ export default function FloatCards({ activeProduct }: Props) {
             >
                 <div className="flex items-center gap-3 whitespace-nowrap">
                     <FiSmartphone size={20} color={activeProduct.color} />
-                    <p className="text-sm font-semibold text-white">
+                    <p className="text-sm font-semibold text-(--text-primary)">
                         Dynamic Island
                     </p>
                 </div>

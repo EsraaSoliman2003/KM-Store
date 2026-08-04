@@ -31,11 +31,11 @@ export default function Orbits({ activeProduct, setActiveProduct }: Props) {
                     w-[357px]
                     rounded-[50%]
                     border-[8px]
-                    border-[#D9D9D940]
                     shadow-[inset_0_0_80px_rgba(0,200,255,.05)]
                     ${isRtl ? "-rotate-90" : "rotate-90"}
                 `}
                 style={{
+                    borderColor: `rgba(var(--border-color-rgb), 0.4)`,
                     clipPath: isRtl
                         ? "inset(65% -20% -20% -20%)"
                         : "inset(65% -20% -20% -20%)",
@@ -89,13 +89,14 @@ export default function Orbits({ activeProduct, setActiveProduct }: Props) {
                             onClick={() => handleCardClick(item)}
                             className={`group absolute flex h-18 w-14 cursor-pointer items-center justify-center rounded-[10px] backdrop-blur-xl transition-all duration-500 hover:z-10 ${
                                 isActive
-                                    ? "border-2 border-cyan-400 shadow-[0_0_40px_rgba(0,200,255,.25)]"
-                                    : "hover:border-white/30"
+                                    ? "border-2 shadow-[0_0_40px_rgba(0,200,255,.25)]"
+                                    : "hover:border-[rgba(var(--border-color-rgb),0.3)]"
                             }`}
                             style={{
                                 backgroundColor: isActive
-                                    ? "#171B27"
+                                    ? "var(--bg-tertiary)"
                                     : `${item.color}10`,
+                                borderColor: isActive ? activeProduct.color : undefined,
                                 left: `calc(50% + ${x}px)`,
                                 top: `calc(50% + ${y}px)`,
                                 transform: `translate(-50%, -50%) rotate(${rotate}deg) scale(${

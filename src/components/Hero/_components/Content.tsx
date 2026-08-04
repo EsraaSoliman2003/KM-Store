@@ -12,8 +12,8 @@ export default function Content({ activeProduct }: Props) {
             <div
                 className="inline-flex w-fit items-center gap-2 rounded-full px-4 py-2"
                 style={{
-                    border: `1px solid ${activeProduct.color}66`, // 40% تقريبًا
-                    backgroundColor: `${activeProduct.color}1A`, // 10% تقريبًا
+                    border: `1px solid ${activeProduct.color}66`,
+                    backgroundColor: `${activeProduct.color}1A`,
                 }}
             >
                 <span
@@ -33,7 +33,7 @@ export default function Content({ activeProduct }: Props) {
             </div>
 
             {/* Title */}
-            <h1 className="mt-7 text-[40px] font-bold leading-none text-(--text-white) transition-all duration-500">
+            <h1 className="mt-7 text-[40px] font-bold leading-none text-(--text-primary) transition-all duration-500">
                 {activeProduct.title}
             </h1>
 
@@ -49,7 +49,7 @@ export default function Content({ activeProduct }: Props) {
 
             {/* Price */}
             <div className="mt-10 flex items-end gap-3">
-                <span className="text-[32px] font-bold text-(--text-white)">
+                <span className="text-[32px] font-bold text-(--text-primary)">
                     ${Number(activeProduct.price).toLocaleString("en-US")}
                 </span>
 
@@ -97,14 +97,14 @@ export default function Content({ activeProduct }: Props) {
                     className="
                         inline-flex items-center justify-center gap-2
                         rounded-[12px]
-                        border border-white/[0.12]
-                        bg-white/[0.06]
+                        border-[rgba(var(--border-color-rgb),0.12)]
+                        bg-[rgba(var(--bg-secondary-rgb),0.06)]
                         px-9 py-4
-                        text-[18px] font-medium leading-none text-white
+                        text-[18px] font-medium leading-none text-(--text-primary)
                         backdrop-blur-md
                         transition-all duration-300
-                        hover:border-white/[0.20]
-                        hover:bg-white/[0.10]
+                        hover:border-[rgba(var(--border-color-rgb),0.20)]
+                        hover:bg-[rgba(var(--bg-secondary-rgb),0.10)]
                         active:scale-95
                     "
                 >
