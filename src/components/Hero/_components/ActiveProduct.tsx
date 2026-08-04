@@ -1,12 +1,22 @@
 import React from "react";
+import { useTranslations } from "next-intl";
 
 type Props = {
     activeProduct: any;
 };
 
 export default function ActiveProduct({ activeProduct }: Props) {
+    const t = useTranslations();
+    const isRtl = t("dir") === "rtl";
+
     return (
-        <div className="relative z-20 -ml-10 flex h-full items-center min-[1280px]:ml-20">
+        <div
+            className={`relative z-20 flex h-full items-center ${
+                isRtl
+                    ? "-mr-10 min-[1280px]:mr-20"
+                    : "-ml-10 min-[1280px]:ml-20"
+            }`}
+        >
             {/* Glow */}
             <div
                 className="absolute h-105 w-50 animate-pulse rounded-full blur-3xl"

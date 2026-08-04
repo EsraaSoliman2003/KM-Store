@@ -5,12 +5,16 @@ import {
     FiSmartphone,
     FiZap,
 } from "react-icons/fi";
+import { useTranslations } from "next-intl";
 
 type Props = {
     activeProduct: any;
 };
 
 export default function FloatCards({ activeProduct }: Props) {
+    const t = useTranslations();
+    const isRtl = t("dir") === "rtl";
+
     const defaultStyle = {
         border: `1px solid ${activeProduct.color}40`,
         backgroundColor: `${activeProduct.color}12`,
@@ -35,8 +39,12 @@ export default function FloatCards({ activeProduct }: Props) {
         <div className="pointer-events-none absolute inset-0">
             {/* Top Left */}
             <div
-                className="pointer-events-auto absolute left-2 top-6 animate-float rounded-2xl px-4 py-3 backdrop-blur-xl transition-all duration-300
-                xl:left-10 xl:top-[0%]"
+                className={`pointer-events-auto absolute top-6 animate-float rounded-2xl px-4 py-3 backdrop-blur-xl transition-all duration-300
+                ${
+                    isRtl
+                        ? "right-2 xl:right-10 xl:top-[0%]"
+                        : "left-2 xl:left-10 xl:top-[0%]"
+                }`}
                 style={defaultStyle}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
@@ -51,8 +59,12 @@ export default function FloatCards({ activeProduct }: Props) {
 
             {/* Top Right */}
             <div
-                className="pointer-events-auto absolute right-2 top-18 animate-float-reverse rounded-2xl px-4 py-3 backdrop-blur-xl transition-all duration-300
-                xl:-left-40 xl:right-auto xl:top-[25%]"
+                className={`pointer-events-auto absolute top-18 animate-float-reverse rounded-2xl px-4 py-3 backdrop-blur-xl transition-all duration-300
+                ${
+                    isRtl
+                        ? "left-2 xl:-right-40 xl:left-auto xl:top-[25%]"
+                        : "right-2 xl:-left-40 xl:right-auto xl:top-[25%]"
+                }`}
                 style={defaultStyle}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
@@ -67,8 +79,12 @@ export default function FloatCards({ activeProduct }: Props) {
 
             {/* Bottom Left */}
             <div
-                className="pointer-events-auto absolute bottom-18 left-2 animate-float rounded-2xl px-4 py-3 backdrop-blur-xl transition-all duration-300
-                xl:-left-35 xl:bottom-[30%]"
+                className={`pointer-events-auto absolute bottom-18 animate-float rounded-2xl px-4 py-3 backdrop-blur-xl transition-all duration-300
+                ${
+                    isRtl
+                        ? "right-2 xl:-right-35 xl:bottom-[30%]"
+                        : "left-2 xl:-left-35 xl:bottom-[30%]"
+                }`}
                 style={defaultStyle}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
@@ -83,8 +99,12 @@ export default function FloatCards({ activeProduct }: Props) {
 
             {/* Bottom Right */}
             <div
-                className="pointer-events-auto absolute bottom-6 right-2 animate-float-reverse rounded-2xl px-4 py-3 backdrop-blur-xl transition-all duration-300
-                xl:left-10 xl:right-auto xl:bottom-[0%]"
+                className={`pointer-events-auto absolute bottom-6 animate-float-reverse rounded-2xl px-4 py-3 backdrop-blur-xl transition-all duration-300
+                ${
+                    isRtl
+                        ? "left-2 xl:right-10 xl:left-auto xl:bottom-[0%]"
+                        : "right-2 xl:left-10 xl:right-auto xl:bottom-[0%]"
+                }`}
                 style={defaultStyle}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
