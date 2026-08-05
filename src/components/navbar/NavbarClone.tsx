@@ -52,7 +52,7 @@ export default function Navbar({ locale }: Props) {
   };
 
   return (
-    <header className="fixed w-full top-0 z-50 border-b bg-(--bg-primary) border-(--border-color)">
+    <header className="fixed w-full top-0 z-50 bg-(--bg-primary)">
       <div className="container flex h-18 items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center">
