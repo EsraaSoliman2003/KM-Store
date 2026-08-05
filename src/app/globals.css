@@ -496,3 +496,19 @@ html[dir="rtl"] .sidebar-close {
 .animate-float-reverse {
   animation: float-reverse 6s ease-in-out infinite;
 }
+
+@keyframes splashZoom {
+  0% {
+    transform: scale(1.18);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

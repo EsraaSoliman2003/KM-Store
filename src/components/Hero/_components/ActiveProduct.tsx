@@ -61,7 +61,7 @@ export default function ActiveProduct({ activeProduct }: Props) {
             <div className="relative flex h-130 w-[320px] items-center justify-center">
                 <img
                     src={activeProduct.image}
-                    alt={activeProduct.title}
+                    alt={t(activeProduct.title)}
                     className="max-h-full max-w-full object-contain transition-all duration-700"
                     style={{
                         filter: `drop-shadow(0 0 60px ${activeProduct.color}55)`,

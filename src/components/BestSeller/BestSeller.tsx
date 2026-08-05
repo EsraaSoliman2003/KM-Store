@@ -15,17 +15,17 @@ export default function BestSeller() {
                 <div className="mb-8 flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-center lg:justify-between">
                     <div>
                         <h2 className="text-3xl font-bold text-white sm:text-4xl">
-                            Best Seller
+                            {t("bestSellerTitle")}
                         </h2>
 
                         <p className="mt-2 text-sm text-white/50">
-                            Limited time deals on premium electronics
+                            {t("bestSellerSubtitle")}
                         </p>
                     </div>
 
                     <button className="group flex w-fit items-center gap-2 self-start text-lg text-purple-400 transition-all duration-300 hover:text-purple-300 lg:self-auto">
                         <span className="border-b-2 border-purple-500 pb-1">
-                            Show more
+                            {t("showMore")}
                         </span>
 
                         {t("dir") === "rtl" ? (

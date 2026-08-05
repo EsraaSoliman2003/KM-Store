@@ -9,25 +9,25 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   const categories = [
-    "Laptop",
-    "Smartphones",
-    "Gaming",
-    "Audio",
-    "Accessories",
-    "Smarthome",
+    "footerCategoryLaptop",
+    "footerCategorySmartphones",
+    "footerCategoryGaming",
+    "footerCategoryAudio",
+    "footerCategoryAccessories",
+    "footerCategorySmartHome",
   ];
 
   const brands = [
-    "Apple",
-    "Samsung",
-    "Oppo",
-    "Realme",
-    "OnePlus",
-    "Google",
-    "Nothing",
-    "Sony",
-    "Vivo",
-    "Xiaomi",
+    "footerBrandApple",
+    "footerBrandSamsung",
+    "footerBrandOppo",
+    "footerBrandRealme",
+    "footerBrandOnePlus",
+    "footerBrandGoogle",
+    "footerBrandNothing",
+    "footerBrandSony",
+    "footerBrandVivo",
+    "footerBrandXiaomi",
   ];
 
   return (
@@ -58,7 +58,7 @@ export default function Footer() {
                     href="#"
                     className="group relative inline-block text-lg text-gray-300 transition-all duration-300 hover:translate-x-1 hover:text-white"
                   >
-                    {item}
+                    {t(item)}
 
                     <span className="absolute -bottom-1 left-0 h-[2px] w-0 rounded-full bg-(--main) transition-all duration-300 group-hover:w-full" />
                   </Link>
@@ -80,7 +80,7 @@ export default function Footer() {
                   href="#"
                   className="group relative inline-block w-fit text-lg text-gray-300 transition-all duration-300 hover:translate-x-1 hover:text-white"
                 >
-                  {brand}
+                  {t(brand)}
 
                   <span className="absolute -bottom-1 left-0 h-[2px] w-0 rounded-full bg-(--main) transition-all duration-300 group-hover:w-full" />
                 </Link>
@@ -106,7 +106,7 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <Link
                 href="#"
-                aria-label="Facebook"
+                aria-label={t("footerFacebook")}
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-lg text-white transition-all duration-300 hover:-translate-y-1 hover:border-(--main) hover:bg-(--main) hover:shadow-[0_10px_25px_rgba(239,68,68,.35)]"
               >
                 <FaFacebookF />
@@ -114,7 +114,7 @@ export default function Footer() {
 
               <Link
                 href="#"
-                aria-label="Instagram"
+                aria-label={t("footerInstagram")}
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-lg text-white transition-all duration-300 hover:-translate-y-1 hover:border-(--main) hover:bg-(--main) hover:shadow-[0_10px_25px_rgba(239,68,68,.35)]"
               >
                 <FaInstagram />

@@ -1,32 +1,32 @@
 export const categories = [
   {
-    title: "Smartphones",
-    products: "+840 Products",
+    title: "categorySmartphones",
+    products: "categoryProducts",
     image: "/cat.jpg",
   },
   {
-    title: "Gaming",
-    products: "+840 Products",
+    title: "categoryGaming",
+    products: "categoryProducts",
     image: "/cat.jpg",
   },
   {
-    title: "Laptops",
-    products: "+840 Products",
+    title: "categoryLaptops",
+    products: "categoryProducts",
     image: "/cat.jpg",
   },
   {
-    title: "Audio",
-    products: "+840 Products",
+    title: "categoryAudio",
+    products: "categoryProducts",
     image: "/cat.jpg",
   },
   {
-    title: "Smart Home",
-    products: "+840 Products",
+    title: "categorySmartHome",
+    products: "categoryProducts",
     image: "/cat.jpg",
   },
   {
-    title: "Accessories",
-    products: "+840 Products",
+    title: "categoryAccessories",
+    products: "categoryProducts",
     image: "/cat.jpg",
   },
 ];

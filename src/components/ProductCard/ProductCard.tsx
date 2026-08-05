@@ -1,6 +1,7 @@
 import { Heart, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 type Props = {
@@ -8,6 +9,8 @@ type Props = {
 };
 
 export default function ProductCard({ product }: Props) {
+  const t = useTranslations();
+
   return (
     <Link
       href={`/products/${product.id}`}
@@ -17,13 +20,13 @@ export default function ProductCard({ product }: Props) {
       <div className="relative h-56 w-full overflow-hidden bg-(--bg-tertiary)">
         <Image
           src={product.image}
-          alt={product.title}
+          alt={t(product.title)}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
 
         <span className="absolute left-3 top-3 rounded-full bg-(--secondary) px-4 py-2 text-[12px] font-semibold text-(--main) backdrop-blur-sm transition duration-300">
-          {product.discount}% OFF
+          {t("productDiscountLabel", { discount: product.discount })}
         </span>
 
         {/* Favorite */}
@@ -57,7 +60,7 @@ export default function ProductCard({ product }: Props) {
         </div>
 
         <h3 className="pb-3 text-sm text-(--text-primary) transition-colors duration-300 group-hover:text-(--main)">
-          {product.title}
+          {t(product.title)}
         </h3>
 
         <div className="mt-3 flex items-end gap-2">

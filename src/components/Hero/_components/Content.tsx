@@ -55,23 +55,23 @@ export default function Content({ activeProduct }: Props) {
                     className="text-[12px] font-[510] uppercase tracking-[1px]"
                     style={{ color: activeProduct.color }}
                 >
-                    OnePlus · New Arrival
+                    {t("heroBadgeText")}
                 </span>
             </div>
 
             {/* Title */}
             <h1 className="mt-7 text-[40px] font-bold leading-none text-(--text-primary) transition-all duration-500">
-                {activeProduct.title}
+                {t(activeProduct.title)}
             </h1>
 
             {/* Subtitle */}
             <h2 className="mt-4 text-[18px] text-(--text-muted)">
-                {activeProduct.subtitle}
+                {t(activeProduct.subtitle)}
             </h2>
 
             {/* Description */}
             <p className="mt-6 max-w-[450px] text-[14px] leading-[1.8] text-(--text-muted) text-center lg:text-start">
-                {activeProduct.description}
+                {t(activeProduct.description)}
             </p>
 
             {/* Price */}
@@ -81,7 +81,7 @@ export default function Content({ activeProduct }: Props) {
                 </span>
 
                 <span className="text-[12px] text-(--text-muted)">
-                    Starting price
+                    {t("startingPrice")}
                 </span>
 
                 <span
@@ -92,7 +92,7 @@ export default function Content({ activeProduct }: Props) {
                         backgroundColor: `${activeProduct.color}1A`,
                     }}
                 >
-                    Free shipping
+                    {t("freeShipping")}
                 </span>
             </div>
 
@@ -112,7 +112,7 @@ export default function Content({ activeProduct }: Props) {
         "
                     style={{ backgroundColor: activeProduct.color }}
                 >
-                    <span>Buy now</span>
+                    <span>{t("buyNow")}</span>
                     {
                         t("dir") === "rtl" ? <ArrowLeft
                             size={20}
@@ -140,7 +140,7 @@ export default function Content({ activeProduct }: Props) {
             whitespace-nowrap
         "
                 >
-                    Learn more
+                    {t("learnMore")}
                 </button>
             </div>
 
@@ -159,7 +159,7 @@ export default function Content({ activeProduct }: Props) {
                             text-(--text-muted)
                         "
                     >
-                        {item}
+                        {t(item)}
                     </span>
                 ))}
 

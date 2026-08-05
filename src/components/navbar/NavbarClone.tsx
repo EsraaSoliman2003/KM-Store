@@ -14,12 +14,14 @@ import {
 import { links } from "./_components/links";
 import SideBar from "./_components/SideBar";
 import LanguageSwitcher from "./_components/LanguageSwitcher";
+import { useTranslations } from "next-intl";
 
 interface Props {
   locale: string;
 }
 
 export default function Navbar({ locale }: Props) {
+  const t = useTranslations();
   const [open, setOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
 
@@ -72,7 +74,7 @@ export default function Navbar({ locale }: Props) {
                   : "text-(--text-primary) hover:text-(--main)"
                 }`}
             >
-              {item.title}
+              {t(item.title)}
             </Link>
           ))}
         </nav>
@@ -101,7 +103,7 @@ export default function Navbar({ locale }: Props) {
           <button className="text-(--text-primary) transition-colors hover:text-(--main)">
             <FiUser size={19} />
           </button>
-          
+
           <LanguageSwitcher currentLocale={locale} />
         </div>
 

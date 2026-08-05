@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import {
   FiZap,
   FiShield,
@@ -10,40 +11,38 @@ import {
 const features = [
   {
     icon: FiZap,
-    title: "Fast Delivery",
-    subtitle: "1–3 Business Days",
-    description:
-      "Same-day delivery available in select cities. Track your order in real time.",
+    title: "whyUsFeatureFastDeliveryTitle",
+    subtitle: "whyUsFeatureFastDeliverySubtitle",
+    description: "whyUsFeatureFastDeliveryDescription",
   },
   {
     icon: FiShield,
-    title: "Secure Payment",
-    subtitle: "256-bit SSL Encryption",
-    description:
-      "All transactions are encrypted end-to-end. Your payment information is always protected.",
+    title: "whyUsFeatureSecurePaymentTitle",
+    subtitle: "whyUsFeatureSecurePaymentSubtitle",
+    description: "whyUsFeatureSecurePaymentDescription",
   },
   {
     icon: FiAward,
-    title: "Official Warranty",
-    subtitle: "Manufacturer Guarantee",
-    description:
-      "Every product is 100% authentic and backed by the official manufacturer warranty.",
+    title: "whyUsFeatureOfficialWarrantyTitle",
+    subtitle: "whyUsFeatureOfficialWarrantySubtitle",
+    description: "whyUsFeatureOfficialWarrantyDescription",
   },
   {
     icon: FiRefreshCw,
-    title: "Easy Returns",
-    subtitle: "30-Day Return Policy",
-    description:
-      "Not satisfied? Return your order within 30 days with a quick and hassle-free process.",
+    title: "whyUsFeatureEasyReturnsTitle",
+    subtitle: "whyUsFeatureEasyReturnsSubtitle",
+    description: "whyUsFeatureEasyReturnsDescription",
   },
 ];
 
 export default function WhyUs() {
+  const t = useTranslations();
+
   return (
     <section className="py-20">
       <div className="container">
         <h2 className="mb-12 text-center text-3xl font-bold text-(--text-primary) sm:text-4xl">
-          Why Shop With Us
+          {t("whyShopWithUsTitle")}
         </h2>
 
         <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
@@ -60,15 +59,15 @@ export default function WhyUs() {
                 </div>
 
                 <h3 className="text-xl font-semibold text-(--text-primary)">
-                  {item.title}
+                  {t(item.title)}
                 </h3>
 
                 <p className="mt-1 text-xs font-medium text-(--main)">
-                  {item.subtitle}
+                  {t(item.subtitle)}
                 </p>
 
                 <p className="mt-3 text-sm text-(--text-muted)">
-                  {item.description}
+                  {t(item.description)}
                 </p>
               </div>
             );

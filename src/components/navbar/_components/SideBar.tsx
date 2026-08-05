@@ -100,7 +100,7 @@ export default function SideBar({
                                         : "text-(--text-primary) hover:text-(--main)"
                                     }`}
                             >
-                                {item.title}
+                                {t(item.title)}
                             </Link>
                         ))}
                     </div>

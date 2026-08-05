@@ -1,7 +1,7 @@
 export const products = [
   {
     id: 1,
-    title: "AURA Lite True Wireless Earbuds",
+    title: "flashSaleProductEarbuds",
     image: "/earbuds.jpg",
     price: 400,
     oldPrice: 550,
@@ -10,7 +10,7 @@ export const products = [
   },
   {
     id: 2,
-    title: "SonicWave Over-Ear Headphones",
+    title: "flashSaleProductHeadphones",
     image: "/earbuds.jpg",
     price: 250,
     oldPrice: 300,
@@ -19,7 +19,7 @@ export const products = [
   },
   {
     id: 3,
-    title: "BassBoost Portable Speaker",
+    title: "flashSaleProductSpeaker",
     image: "/earbuds.jpg",
     price: 150,
     oldPrice: 180,
@@ -28,7 +28,7 @@ export const products = [
   },
   {
     id: 4,
-    title: "NoiseCancelling Travel Headphones",
+    title: "flashSaleProductTravelHeadphones",
     image: "/earbuds.jpg",
     price: 350,
     oldPrice: 420,

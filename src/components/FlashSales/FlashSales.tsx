@@ -17,11 +17,11 @@ export default function FlashSales() {
                     <div className="text-center lg:text-left">
                         <h2 className="flex items-center justify-center gap-2 text-3xl font-bold text-white sm:text-4xl lg:justify-start">
                             <FiZap className="text-orange-400" />
-                            Flash Sales
+                            {t("flashSalesTitle")}
                         </h2>
 
                         <p className="mt-2 text-sm text-white/50">
-                            Limited time deals on premium electronics
+                            {t("flashSalesSubtitle")}
                         </p>
                     </div>
 
@@ -41,7 +41,7 @@ export default function FlashSales() {
                 <div className="mt-8 flex justify-center lg:justify-end">
                     <button className="group flex items-center gap-2 text-lg text-purple-400 transition-all duration-300 hover:text-purple-300">
                         <span className="border-b-2 border-purple-500 pb-1">
-                            Show more
+                            {t("showMore")}
                         </span>
 
                         {t("dir") === "rtl" ? (

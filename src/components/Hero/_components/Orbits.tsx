@@ -102,7 +102,7 @@ export default function Orbits({ activeProduct, setActiveProduct }: Props) {
                         >
                             <img
                                 src={item.image}
-                                alt={item.title}
+                                alt={t(item.title)}
                                 className="relative h-15 w-10 object-contain transition-transform duration-300"
                                 style={{
                                 }}

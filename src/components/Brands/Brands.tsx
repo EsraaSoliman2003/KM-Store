@@ -12,12 +12,12 @@ export default function Brands() {
         {/* Header */}
         <div className="mb-8 flex flex-col items-start gap-5 lg:flex-row lg:items-center lg:justify-between">
           <h2 className="text-3xl font-bold text-(--text-primary) sm:text-4xl">
-            Brands
+            {t("brandsTitle")}
           </h2>
 
           <button className="group flex w-fit items-center gap-2 text-lg text-purple-400 transition-all duration-300 hover:text-purple-300">
             <span className="border-b-2 border-purple-500 pb-1">
-              Show more
+              {t("showMore")}
             </span>
 
             {t("dir") === "rtl" ? (
@@ -79,11 +79,11 @@ export default function Brands() {
                       group-hover:text-(--main-light)
                     "
                   >
-                    {item.title}
+                    {t(item.title)}
                   </h3>
 
                   <p className="mt-2 text-sm text-white/75 transition-colors duration-300 group-hover:text-white">
-                    {item.products}
+                    {t(item.products)}
                   </p>
                 </div>
 

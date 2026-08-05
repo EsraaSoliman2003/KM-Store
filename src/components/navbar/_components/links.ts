@@ -1,9 +1,9 @@
 export const links = [
-  { title: "Home", href: "/" },
-  { title: "Categories", href: "/categories" },
-  { title: "New Arrivals", href: "/new-arrivals" },
-  { title: "Best Sellers", href: "/best-sellers" },
-  { title: "Deals", href: "/deals" },
-  { title: "Brands", href: "/brands" },
-  { title: "Support", href: "/support" },
+  { title: "home", href: "/" },
+  { title: "categories", href: "/categories" },
+  { title: "newArrivals", href: "/new-arrivals" },
+  { title: "bestSellers", href: "/best-sellers" },
+  { title: "deals", href: "/deals" },
+  { title: "brands", href: "/brands" },
+  { title: "support", href: "/support" },
 ];

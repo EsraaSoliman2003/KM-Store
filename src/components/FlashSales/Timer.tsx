@@ -1,18 +1,20 @@
+import { useTranslations } from "next-intl";
 import React from "react";
 
 type Props = {};
 
-export default function Timer({}: Props) {
+export default function Timer({ }: Props) {
+    const t = useTranslations();
     const timer = [
-        ["02", "HRS"],
-        ["30", "MIN"],
-        ["34", "SEC"],
+        ["02", "hours"],
+        ["30", "minutes"],
+        ["34", "seconds"],
     ];
 
     return (
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 lg:flex-nowrap">
             <span className="w-full text-center text-xs text-white/50 sm:w-auto sm:text-left">
-                Ends in:
+                {t("endsIn")}
             </span>
 
             {timer.map(([num, label], index) => (
@@ -23,7 +25,7 @@ export default function Timer({}: Props) {
                         </span>
 
                         <span className="text-[9px] text-white/40 sm:text-[10px]">
-                            {label}
+                            {t(label)}
                         </span>
                     </div>
 

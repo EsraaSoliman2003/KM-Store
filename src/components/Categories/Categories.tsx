@@ -1,13 +1,16 @@
 import Image from "next/image";
 import { FiArrowUpRight } from "react-icons/fi";
 import { categories } from "./data";
+import { useTranslations } from "next-intl";
 
 export default function Categories() {
+  const t = useTranslations();
+
   return (
     <section className="py-16">
       <div className="container">
         <h2 className="mb-10 text-4xl font-bold text-(--text-primary)">
-          Shop by Category
+          {t("shopByCategoryTitle")}
         </h2>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -55,11 +58,11 @@ export default function Categories() {
                       group-hover:text-(--main-light)
                     "
                   >
-                    {item.title}
+                    {t(item.title)}
                   </h3>
 
                   <p className="mt-2 text-sm text-white/75 transition-colors duration-300 group-hover:text-white">
-                    {item.products}
+                    {t(item.products)}
                   </p>
                 </div>
 
