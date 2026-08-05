@@ -1,0 +1,38 @@
+export const products = [
+  {
+    id: 1,
+    title: "AURA Lite True Wireless Earbuds",
+    image: "/earbuds.jpg",
+    price: 400,
+    oldPrice: 550,
+    rate: 5.0,
+    discount: 25,
+  },
+  {
+    id: 2,
+    title: "SonicWave Over-Ear Headphones",
+    image: "/earbuds.jpg",
+    price: 250,
+    oldPrice: 300,
+    rate: 4.5,
+    discount: 17,
+  },
+  {
+    id: 3,
+    title: "BassBoost Portable Speaker",
+    image: "/earbuds.jpg",
+    price: 150,
+    oldPrice: 180,
+    rate: 3.8,
+    discount: 16,
+  },
+  {
+    id: 4,
+    title: "NoiseCancelling Travel Headphones",
+    image: "/earbuds.jpg",
+    price: 350,
+    oldPrice: 420,
+    rate: 4.2,
+    discount: 17,
+  },
+];

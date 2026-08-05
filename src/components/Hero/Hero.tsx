@@ -36,31 +36,7 @@ export default function Hero() {
     }, []);
 
     return (
-        <section className="relative min-h-screen overflow-hidden bg-(--bg-primary)">
-
-            {/* ═══ BACKGROUND LAYERS ═══ */}
-            <div className="absolute inset-0 z-0">
-                <motion.div
-                    className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[180px]"
-                    style={{
-                        backgroundColor: `${activeProduct.color}22`,
-                    }}
-                    animate={{ backgroundColor: `${activeProduct.color}22` }}
-                    transition={{ duration: 0.6 }}
-                />
-
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        background: `radial-gradient(circle at 50% 30%, ${activeProduct.color}22 0%, var(--bg-primary) 70%)`,
-                    }}
-                />
-
-                <div className="noise absolute inset-0" />
-
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,#00000040_100%)]" />
-            </div>
-
+        <section className="relative min-h-screen overflow-hidden bg-(--bg-hero)">
             {/* ═══ MAIN CONTAINER ═══ */}
             <div className="container relative z-10 flex min-h-screen items-center justify-between flex-col lg:flex-row">
 

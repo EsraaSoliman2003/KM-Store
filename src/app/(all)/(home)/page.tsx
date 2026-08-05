@@ -3,15 +3,19 @@ import Brands from "@/components/Brands/Brands";
 import Categories from "@/components/Categories/Categories";
 import FlashSales from "@/components/FlashSales/FlashSales";
 import Hero from "@/components/Hero/Hero";
+import TopRated from "@/components/TopRated/TopRated";
+import WhyUs from "@/components/WhyUs/WhyUs";
 
 const HomePage = () => {
   return (
     <section>
       <Hero />
-      {/* <Categories />
+      <Categories />
       <FlashSales />
       <BestSeller />
-      <Brands /> */}
+      <Brands />
+      <TopRated />
+      <WhyUs />
     </section>
   );
 };

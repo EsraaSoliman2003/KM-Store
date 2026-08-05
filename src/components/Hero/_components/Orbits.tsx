@@ -93,7 +93,7 @@ export default function Orbits({ activeProduct, setActiveProduct }: Props) {
                             style={{
                                 backgroundColor: isActive
                                     ? "var(--bg-tertiary)"
-                                    : `${item.color}10`,
+                                    : `${item.color}25`,
                                 borderColor: isActive ? activeProduct.color : undefined,
                                 left: `calc(50% + ${x}px)`,
                                 top: `calc(50% + ${y}px)`,

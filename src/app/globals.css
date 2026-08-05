@@ -9,6 +9,7 @@
   --main-hover: #DC2626;
   --main-light: #FEE2E2;
   --secondary: #EF44441F;
+  --bg-hero: #ffffff;
 
   /* Background */
   --bg-primary: #ffffff;
@@ -56,8 +57,9 @@
 .dark {
   --main: #EF4444;
   --main-hover: #F87171;
-  --main-light: #7F1D1D;
+  --main-light: #EF444433;
   --secondary: #EF44441F;
+  --bg-hero: #050505;
 
   --bg-primary: #1A1A1A;
   --bg-secondary: #1f2937;
@@ -201,15 +203,6 @@ body {
 button {
   cursor: pointer;
 }
-
-/* Optional: Add smooth transitions for dark mode */
-* {
-  transition: background-color 0.3s ease,
-    border-color 0.3s ease,
-    color 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
 
 /* ===========================================
    react-phone-input-2 Custom Styles

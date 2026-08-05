@@ -1,23 +1,21 @@
 "use client";
 
 import { FiChevronLeft, FiChevronRight, FiZap } from "react-icons/fi";
-import { products } from "./data";
+import { products } from "../FlashSales/data";
 import ProductCard from "../ProductCard/ProductCard";
-import Timer from "./Timer";
 import { useTranslations } from "next-intl";
 
-export default function FlashSales() {
+export default function TopRated() {
     const t = useTranslations();
 
     return (
         <section className="py-14">
             <div className="container">
                 {/* Header */}
-                <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-                    <div className="text-center lg:text-left">
-                        <h2 className="flex items-center justify-center gap-2 text-3xl font-bold text-white sm:text-4xl lg:justify-start">
-                            <FiZap className="text-orange-400" />
-                            Flash Sales
+                <div className="mb-8 flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-center lg:justify-between">
+                    <div>
+                        <h2 className="text-3xl font-bold text-white sm:text-4xl">
+                            Top Rated
                         </h2>
 
                         <p className="mt-2 text-sm text-white/50">
@@ -25,21 +23,7 @@ export default function FlashSales() {
                         </p>
                     </div>
 
-                    <div className="flex justify-center lg:justify-end">
-                        <Timer />
-                    </div>
-                </div>
-
-                {/* Products */}
-                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                    {products.map((product) => (
-                        <ProductCard key={product.id} product={product} />
-                    ))}
-                </div>
-
-                {/* Footer */}
-                <div className="mt-8 flex justify-center lg:justify-end">
-                    <button className="group flex items-center gap-2 text-lg text-purple-400 transition-all duration-300 hover:text-purple-300">
+                    <button className="group flex w-fit items-center gap-2 self-start text-lg text-purple-400 transition-all duration-300 hover:text-purple-300 lg:self-auto">
                         <span className="border-b-2 border-purple-500 pb-1">
                             Show more
                         </span>
@@ -56,6 +40,13 @@ export default function FlashSales() {
                             />
                         )}
                     </button>
+                </div>
+
+                {/* Products */}
+                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                    {products.map((product) => (
+                        <ProductCard key={product.id} product={product} />
+                    ))}
                 </div>
             </div>
         </section>
