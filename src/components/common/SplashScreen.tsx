@@ -4,7 +4,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-export default function SplashScreen({ children }: { children: React.ReactNode }) {
+export default function SplashScreen({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -19,14 +23,16 @@ export default function SplashScreen({ children }: { children: React.ReactNode }
           key="splash"
           className="fixed inset-0 z-[9999] bg-black"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.7, ease: "easeOut" } }}
+          exit={{
+            opacity: 0,
+            transition: { duration: 0.7, ease: "easeOut" },
+          }}
         >
-          {/* الصورة بقت تغطي الشاشة كلها (أكبر حاجة) */}
           <motion.div
             className="relative w-screen h-screen"
             initial={{ scale: 1 }}
             exit={{
-              scale: 1.2,      // تكبر زيادة بسيطة أثناء الاختفاء
+              scale: 1.1,
               opacity: 0,
               transition: { duration: 0.7, ease: "easeOut" },
             }}
@@ -36,7 +42,7 @@ export default function SplashScreen({ children }: { children: React.ReactNode }
               alt="Loading..."
               fill
               priority
-              className="object-cover"
+              className="bg-black object-contain sm:object-cover"
             />
           </motion.div>
         </motion.div>
