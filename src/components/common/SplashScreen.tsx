@@ -45,7 +45,7 @@ export default function SplashScreen({
               playsInline
               preload="auto"
             >
-              <source src="/splash.mov" type="video/mp4" />
+              <source src="/splash.mp4" type="video/mp4" />
             </video>
           </motion.div>
         </motion.div>
