@@ -1,6 +1,6 @@
 "use client";
 
-import { FiChevronLeft, FiChevronRight, FiZap } from "react-icons/fi";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { products } from "../FlashSales/data";
 import ProductCard from "../ProductCard/ProductCard";
 import { useTranslations } from "next-intl";
@@ -13,7 +13,7 @@ export default function BestSeller() {
             <div className="container">
                 {/* Header */}
                 <div className="mb-8 flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-center lg:justify-between">
-                    <div>
+                    <div className="text-center lg:text-start">
                         <h2 className="text-3xl font-bold text-white sm:text-4xl">
                             {t("bestSellerTitle")}
                         </h2>
@@ -23,7 +23,7 @@ export default function BestSeller() {
                         </p>
                     </div>
 
-                    <button className="group flex w-fit items-center gap-2 self-start text-lg text-purple-400 transition-all duration-300 hover:text-purple-300 lg:self-auto">
+                    <button className="group mx-auto lg:mx-0 flex w-fit items-center gap-2 self-start text-lg text-purple-400 transition-all duration-300 hover:text-purple-300 lg:self-auto">
                         <span className="border-b-2 border-purple-500 pb-1">
                             {t("showMore")}
                         </span>
@@ -43,7 +43,7 @@ export default function BestSeller() {
                 </div>
 
                 {/* Products */}
-                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
                     {products.map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}

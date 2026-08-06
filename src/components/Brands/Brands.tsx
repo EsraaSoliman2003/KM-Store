@@ -1,21 +1,29 @@
+"use client";
+
 import Image from "next/image";
-import { FiArrowUpRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import {
+  FiArrowUpRight,
+  FiChevronLeft,
+  FiChevronRight,
+} from "react-icons/fi";
 import { categories } from "../Categories/data";
 import { useTranslations } from "next-intl";
 
 export default function Brands() {
   const t = useTranslations();
+
   return (
-    <section className="py-16">
+    <section className="py-14">
       <div className="container">
-
         {/* Header */}
-        <div className="mb-8 flex flex-col items-start gap-5 lg:flex-row lg:items-center lg:justify-between">
-          <h2 className="text-3xl font-bold text-(--text-primary) sm:text-4xl">
-            {t("brandsTitle")}
-          </h2>
+        <div className="mb-8 flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+          <div className="text-center lg:text-start">
+            <h2 className="text-3xl font-bold text-(--text-primary) sm:text-4xl">
+              {t("brandsTitle")}
+            </h2>
+          </div>
 
-          <button className="group flex w-fit items-center gap-2 text-lg text-purple-400 transition-all duration-300 hover:text-purple-300">
+          <button className="group mx-auto lg:mx-0 flex w-fit items-center gap-2 text-lg text-purple-400 transition-all duration-300 hover:text-purple-300">
             <span className="border-b-2 border-purple-500 pb-1">
               {t("showMore")}
             </span>
@@ -34,12 +42,15 @@ export default function Brands() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {/* Brands */}
+        <div className="grid grid-cols-2 gap-3 sm:gap-5 xl:grid-cols-3">
           {categories.slice(0, 3).map((item) => (
             <div
               key={item.title}
               className="
-                group relative h-[220px] overflow-hidden rounded-3xl
+                group relative
+                h-[170px] sm:h-[200px] lg:h-[220px]
+                overflow-hidden rounded-2xl sm:rounded-3xl
                 border border-transparent
                 transition-all duration-300 ease-in-out
                 hover:-translate-y-1
@@ -70,11 +81,12 @@ export default function Brands() {
               />
 
               {/* Content */}
-              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-5">
+              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-3 sm:p-5">
                 <div>
                   <h3
                     className="
-                      text-xl font-semibold text-white
+                      text-base sm:text-lg lg:text-xl
+                      font-semibold text-white
                       transition-colors duration-300
                       group-hover:text-(--main-light)
                     "
@@ -82,20 +94,25 @@ export default function Brands() {
                     {t(item.title)}
                   </h3>
 
-                  <p className="mt-2 text-sm text-white/75 transition-colors duration-300 group-hover:text-white">
+                  <p className="mt-1 text-xs text-white/75 transition-colors duration-300 group-hover:text-white sm:mt-2 sm:text-sm">
                     {t(item.products)}
                   </p>
                 </div>
 
                 <button
                   className="
-                    flex h-11 w-11 items-center justify-center
+                    flex
+                    h-9 w-9
+                    shrink-0
+                    items-center justify-center
                     rounded-full
                     border border-(--border-color)
                     bg-[rgba(var(--bg-primary-rgb),0.8)]
                     text-(--text-primary)
                     backdrop-blur-sm
                     transition-all duration-300
+                    sm:h-10 sm:w-10
+                    lg:h-11 lg:w-11
                     group-hover:rotate-12
                     group-hover:scale-110
                     group-hover:border-(--main)
@@ -103,7 +120,7 @@ export default function Brands() {
                     group-hover:text-(--text-white)
                   "
                 >
-                  <FiArrowUpRight size={20} />
+                  <FiArrowUpRight className="text-base sm:text-lg lg:text-xl" />
                 </button>
               </div>
             </div>

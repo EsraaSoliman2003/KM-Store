@@ -12,12 +12,12 @@ export default function SplashScreen({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1000);
+    const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence>
       {loading ? (
         <motion.div
           key="splash"
@@ -32,18 +32,21 @@ export default function SplashScreen({
             className="relative w-screen h-screen"
             initial={{ scale: 1 }}
             exit={{
-              scale: 1.1,
+              scale: 5,
               opacity: 0,
-              transition: { duration: 0.7, ease: "easeOut" },
+              transition: { duration: 5, ease: "easeOut" },
+              bottom: 1000
             }}
           >
-            <Image
-              src="/splash.png"
-              alt="Loading..."
-              fill
-              priority
-              className="bg-black object-contain sm:object-cover"
-            />
+            <video
+              className="absolute inset-0 h-full w-full bg-black object-contain sm:object-cover scale-[2] sm:scale-100"
+              autoPlay
+              muted
+              playsInline
+              preload="auto"
+            >
+              <source src="/splash.mov" type="video/mp4" />
+            </video>
           </motion.div>
         </motion.div>
       ) : (

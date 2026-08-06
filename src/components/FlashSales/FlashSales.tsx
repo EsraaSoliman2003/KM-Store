@@ -7,57 +7,57 @@ import Timer from "./Timer";
 import { useTranslations } from "next-intl";
 
 export default function FlashSales() {
-    const t = useTranslations();
+  const t = useTranslations();
 
-    return (
-        <section className="py-14">
-            <div className="container">
-                {/* Header */}
-                <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-                    <div className="text-center lg:text-left">
+  return (
+    <section className="py-14">
+      <div className="container">
+        {/* Header */}
+        <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <div className="text-center lg:text-left">
                         <h2 className="flex items-center justify-center gap-2 text-3xl font-bold text-white sm:text-4xl lg:justify-start">
-                            <FiZap className="text-orange-400" />
-                            {t("flashSalesTitle")}
-                        </h2>
+              <FiZap className="text-orange-400" />
+              {t("flashSalesTitle")}
+            </h2>
 
                         <p className="mt-2 text-sm text-white/50">
-                            {t("flashSalesSubtitle")}
-                        </p>
-                    </div>
+              {t("flashSalesSubtitle")}
+            </p>
+          </div>
 
-                    <div className="flex justify-center lg:justify-end">
-                        <Timer />
-                    </div>
-                </div>
+          <div className="flex justify-center lg:justify-end">
+            <Timer />
+          </div>
+        </div>
 
-                {/* Products */}
-                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                    {products.map((product) => (
-                        <ProductCard key={product.id} product={product} />
-                    ))}
-                </div>
+        {/* Products */}
+        <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
 
-                {/* Footer */}
-                <div className="mt-8 flex justify-center lg:justify-end">
+        {/* Footer */}
+        <div className="mt-8 flex justify-center lg:justify-end">
                     <button className="group flex items-center gap-2 text-lg text-purple-400 transition-all duration-300 hover:text-purple-300">
-                        <span className="border-b-2 border-purple-500 pb-1">
-                            {t("showMore")}
-                        </span>
+            <span className="border-b-2 border-purple-500 pb-1">
+              {t("showMore")}
+            </span>
 
-                        {t("dir") === "rtl" ? (
-                            <FiChevronLeft
-                                size={22}
-                                className="transition-transform duration-300 group-hover:-translate-x-1"
-                            />
-                        ) : (
-                            <FiChevronRight
-                                size={22}
-                                className="transition-transform duration-300 group-hover:translate-x-1"
-                            />
-                        )}
-                    </button>
-                </div>
-            </div>
-        </section>
-    );
+            {t("dir") === "rtl" ? (
+              <FiChevronLeft
+                size={22}
+                className="transition-transform duration-300 group-hover:-translate-x-1"
+              />
+            ) : (
+              <FiChevronRight
+                size={22}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
+            )}
+          </button>
+        </div>
+      </div>
+    </section>
+  );
 }
