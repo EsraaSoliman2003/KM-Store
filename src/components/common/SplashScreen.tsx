@@ -39,7 +39,7 @@ export default function SplashScreen({
             }}
           >
             <video
-              className="absolute inset-0 h-full w-full bg-black object-contain sm:object-cover scale-[2] sm:scale-100"
+              className="absolute inset-0 h-full w-full bg-[#030008] object-contain sm:object-cover scale-[2] sm:scale-100"
               autoPlay
               muted
               playsInline
