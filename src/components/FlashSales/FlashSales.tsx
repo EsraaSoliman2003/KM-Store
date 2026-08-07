@@ -15,12 +15,12 @@ export default function FlashSales() {
         {/* Header */}
         <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div className="text-center lg:text-left">
-                        <h2 className="flex items-center justify-center gap-2 text-3xl font-bold text-white sm:text-4xl lg:justify-start">
+            <h2 className="flex items-center justify-center gap-2 text-3xl font-bold text-white sm:text-4xl lg:justify-start">
               <FiZap className="text-orange-400" />
               {t("flashSalesTitle")}
             </h2>
 
-                        <p className="mt-2 text-sm text-white/50">
+            <p className="mt-2 text-sm text-white/50">
               {t("flashSalesSubtitle")}
             </p>
           </div>
@@ -39,7 +39,7 @@ export default function FlashSales() {
 
         {/* Footer */}
         <div className="mt-8 flex justify-center lg:justify-end">
-                    <button className="group flex items-center gap-2 text-lg text-purple-400 transition-all duration-300 hover:text-purple-300">
+          <button className="group flex items-center gap-2 text-lg text-purple-400 transition-all duration-300 hover:text-purple-300">
             <span className="border-b-2 border-purple-500 pb-1">
               {t("showMore")}
             </span>

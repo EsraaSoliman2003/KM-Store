@@ -9,7 +9,7 @@ export default function Categories() {
   return (
     <section className="py-12 lg:py-20">
       <div className="container">
-        <h2 className="mb-8 text-center lg:text-start text-3xl font-bold text-(--text-primary) lg:mb-12 lg:text-5xl">
+        <h2 className="mb-8 text-center lg:text-start font-bold text-(--text-primary) lg:mb-12 text-3xl sm:text-4xl">
           {t("shopByCategoryTitle")}
         </h2>
 
