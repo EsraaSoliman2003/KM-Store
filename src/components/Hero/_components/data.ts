@@ -10,7 +10,7 @@ import {
 export const orbitProducts = [
     {
         id: 1,
-        image: "/1.png",
+        image: "/3.png",
         title: "heroProductOnePlus15Title",
         description: "heroProductOnePlus15Description",
         subtitle: "heroProductOnePlus15Subtitle",

@@ -1,13 +1,17 @@
-import React from 'react'
-import { orbitProducts } from './data';
-import { useTranslations } from 'next-intl';
+import React from "react";
+import Image from "next/image";
+import { orbitProducts } from "./data";
+import { useTranslations } from "next-intl";
 
 type Props = {
     activeProduct: any;
     setActiveProduct: (product: any) => void;
-}
+};
 
-export default function Orbits({ activeProduct, setActiveProduct }: Props) {
+export default function Orbits({
+    activeProduct,
+    setActiveProduct,
+}: Props) {
     const t = useTranslations();
 
     const handleCardClick = (item: any) => {
@@ -18,26 +22,17 @@ export default function Orbits({ activeProduct, setActiveProduct }: Props) {
 
     return (
         <div
-            className={`absolute top-1/2 -translate-y-1/2 z-50 hidden lg:block ${isRtl
+            className={`absolute top-1/2 z-50 hidden -translate-y-1/2 lg:block ${isRtl
                 ? "-left-85 min-[1280px]:-left-70 min-[1400px]:-left-95"
                 : "-right-85 min-[1280px]:-right-70 min-[1400px]:-right-95"
                 }`}
         >
             <div
-                className={`
-                    relative
-                    h-[549px]
-                    w-[357px]
-                    rounded-[50%]
-                    border-[8px]
-                    shadow-[inset_0_0_80px_rgba(0,200,255,.05)]
-                    ${isRtl ? "-rotate-90" : "rotate-90"}
-                `}
+                className={`relative h-[549px] w-[357px] rounded-[50%] border-[8px] shadow-[inset_0_0_80px_rgba(0,200,255,.05)] ${isRtl ? "-rotate-90" : "rotate-90"
+                    }`}
                 style={{
                     borderColor: `rgba(var(--border-color-rgb), 0.4)`,
-                    clipPath: isRtl
-                        ? "inset(65% -20% -20% -20%)"
-                        : "inset(65% -20% -20% -20%)",
+                    clipPath: "inset(65% -20% -20% -20%)",
                 }}
             >
                 {orbitProducts.map((item, index) => {
@@ -46,7 +41,8 @@ export default function Orbits({ activeProduct, setActiveProduct }: Props) {
 
                     const angle =
                         startAngle +
-                        (index * (endAngle - startAngle)) / (orbitProducts.length - 1);
+                        (index * (endAngle - startAngle)) /
+                        (orbitProducts.length - 1);
 
                     const rad = (angle * Math.PI) / 180;
 
@@ -94,19 +90,24 @@ export default function Orbits({ activeProduct, setActiveProduct }: Props) {
                                 backgroundColor: isActive
                                     ? "var(--bg-tertiary)"
                                     : `${item.color}25`,
-                                borderColor: isActive ? activeProduct.color : undefined,
+                                borderColor: isActive
+                                    ? activeProduct.color
+                                    : undefined,
                                 left: `calc(50% + ${x}px)`,
                                 top: `calc(50% + ${y}px)`,
                                 transform: `translate(-50%, -50%) rotate(${rotate}deg)`,
                             }}
                         >
-                            <img
-                                src={item.image}
-                                alt={t(item.title)}
-                                className="relative h-15 w-10 object-contain transition-transform duration-300"
-                                style={{
-                                }}
-                            />
+                            <div className="relative h-15 w-10">
+                                <Image
+                                    src={item.image}
+                                    alt={t(item.title)}
+                                    fill
+                                    sizes="40px"
+                                    loading="eager"
+                                    className="object-contain transition-transform duration-300"
+                                />
+                            </div>
                         </div>
                     );
                 })}

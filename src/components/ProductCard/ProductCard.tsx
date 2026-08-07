@@ -17,12 +17,14 @@ export default function ProductCard({ product }: Props) {
       className="group block overflow-hidden rounded-2xl border border-(--border-color) bg-(--bg-primary) transition-all duration-300 hover:-translate-y-1 hover:border-(--main) hover:shadow-xl"
     >
       {/* Image */}
-      <div className="relative h-56 w-full lg:aspect-square overflow-hidden">
+      <div className="relative h-40 md:h-56 w-full lg:aspect-square overflow-hidden">
         <Image
           src={product.image}
-          alt={product.title}
+          alt={t(product.title)}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 50vw"
+          loading="eager"
+          className="object-cover"
         />
 
         {/* Discount */}

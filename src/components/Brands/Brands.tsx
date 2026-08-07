@@ -61,13 +61,11 @@ export default function Brands() {
               {/* Image */}
               <Image
                 src={item.image}
-                alt={item.title}
+                alt={t(item.title)}
                 fill
-                className="
-                  object-cover
-                  transition-transform duration-500
-                  group-hover:scale-110
-                "
+                sizes="(min-width: 1280px) 33vw, 50vw"
+                loading="eager"
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
 
               {/* Overlay */}
