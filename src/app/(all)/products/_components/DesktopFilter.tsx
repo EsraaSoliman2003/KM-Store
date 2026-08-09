@@ -1,0 +1,68 @@
+"use client";
+
+import { FiFilter } from "react-icons/fi";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import CategoryFilter from "./CategoryFilter";
+import BrandFilter from "./BrandFilter";
+import PriceFilter from "./PriceFilter";
+import RatingFilter from "./RatingFilter";
+
+export default function DesktopFilter() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  // Update one filter in the URL
+  const updateFilter = (key: string, value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (value) {
+      params.set(key, value);
+    } else {
+      params.delete(key);
+    }
+
+    router.push(`${pathname}?${params.toString()}`, {
+      scroll: false,
+    });
+  };
+
+  // Clear all filters
+  const clearAll = () => {
+    router.push(pathname, {
+      scroll: false,
+    });
+  };
+
+  return (
+    <aside className="shrink-0 rounded-2xl border border-[#4b4b4b] bg-[#1b1b1b] p-3 w-75 hidden lg:block">
+
+      {/* Filter Header */}
+      <div className="mb-5 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <FiFilter size={16} />
+          <h2 className="text-sm font-semibold text-white">Filters</h2>
+        </div>
+
+        <button
+          onClick={clearAll}
+          className="text-[12px] text-[#7040dc] transition hover:text-[#8756ef]"
+        >
+          Clear All
+        </button>
+      </div>
+
+      {/* Category */}
+      <CategoryFilter updateFilter={updateFilter} />
+
+      {/* Brand */}
+      <BrandFilter updateFilter={updateFilter} />
+
+      {/* Price */}
+      <PriceFilter />
+
+      {/* Rating */}
+      <RatingFilter updateFilter={updateFilter} />
+    </aside>
+  );
+}

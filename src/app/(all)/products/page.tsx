@@ -2,6 +2,7 @@ import Hero from "./_components/Hero";
 import MobileCats from "./_components/MobileCats";
 import DesktopCats from "./_components/DesktopCats";
 import { useTranslations } from "next-intl";
+import Products from "./_components/Products";
 
 export const categories = [
   {
@@ -76,6 +77,10 @@ export default function Page() {
         {/* ================= DESKTOP ================= */}
         <DesktopCats />
       </section>
+
+      {/* ================= PRODUCTS ================= */}
+      <Products />
+      
     </main>
   );
 }
