@@ -29,13 +29,15 @@ export default function MobileFilter() {
       params.delete(key);
     }
 
-    router.push(`${pathname}?${params.toString()}`, {
+    const query = params.toString();
+
+    router.replace(query ? `${pathname}?${query}` : pathname, {
       scroll: false,
     });
   };
 
   const clearAll = () => {
-    router.push(pathname, {
+    router.replace(pathname, {
       scroll: false,
     });
   };

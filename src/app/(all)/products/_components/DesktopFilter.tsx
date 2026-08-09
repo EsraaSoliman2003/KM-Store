@@ -22,14 +22,15 @@ export default function DesktopFilter() {
       params.delete(key);
     }
 
-    router.push(`${pathname}?${params.toString()}`, {
+    const query = params.toString();
+
+    router.replace(query ? `${pathname}?${query}` : pathname, {
       scroll: false,
     });
   };
 
-  // Clear all filters
   const clearAll = () => {
-    router.push(pathname, {
+    router.replace(pathname, {
       scroll: false,
     });
   };
@@ -52,16 +53,12 @@ export default function DesktopFilter() {
         </button>
       </div>
 
-      {/* Category */}
       <CategoryFilter updateFilter={updateFilter} />
 
-      {/* Brand */}
       <BrandFilter updateFilter={updateFilter} />
 
-      {/* Price */}
       <PriceFilter />
 
-      {/* Rating */}
       <RatingFilter updateFilter={updateFilter} />
     </aside>
   );
