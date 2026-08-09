@@ -5,7 +5,7 @@
 
 :root {
   /* Brand */
-  --main: #EF4444;
+  --main: #683AD0;
   --main-hover: #DC2626;
   --main-light: #FEE2E2;
   --secondary: #EF44441F;
@@ -55,7 +55,7 @@
 }
 
 .dark {
-  --main: #EF4444;
+  --main: #683AD0;
   --main-hover: #F87171;
   --main-light: #EF444433;
   --secondary: #EF44441F;

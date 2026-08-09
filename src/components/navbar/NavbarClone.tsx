@@ -15,6 +15,8 @@ import { links } from "./_components/links";
 import SideBar from "./_components/SideBar";
 import LanguageSwitcher from "./_components/LanguageSwitcher";
 import { useTranslations } from "next-intl";
+import { useAppSelector } from "@/rtk/hooks";
+import { useRouter } from "next/navigation";
 
 interface Props {
   locale: string;
@@ -24,6 +26,8 @@ export default function Navbar({ locale }: Props) {
   const t = useTranslations();
   const [open, setOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
+  const router = useRouter();
+  const { token } = useAppSelector(s => s.auth)
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "unset";
@@ -53,6 +57,14 @@ export default function Navbar({ locale }: Props) {
     document.documentElement.classList.toggle("dark", newTheme);
   };
 
+  const handleRouting = () => {
+    if (token) {
+      router.push("/profile")
+    } else {
+      router.push("/login")
+    }
+  }
+
   return (
     <header className="fixed w-full top-0 z-50 bg-(--bg-primary)">
       <div className="container flex h-18 items-center justify-between">
@@ -70,8 +82,8 @@ export default function Navbar({ locale }: Props) {
               key={item.title}
               href={item.href}
               className={`text-sm font-medium transition-colors duration-200 ${index === 0
-                  ? "text-(--main)"
-                  : "text-(--text-primary) hover:text-(--main)"
+                ? "text-(--main)"
+                : "text-(--text-primary) hover:text-(--main)"
                 }`}
             >
               {t(item.title)}
@@ -85,13 +97,13 @@ export default function Navbar({ locale }: Props) {
             <FiSearch size={19} />
           </button>
 
-          <button className="text-(--text-primary) transition-colors hover:text-(--main)">
+          <Link href={"/favorites"} className="text-(--text-primary) transition-colors hover:text-(--main)">
             <FiHeart size={19} />
-          </button>
+          </Link>
 
-          <button className="text-(--text-primary) transition-colors hover:text-(--main)">
+          <Link href={"/cart"} className="text-(--text-primary) transition-colors hover:text-(--main)">
             <FiShoppingCart size={19} />
-          </button>
+          </Link>
 
           <button
             onClick={toggleDarkMode}
@@ -100,7 +112,7 @@ export default function Navbar({ locale }: Props) {
             {darkMode ? <FiSun size={19} /> : <FiMoon size={19} />}
           </button>
 
-          <button className="text-(--text-primary) transition-colors hover:text-(--main)">
+          <button onClick={handleRouting} className="text-(--text-primary) transition-colors hover:text-(--main)">
             <FiUser size={19} />
           </button>
 
