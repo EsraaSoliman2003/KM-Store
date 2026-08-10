@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 type PaginationProps = {
@@ -13,6 +14,7 @@ export default function PaginationButtons({
     totalPages,
     onPageChange,
 }: PaginationProps) {
+    const t = useTranslations();
     if (totalPages <= 1) return null;
 
     const pages = Array.from(
@@ -32,12 +34,12 @@ export default function PaginationButtons({
                 onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
                 disabled={currentPage === 1}
                 className={`flex h-8 w-8 items-center justify-center rounded-sm border transition ${currentPage === 1
-                        ? "cursor-not-allowed! border-transparent bg-(--bg-dark) text-(--text-muted)"
-                        : "border-[#777] bg-transparent text-(--main) hover:border-[#7040dc] hover:text-[#7040dc]"
+                    ? "cursor-not-allowed! border-transparent bg-(--bg-dark) text-(--text-muted)"
+                    : "border-[#777] bg-transparent text-(--main) hover:border-[#7040dc] hover:text-[#7040dc]"
                     }`}
                 aria-label="Previous page"
             >
-                <FiChevronLeft size={26} />
+                {t("dir") === "rtl" ? <FiChevronRight size={26} /> : <FiChevronLeft size={26} />}
             </button>
 
             {/* Page Numbers */}
@@ -57,8 +59,8 @@ export default function PaginationButtons({
                         <button
                             onClick={() => onPageChange(page)}
                             className={`h-8 w-8 rounded-sm border text-sm font-medium transition ${currentPage === page
-                                    ? "border-[#7040dc] bg-transparent text-[#7040dc]"
-                                    : "border-[#777] bg-transparent text-gray-300 hover:border-[#7040dc] hover:text-[#7040dc]"
+                                ? "border-[#7040dc] bg-transparent text-[#7040dc]"
+                                : "border-[#777] bg-transparent text-gray-300 hover:border-[#7040dc] hover:text-[#7040dc]"
                                 }`}
                         >
                             {page}
@@ -74,12 +76,12 @@ export default function PaginationButtons({
                 }
                 disabled={currentPage === totalPages}
                 className={`flex h-8 w-8 items-center justify-center rounded-sm border transition ${currentPage === totalPages
-                        ? "cursor-not-allowed! border-transparent bg-(--bg-dark) text-(--text-muted)"
-                        : "border-[#777] bg-transparent text-(--main) hover:border-[#7040dc] hover:text-[#7040dc]"
+                    ? "cursor-not-allowed! border-transparent bg-(--bg-dark) text-(--text-muted)"
+                    : "border-[#777] bg-transparent text-(--main) hover:border-[#7040dc] hover:text-[#7040dc]"
                     }`}
                 aria-label="Next page"
             >
-                <FiChevronRight size={26} />
+                {t("dir") === "rtl" ? <FiChevronLeft size={26} /> : <FiChevronRight size={26} />}
             </button>
         </div>
     );

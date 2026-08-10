@@ -17,7 +17,7 @@ export default function Hero({ }: Props) {
             {/* Hero Content */}
             <div className="container relative z-10 flex h-full min-h-[420px] flex-col justify-center gap-10 py-10 sm:min-h-[390px] sm:gap-12 lg:flex-row lg:items-center lg:justify-between lg:py-0">
                 {/* Left Content */}
-                <div className="w-full text-center lg:w-auto lg:text-left">
+                <div className="w-full text-center lg:w-auto lg:text-start">
                     {/* Breadcrumb */}
                     <div className="mb-4 flex items-center justify-center gap-2 text-sm text-gray-400 sm:mb-5 sm:gap-3 sm:text-base lg:justify-start">
                         <Link
