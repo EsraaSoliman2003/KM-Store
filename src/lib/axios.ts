@@ -10,15 +10,13 @@ const instance = axios.create({
     Accept: "application/json",
     "Content-Type": "application/json",
   },
-  withCredentials: true,
+  // withCredentials: true,
 });
 
-// =========================
-// Request Interceptor
-// =========================
 instance.interceptors.request.use(
   (config) => {
     const token = getCookie("token");
+
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -31,16 +29,13 @@ instance.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// =========================
-// Response Interceptor
-// =========================
 instance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (axios.isAxiosError(error)) {
       const message =
-        error.response?.data?.title ||
         error.response?.data?.message ||
+        error.response?.data?.title ||
         "An unexpected error occurred. Please try again later.";
 
       toast.error(message);

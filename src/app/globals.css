@@ -210,10 +210,21 @@ button {
    react-phone-input-2 Custom Styles
 =========================================== */
 
+/* Hide browser's native password reveal icon */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
+input[type="password"]::-webkit-credentials-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+}
+
 .react-tel-input {
   width: 100%;
   border: 1px solid #d1d5db;
-  border-radius: 12px;
+  border-radius: 50px;
   transition: border-color .2s ease, box-shadow .2s ease;
 }
 
@@ -225,7 +236,7 @@ button {
 .react-tel-input .form-control {
   width: 100% !important;
   height: 48px !important;
-  border-radius: 12px !important;
+  border-radius: 50px !important;
   font-size: 14px !important;
   transition: all 0.2s ease;
   padding-left: 70px !important;
@@ -244,7 +255,7 @@ button {
   background: #f9fafb !important;
   border: none !important;
   border-right: 1px solid #d1d5db !important;
-  border-radius: 12px 0 0 12px !important;
+  border-radius: 50px 0 0 50px !important;
 }
 
 .react-tel-input .selected-flag {
@@ -253,7 +264,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px 0 0 12px !important;
+  border-radius: 50px 0 0 50px !important;
 }
 
 .react-tel-input .country-list {
@@ -334,7 +345,7 @@ html[dir="rtl"] .react-tel-input {
 html[dir="rtl"] .react-tel-input .flag-dropdown {
   left: 0;
   right: auto;
-  border-radius: 12px 0 0 12px !important;
+  border-radius: 50px 0 0 50px !important;
 }
 
 html[dir="rtl"] .react-tel-input .selected-flag {

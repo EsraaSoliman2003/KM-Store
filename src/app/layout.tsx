@@ -20,7 +20,6 @@ export default async function RootLayout({
   const locale = await getLocale();
   const messages = await getMessages();
   const token = (await cookies()).get("token")?.value || null;
-  const role = (await cookies()).get("role")?.value || null;
 
   return (
     <html lang={locale} dir={locale == "ar" ? "rtl" : "ltr"} className="dark">
@@ -30,7 +29,6 @@ export default async function RootLayout({
           <MainProvider
             lang={locale}
             token={token}
-            role={Number(role)}
           >
             {children}
           </MainProvider>

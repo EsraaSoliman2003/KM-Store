@@ -1,48 +1,43 @@
+// ===========================
+// User
+// ===========================
+
 export interface User {
-  id: string;
-  fullName: string;
-  phoneNumber: string;
-  imageUrl: string | null;
-  email: string;
-  countryCode: string;
-}
-
-export interface AuthResponse {
-  user: User;
-  token: string;
-  role: number;
-}
-
-export interface CategoryDto {
   id: number;
   name: string;
-  desc: string;
-  image: string;
+  email: string | null;
+  country_code: string;
+  phone: string;
+  avatar: string | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
-export interface ProductDto {
-  id: number;
-  title: string;
-  desc: string;
-  img: string;
-  favorite: boolean;
-  price: number;
-  images: string[];
-  cat: CategoryDto;
+// ===========================
+// Auth Response
+// ===========================
+
+export interface AuthResponse {
+  code: number;
+  message: string;
+  errors: string[];
+  data: {
+    user: User;
+    token: string;
+    is_registration_complete: boolean;
+  };
 }
 
+// ===========================
+// Profile Response
+// ===========================
 
-export interface Item {
-    id: number;
-    width: number;
-    height: number;
-    image: string;
-    images?: string[];
-    title: string;
-    category: string;
-    description: string;
-    technologies: string[];
-    liveUrl?: string;
-    appStore?: string;
-    googlePlay?: string;
+export interface ProfileResponse {
+  code: number;
+  message: string;
+  errors: unknown[];
+  data: {
+    user: User;
+  };
 }
+
