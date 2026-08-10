@@ -168,5 +168,6 @@
   "password_non_alnum_v": "Password must contain at least one special character",
   "confirm_password_v": "Please confirm your password",
   "password_match_v": "Passwords do not match",
-  "password_required_v": "Password is required"
+  "password_required_v": "Password is required",
+  "Cart": "Cart"
 }
