@@ -18,7 +18,7 @@ export default function RatingFilter({ updateFilter }: Props) {
 
     return (
         <div>
-            <h3 className="mb-3 text-sm font-semibold text-white">Rating</h3>
+            <h3 className="mb-3 text-sm font-semibold">Rating</h3>
 
             <div className="space-y-2">
                 {ratings.map((item) => {
@@ -34,7 +34,7 @@ export default function RatingFilter({ updateFilter }: Props) {
                                     active ? "" : item.value
                                 )
                             }
-                            className="flex w-full cursor-pointer items-center gap-2 text-left text-xs text-gray-200"
+                            className="flex w-full cursor-pointer items-center gap-2 text-left text-xs text-(--text-muted)"
                         >
                             <span
                                 className={`flex h-3.5 w-3.5 items-center justify-center rounded-full border-2 ${active

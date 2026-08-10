@@ -23,13 +23,13 @@ export default function BrandFilter({ updateFilter }: Props) {
                 <select
                     value={brand}
                     onChange={(e) => updateFilter("brand", e.target.value)}
-                    className="h-10 w-full appearance-none rounded-xl border border-[#444] bg-transparent px-3 pr-8 text-sm text-gray-300 outline-none transition focus:border-[#7040dc]"
+                    className="h-10 w-full appearance-none rounded-xl border border-[#444] bg-transparent px-3 pr-8 text-sm text-(--text-muted) outline-none transition focus:border-[#7040dc]"
                 >
                     {brands.map((item) => (
                         <option
                             key={item.value || "all"}
                             value={item.value}
-                            className="bg-[#181818]"
+                            className="bg-(--bg-primary)"
                         >
                             {item.label}
                         </option>

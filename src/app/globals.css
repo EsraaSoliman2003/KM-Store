@@ -6,10 +6,11 @@
 :root {
   /* Brand */
   --main: #683AD0;
-  --main-hover: #DC2626;
+  --main-hover: #534571;
   --main-light: #FEE2E2;
   --secondary: #EF44441F;
   --bg-hero: #ffffff;
+  --bg-dark: #eee;
 
   /* Background */
   --bg-primary: #ffffff;
@@ -19,7 +20,7 @@
   /* Text */
   --text-primary: #111827;
   --text-secondary: #6b7280;
-  --text-muted: #6b7280;
+  --text-muted: #9298a3;
   --text-white: #ffffff;
 
   /* Border */
@@ -56,10 +57,11 @@
 
 .dark {
   --main: #683AD0;
-  --main-hover: #F87171;
+  --main-hover: #8B6BE3;
   --main-light: #EF444433;
   --secondary: #EF44441F;
   --bg-hero: #050505;
+  --bg-dark: #3b3b3b;
 
   --bg-primary: #1A1A1A;
   --bg-secondary: #1f2937;

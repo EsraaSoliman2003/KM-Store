@@ -32,7 +32,7 @@ export default function PaginationButtons({
                 onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
                 disabled={currentPage === 1}
                 className={`flex h-8 w-8 items-center justify-center rounded-sm border transition ${currentPage === 1
-                        ? "cursor-not-allowed border-transparent bg-[#3b3b3b] text-gray-500"
+                        ? "cursor-not-allowed! border-transparent bg-(--bg-dark) text-(--text-muted)"
                         : "border-[#777] bg-transparent text-(--main) hover:border-[#7040dc] hover:text-[#7040dc]"
                     }`}
                 aria-label="Previous page"
@@ -74,7 +74,7 @@ export default function PaginationButtons({
                 }
                 disabled={currentPage === totalPages}
                 className={`flex h-8 w-8 items-center justify-center rounded-sm border transition ${currentPage === totalPages
-                        ? "cursor-not-allowed border-transparent bg-[#3b3b3b] text-gray-500"
+                        ? "cursor-not-allowed! border-transparent bg-(--bg-dark) text-(--text-muted)"
                         : "border-[#777] bg-transparent text-(--main) hover:border-[#7040dc] hover:text-[#7040dc]"
                     }`}
                 aria-label="Next page"

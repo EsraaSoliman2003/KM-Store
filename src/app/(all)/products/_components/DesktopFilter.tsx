@@ -36,13 +36,13 @@ export default function DesktopFilter() {
   };
 
   return (
-    <aside className="shrink-0 rounded-2xl border border-[#4b4b4b] bg-[#1b1b1b] p-3 w-75 hidden lg:block">
+    <aside className="shrink-0 rounded-2xl border border-[#4b4b4b] bg-(--bg-primary) p-3 w-75 hidden lg:block">
 
       {/* Filter Header */}
       <div className="mb-5 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <FiFilter size={16} />
-          <h2 className="text-sm font-semibold text-white">Filters</h2>
+          <h2 className="text-sm font-semibold ">Filters</h2>
         </div>
 
         <button

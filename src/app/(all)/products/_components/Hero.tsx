@@ -5,7 +5,7 @@ type Props = {};
 
 export default function Hero({ }: Props) {
     return (
-        <section className="relative min-h-[420px] overflow-hidden sm:min-h-[390px]">
+        <section className="relative min-h-[420px] overflow-hidden sm:min-h-[390px] bg-black">
             {/* Background */}
             <div
                 className="absolute inset-0 bg-cover bg-center"
@@ -33,7 +33,7 @@ export default function Hero({ }: Props) {
                     </div>
 
                     {/* Heading */}
-                    <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+                    <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-white">
                         Explore{" "}
                         <span className="bg-gradient-to-r from-purple-400 to-violet-600 bg-clip-text text-transparent">
                             Categories
@@ -46,7 +46,7 @@ export default function Hero({ }: Props) {
                 </div>
 
                 {/* Discount */}
-                <div className="w-full text-center text-4xl font-semibold leading-tight sm:text-5xl lg:w-auto lg:text-6xl lg:leading-[1.35]">
+                <div className="w-full text-center text-4xl font-semibold leading-tight sm:text-5xl lg:w-auto lg:text-6xl lg:leading-[1.35] text-white">
                     <p>Up to</p>
 
                     <p className="text-orange-500">40% Off</p>

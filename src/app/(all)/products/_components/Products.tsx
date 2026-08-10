@@ -24,7 +24,7 @@ export default function Products() {
     );
 
     return (
-        <section className="min-h-screen py-8 text-white">
+        <section className="min-h-screen py-8 ">
             <div className="container">
                 {/* Title */}
                 <div className="flex justify-between items-center mb-7">

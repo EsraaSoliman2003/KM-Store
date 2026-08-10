@@ -56,7 +56,7 @@ export default function PriceFilter() {
 
     return (
         <div className="mb-5">
-            <h3 className="mb-3 text-sm font-semibold text-white">
+            <h3 className="mb-3 text-sm font-semibold ">
                 Price range
             </h3>
 
@@ -110,7 +110,7 @@ export default function PriceFilter() {
                 />
             </div>
 
-            <div className="mt-2 flex justify-between text-[12px] text-gray-300">
+            <div className="mt-2 flex justify-between text-[12px] text-(--text-muted)">
                 <span>{minPrice} $</span>
                 <span>{maxPrice} $</span>
             </div>
