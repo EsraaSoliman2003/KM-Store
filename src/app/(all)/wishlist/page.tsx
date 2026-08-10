@@ -10,7 +10,7 @@ export default function page() {
         <section className="container mt-18 py-5 md:py-10">
             {/* Header */}
             <div className="mb-6 flex flex-row items-center justify-between gap-4 sm:mb-8">
-                <h2 className="text-2xl font-semibold text-white sm:text-4xl">
+                <h2 className="text-2xl font-semibold sm:text-4xl">
                     {t("Wishlist")}
                 </h2>
 
