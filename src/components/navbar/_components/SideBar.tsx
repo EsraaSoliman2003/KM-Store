@@ -9,6 +9,7 @@ import {
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslations } from "next-intl";
 import { links } from "./links";
+import { usePathname } from "next/navigation";
 
 type Props = {
     locale: string;
@@ -26,6 +27,7 @@ export default function SideBar({
     toggleDarkMode,
 }: Props) {
     const t = useTranslations();
+    const pathname = usePathname();
 
     return (
         <div
@@ -49,9 +51,9 @@ export default function SideBar({
                 className={`
                     absolute top-0 h-full w-80 max-w-[85vw]
                     ${locale === "ar"
-                                ? "right-0 rounded-l-[70px] border-r"
-                                : "left-0 rounded-r-[70px] border-l"
-                            }
+                        ? "right-0 rounded-l-[70px] border-r"
+                        : "left-0 rounded-r-[70px] border-l"
+                    }
                     bg-(--bg-primary)
                     border-(--border-color)
                     shadow-2xl
@@ -90,19 +92,27 @@ export default function SideBar({
 
                     {/* Navigation */}
                     <div className="space-y-2">
-                        {links.map((item, index) => (
-                            <Link
-                                key={item.title}
-                                href={item.href}
-                                onClick={() => setIsSidebarOpen(false)}
-                                className={`block rounded-xl px-5 py-3 text-sm font-medium transition-all duration-200 ${index === 0
-                                        ? "text-(--main)"
-                                        : "text-(--text-primary) hover:text-(--main)"
-                                    }`}
-                            >
-                                {t(item.title)}
-                            </Link>
-                        ))}
+                        {links.map((item) => {
+                            const isActive =
+                                item.href === "/"
+                                    ? pathname === `/${locale}` || pathname === "/"
+                                    : pathname.startsWith(`/${locale}${item.href}`) ||
+                                    pathname.startsWith(item.href);
+
+                            return (
+                                <Link
+                                    key={item.title}
+                                    href={item.href}
+                                    onClick={() => setIsSidebarOpen(false)}
+                                    className={`block rounded-xl px-5 py-3 text-sm font-medium transition-all duration-200 ${isActive
+                                            ? "text-(--main)"
+                                            : "text-(--text-primary) hover:text-(--main)"
+                                        }`}
+                                >
+                                    {t(item.title)}
+                                </Link>
+                            );
+                        })}
                     </div>
 
                     <div className="my-5 border-b border-(--border-color)" />

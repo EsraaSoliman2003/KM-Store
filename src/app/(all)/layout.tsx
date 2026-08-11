@@ -9,10 +9,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SplashScreen>
+    <>
+      {/* <SplashScreen> */}
       <Navbar />
       <main className="min-h-screen">{children}</main>
       <Footer />
-    </SplashScreen>
+      {/* </SplashScreen> */}
+    </>
   );
 }

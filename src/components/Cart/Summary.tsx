@@ -1,10 +1,17 @@
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
-export default function Summary() {
+type Prop = {
+  text?: string;
+  className?: string;
+  href?: string;
+}
+
+export default function Summary({ text = "Proceed to Checkout", className, href = "/checkout" }: Prop) {
   const t = useTranslations();
 
   return (
-    <div className="flex w-full flex-col gap-6 rounded-2xl border border-[#2d2d2d] bg-[#151515] p-5 sm:p-6">
+    <div className={`flex w-full flex-col gap-6 rounded-2xl border border-[#2d2d2d] bg-[#151515] p-5 sm:p-6 ${className}`}>
       {/* Header */}
       <h2 className="text-xl font-bold text-white">
         {t("Order Summary")}
@@ -43,12 +50,12 @@ export default function Summary() {
       </div>
 
       {/* Checkout */}
-      <button
-        type="button"
-        className="h-12 w-full rounded-2xl bg-[#683AD0] text-base text-white transition hover:bg-[#5a30bd] md:h-13 sm:text-lg"
+      <Link
+        href={href}
+        className="h-12 w-full rounded-2xl bg-[#683AD0] text-base text-white transition hover:bg-[#5a30bd] md:h-13 sm:text-lg flex justify-center items-center"
       >
-        {t("Proceed to Checkout")}
-      </button>
+        {t(text)}
+      </Link>
     </div>
   );
 }

@@ -6,7 +6,6 @@ import { useState } from "react";
 import PaginationButtons from "./PaginationButtons";
 import MobileFilter from "../Filters/MobileFilter";
 import DesktopFilter from "../Filters/DesktopFilter";
-import Categories from "../Categories/Categories";
 import { categories } from "../Categories/data";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import { useTranslations } from "next-intl";
@@ -72,7 +71,6 @@ export default function Products({ text = "All Products", noCats = false }: Prop
                     <h1 className="text-2xl font-bold sm:text-3xl">
                         {t("shopByCategoryTitle")}
                     </h1>
-                    <MobileFilter noCats={noCats} />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 sm:gap-5 xl:grid-cols-3">

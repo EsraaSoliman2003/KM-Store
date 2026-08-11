@@ -16,7 +16,7 @@ import SideBar from "./_components/SideBar";
 import LanguageSwitcher from "./_components/LanguageSwitcher";
 import { useTranslations } from "next-intl";
 import { useAppSelector } from "@/rtk/hooks";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 interface Props {
   locale: string;
@@ -28,6 +28,7 @@ export default function Navbar({ locale }: Props) {
   const [darkMode, setDarkMode] = useState(true);
   const router = useRouter();
   const { token } = useAppSelector(s => s.auth)
+  const pathname = usePathname();
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "unset";
@@ -77,18 +78,26 @@ export default function Navbar({ locale }: Props) {
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-8 lg:flex">
-          {links.map((item, index) => (
-            <Link
-              key={item.title}
-              href={item.href}
-              className={`text-sm font-medium transition-colors duration-200 ${index === 0
-                ? "text-(--main)"
-                : "text-(--text-primary) hover:text-(--main)"
-                }`}
-            >
-              {t(item.title)}
-            </Link>
-          ))}
+          {links.map((item) => {
+            const isActive =
+              item.href === "/"
+                ? pathname === `/${locale}` || pathname === "/"
+                : pathname.startsWith(`/${locale}${item.href}`) ||
+                pathname.startsWith(item.href);
+
+            return (
+              <Link
+                key={item.title}
+                href={item.href}
+                className={`text-sm font-medium transition-colors duration-200 ${isActive
+                    ? "text-(--main)"
+                    : "text-(--text-primary) hover:text-(--main)"
+                  }`}
+              >
+                {t(item.title)}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Right Icons */}
@@ -97,7 +106,7 @@ export default function Navbar({ locale }: Props) {
             <FiSearch size={19} />
           </button>
 
-          <Link href={"/favorites"} className="text-(--text-primary) transition-colors hover:text-(--main)">
+          <Link href={"/wishlist"} className="text-(--text-primary) transition-colors hover:text-(--main)">
             <FiHeart size={19} />
           </Link>
 
@@ -119,13 +128,29 @@ export default function Navbar({ locale }: Props) {
           <LanguageSwitcher currentLocale={locale} />
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setOpen(true)}
-          className="text-(--text-primary) lg:hidden"
-        >
-          <FiMenu size={25} />
-        </button>
+        <div className="flex items-center gap-5 lg:hidden">
+          <button className="text-(--text-primary) transition-colors hover:text-(--main)">
+            <FiSearch size={19} />
+          </button>
+
+          <Link href={"/wishlist"} className="text-(--text-primary) transition-colors hover:text-(--main)">
+            <FiHeart size={19} />
+          </Link>
+
+          <Link href={"/cart"} className="text-(--text-primary) transition-colors hover:text-(--main)">
+            <FiShoppingCart size={19} />
+          </Link>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setOpen(true)}
+            className="text-(--text-primary)"
+          >
+            <FiMenu size={25} />
+          </button>
+        </div>
+
+
       </div>
 
       <SideBar
