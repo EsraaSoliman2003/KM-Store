@@ -28,7 +28,7 @@ export default function Page() {
         <aside className="w-full xl:sticky xl:top-18">
           <Summary
             text="Place order"
-            href="/orders"
+            href="/order-confirmed"
             className="h-fit"
           />
         </aside>
