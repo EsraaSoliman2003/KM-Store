@@ -2,12 +2,22 @@
 
 import ProductCard from "@/components/ProductCard/ProductCard";
 import { products } from "@/components/FlashSales/data";
-import DesktopFilter from "./DesktopFilter";
-import MobileFilter from "./MobileFilter";
 import { useState } from "react";
 import PaginationButtons from "./PaginationButtons";
+import MobileFilter from "../Filters/MobileFilter";
+import DesktopFilter from "../Filters/DesktopFilter";
+import Categories from "../Categories/Categories";
+import { categories } from "../Categories/data";
+import CategoryCard from "../CategoryCard/CategoryCard";
+import { useTranslations } from "next-intl";
 
-export default function Products() {
+type Prop = {
+    text?: string;
+    noCats?: boolean;
+}
+
+export default function Products({ text = "All Products", noCats = false }: Prop) {
+    const t = useTranslations();
     const [currentPage, setCurrentPage] = useState(1);
 
     const productsPerPage = 8;
@@ -24,19 +34,19 @@ export default function Products() {
     );
 
     return (
-        <section className="min-h-screen py-8 ">
+        <section className="min-h-screen py-8">
             <div className="container">
                 {/* Title */}
                 <div className="flex justify-between items-center mb-7">
                     <h1 className="text-2xl font-bold sm:text-3xl">
-                        All Products
+                        {text}
                     </h1>
-                    <MobileFilter />
+                    <MobileFilter noCats={noCats} />
                 </div>
 
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
                     {/* ================= FILTER SIDEBAR ================= */}
-                    <DesktopFilter />
+                    <DesktopFilter noCats={noCats} />
 
                     {/* ================= PRODUCTS ================= */}
                     <div className="min-w-0 flex-1">
@@ -56,6 +66,19 @@ export default function Products() {
                             onPageChange={setCurrentPage}
                         />
                     </div>
+                </div>
+
+                <div className="flex justify-between items-center mb-7 mt-14">
+                    <h1 className="text-2xl font-bold sm:text-3xl">
+                        {t("shopByCategoryTitle")}
+                    </h1>
+                    <MobileFilter noCats={noCats} />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 sm:gap-5 xl:grid-cols-3">
+                    {categories.map((item) => (
+                        <CategoryCard item={item} className="h-[170px] sm:h-[200px] lg:h-[220px]" />
+                    ))}
                 </div>
             </div>
         </section>

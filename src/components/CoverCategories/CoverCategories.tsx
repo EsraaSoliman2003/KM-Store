@@ -3,7 +3,7 @@ import React from "react";
 
 type Props = {};
 
-export default function Hero({ }: Props) {
+export default function CoverCategories({ }: Props) {
     return (
         <section className="relative min-h-[420px] overflow-hidden sm:min-h-[390px] bg-black">
             {/* Background */}

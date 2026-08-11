@@ -13,7 +13,11 @@ import BrandFilter from "./BrandFilter";
 import PriceFilter from "./PriceFilter";
 import RatingFilter from "./RatingFilter";
 
-export default function MobileFilter() {
+type Prop = {
+  noCats?: boolean;
+}
+
+export default function MobileFilter({ noCats = false }: Prop) {
   const [open, setOpen] = useState(false);
 
   const router = useRouter();
@@ -105,7 +109,11 @@ export default function MobileFilter() {
 
         {/* Filters */}
         <div className="space-y-1">
-          <CategoryFilter updateFilter={updateFilter} />
+          {
+            !noCats && (
+              <CategoryFilter updateFilter={updateFilter} />
+            )
+          }
 
           <BrandFilter updateFilter={updateFilter} />
 

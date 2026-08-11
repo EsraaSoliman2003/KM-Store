@@ -7,7 +7,11 @@ import BrandFilter from "./BrandFilter";
 import PriceFilter from "./PriceFilter";
 import RatingFilter from "./RatingFilter";
 
-export default function DesktopFilter() {
+type Prop = {
+  noCats?: boolean;
+}
+
+export default function DesktopFilter({ noCats = false }: Prop) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -53,7 +57,11 @@ export default function DesktopFilter() {
         </button>
       </div>
 
-      <CategoryFilter updateFilter={updateFilter} />
+      {
+        !noCats && (
+          <CategoryFilter updateFilter={updateFilter} />
+        )
+      }
 
       <BrandFilter updateFilter={updateFilter} />
 
