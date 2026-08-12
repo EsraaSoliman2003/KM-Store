@@ -2,6 +2,7 @@
 import Tabs from "./_components/Tabs";
 import Gallery from "./_components/Gallery";
 import ProductInfo from "./_components/ProductInfo";
+import RelatedProducts from "@/components/RelatedProducts/RelatedProducts";
 
 export default function page() {
     const product = {
@@ -48,6 +49,11 @@ export default function page() {
 
                 {/* ================= TABS ================= */}
                 <Tabs product={product} />
+
+                {/* ================= DIVIDER ================= */}
+                <div className="my-20 h-px bg-[var(--border-dark)]" />
+
+                <RelatedProducts />
             </div>
         </main>
     );
