@@ -9,7 +9,7 @@ export function ReviewsContent({ reviews }: { reviews: number }) {
             {/* Rating Summary */}
             <div className="flex items-center gap-4">
                 <div>
-                    <div className="text-[25px] font-semibold text-white">
+                    <div className="text-[25px] font-semibold text-[var(--text-primary)]">
                         5.0
                     </div>
 
@@ -18,17 +18,17 @@ export function ReviewsContent({ reviews }: { reviews: number }) {
                             <Star
                                 key={star}
                                 size={16}
-                                fill="#f59e0b"
+                                fill="var(--warning)"
                                 strokeWidth={0}
-                                className="text-[#f59e0b]"
+                                className="text-[var(--warning)]"
                             />
                         ))}
                     </div>
                 </div>
 
-                <div className="text-[14px] text-[#777]">
+                <div className="text-[14px] text-[var(--text-muted)]">
                     {t("basedOn")}{" "}
-                    <span className="text-[#aaa]">
+                    <span className="text-[var(--text-secondary)]">
                         {reviews.toLocaleString()}
                     </span>{" "}
                     {t("reviewsLabel")}
@@ -36,12 +36,12 @@ export function ReviewsContent({ reviews }: { reviews: number }) {
             </div>
 
             {/* Review */}
-            <div className="mt-6 rounded-[8px] border border-[#333] bg-[#1d1d1d] p-4 sm:p-5">
-                <p className="text-[14px] leading-[1.7] text-[#aaa] sm:text-[15px]">
+            <div className="mt-6 rounded-[8px] border border-[var(--border-dark)] bg-[var(--bg-tertiary)] p-4 sm:p-5">
+                <p className="text-[14px] leading-[1.7] text-[var(--text-secondary)] sm:text-[15px]">
                     {t("reviewQuote")}
                 </p>
 
-                <p className="mt-3 text-[12px] text-[#666] sm:text-[13px]">
+                <p className="mt-3 text-[12px] text-[var(--text-muted)] sm:text-[13px]">
                     {t("verifiedCustomer")}
                 </p>
             </div>

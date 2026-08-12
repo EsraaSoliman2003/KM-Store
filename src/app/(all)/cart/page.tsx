@@ -12,7 +12,7 @@ export default function Page() {
     <section className="container mt-18 py-5 md:py-10">
       {/* Header */}
       <div className="mb-6 flex flex-row items-center justify-between gap-4 sm:mb-8">
-        <h2 className="text-2xl font-semibold sm:text-4xl">
+        <h2 className="text-2xl font-semibold text-[var(--text-primary)] sm:text-4xl">
           {t("Cart")}
         </h2>
       </div>
@@ -33,12 +33,11 @@ export default function Page() {
 
       </div>
 
-      {/* Header */}
+      {/* Recommended Header */}
       <div className="mb-6 flex flex-row items-center justify-between gap-4 sm:mb-8 mt-20">
-        <h2 className="text-2xl font-semibold sm:text-4xl">
+        <h2 className="text-2xl font-semibold text-[var(--text-primary)] sm:text-4xl">
           {t("recommendedForYou")}
         </h2>
-
       </div>
 
       {/* Products */}

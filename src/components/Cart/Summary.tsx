@@ -11,48 +11,40 @@ export default function Summary({ text = "proceedToCheckout", className, href = 
   const t = useTranslations();
 
   return (
-    <div className={`flex w-full flex-col gap-6 rounded-2xl border border-[#2d2d2d] bg-[#151515] p-5 sm:p-6 ${className}`}>
-      {/* Header */}
-      <h2 className="text-xl font-bold text-white">
+    <div className={`flex w-full flex-col gap-6 rounded-2xl border border-[var(--border-dark)] bg-[var(--bg-tertiary)] p-5 sm:p-6 ${className}`}>
+      <h2 className="text-xl font-bold text-[var(--text-primary)]">
         {t("orderSummary")}
       </h2>
 
-      {/* Details */}
-      <div className="space-y-4 border-b border-white/20 pb-5">
+      <div className="space-y-4 border-b border-[var(--border-dark)] pb-5">
         <div className="flex items-center justify-between gap-4 text-sm sm:text-[18px]">
-          <span className="text-gray-400">
+          <span className="text-[var(--text-muted)]">
             {t("subtotal")} (3) {t("items")}
           </span>
-
-          <span className="shrink-0 font-bold text-white">
+          <span className="shrink-0 font-bold text-[var(--text-primary)]">
             EGP 1626.95
           </span>
         </div>
-
         <div className="flex items-center justify-between gap-4 text-sm sm:text-[18px]">
-          <span className="text-gray-400">
+          <span className="text-[var(--text-muted)]">
             {t("shippingFee")}
           </span>
-
-          <span className="shrink-0 font-bold text-[#7C3AED]">
+          <span className="shrink-0 font-bold text-[var(--main)]">
             {t("free")}
           </span>
         </div>
       </div>
 
-      {/* Total */}
-      <div className="flex items-center justify-between gap-4 text-xl font-bold text-white sm:text-2xl">
+      <div className="flex items-center justify-between gap-4 text-xl font-bold text-[var(--text-primary)] sm:text-2xl">
         <span>{t("total")}</span>
-
         <span className="shrink-0">
           EGP 1626.95
         </span>
       </div>
 
-      {/* Checkout */}
       <Link
         href={href}
-        className="h-12 w-full rounded-2xl bg-[#683AD0] text-base text-white transition hover:bg-[#5a30bd] md:h-13 sm:text-lg flex justify-center items-center"
+        className="flex h-12 w-full items-center justify-center rounded-2xl bg-[var(--main)] text-base text-[var(--text-white)] transition hover:bg-[var(--main-hover)] md:h-13 sm:text-lg"
       >
         {t(text)}
       </Link>

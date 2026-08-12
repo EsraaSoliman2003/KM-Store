@@ -44,7 +44,7 @@ export default function ProductsCart() {
       {products.map((product) => (
         <div
           key={product.id}
-          className="rounded-2xl border border-[#2d2d2d] bg-[#151515] p-4"
+          className="rounded-2xl border border-[var(--border-dark)] bg-[var(--bg-tertiary)] p-4"
         >
           <MobileCard product={product} />
           <DesktopCard product={product} />

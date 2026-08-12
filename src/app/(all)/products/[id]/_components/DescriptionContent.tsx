@@ -22,11 +22,11 @@ export function DescriptionContent() {
 
     return (
         <div className="">
-            <h2 className="text-[24px] font-semibold text-[#7c42dd]">
+            <h2 className="text-[24px] font-semibold text-[var(--main)]">
                 {t("engineeredForPureSound")}
             </h2>
 
-            <ul className="mt-2 space-y-2 pl-3 text-[16px] leading-[1.65] text-[#999]">
+            <ul className="mt-2 space-y-2 pl-3 text-[16px] leading-[1.65] text-[var(--text-muted)]">
                 {points.map((point) => (
                     <li key={point} className="list-disc">
                         {point}
@@ -34,11 +34,11 @@ export function DescriptionContent() {
                 ))}
             </ul>
 
-            <h2 className="mt-8 text-[24px] font-semibold text-[#7c42dd]">
+            <h2 className="mt-8 text-[24px] font-semibold text-[var(--main)]">
                 {t("keyHighlights")}
             </h2>
 
-            <ul className="mt-2 space-y-2 pl-3 text-[16px] leading-[1.5] text-[#999]">
+            <ul className="mt-2 space-y-2 pl-3 text-[16px] leading-[1.5] text-[var(--text-muted)]">
                 {highlights.map((highlight) => (
                     <li key={highlight} className="list-disc">{highlight}</li>
                 ))}

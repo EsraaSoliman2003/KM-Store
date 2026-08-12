@@ -10,7 +10,7 @@ export default function Receiver() {
 
   return (
     <section className="mb-7">
-      <h2 className="mb-3 text-xl font-semibold text-white">
+      <h2 className="mb-3 text-xl font-semibold text-[var(--text-primary)]">
         {t("whoWillReceiveThisOrder")}
       </h2>
 
@@ -19,18 +19,18 @@ export default function Receiver() {
         <button
           type="button"
           onClick={() => setReceiver("person")}
-          className={`flex min-h-[72px] items-center justify-between rounded-2xl border bg-[#151515] px-4 text-left transition ${
+          className={`flex min-h-[72px] items-center justify-between rounded-2xl border bg-[var(--bg-tertiary)] px-4 text-left transition ${
             receiver === "person"
-              ? "border-[#683AD0]"
-              : "border-[#2d2d2d] hover:border-[#683AD0]"
+              ? "border-[var(--main)]"
+              : "border-[var(--border-dark)] hover:border-[var(--main)]"
           }`}
         >
           <div className="min-w-0">
-            <p className="text-sm font-semibold text-white">
+            <p className="text-sm font-semibold text-[var(--text-primary)]">
               {t("receiverPersonName")}
             </p>
 
-            <p className="mt-1 text-sm text-gray-400">
+            <p className="mt-1 text-sm text-[var(--text-muted)]">
               {t("receiverPersonPhone")}
             </p>
           </div>
@@ -38,12 +38,12 @@ export default function Receiver() {
           <span
             className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 transition ${
               receiver === "person"
-                ? "border-[#683AD0]"
-                : "border-gray-500"
+                ? "border-[var(--main)]"
+                : "border-[var(--border-dark)]"
             }`}
           >
             {receiver === "person" && (
-              <span className="h-2 w-2 rounded-full bg-[#683AD0]" />
+              <span className="h-2 w-2 rounded-full bg-[var(--main)]" />
             )}
           </span>
         </button>
@@ -52,35 +52,35 @@ export default function Receiver() {
         <button
           type="button"
           onClick={() => setReceiver("door")}
-          className={`flex min-h-[72px] items-center gap-3 rounded-2xl border bg-[#151515] px-4 text-left transition ${
+          className={`flex min-h-[72px] items-center gap-3 rounded-2xl border bg-[var(--bg-tertiary)] px-4 text-left transition ${
             receiver === "door"
-              ? "border-[#683AD0]"
-              : "border-[#2d2d2d] hover:border-[#683AD0]"
+              ? "border-[var(--main)]"
+              : "border-[var(--border-dark)] hover:border-[var(--main)]"
           }`}
         >
           <div
             className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border transition ${
               receiver === "door"
-                ? "border-[#683AD0] text-[#9b6cff]"
-                : "border-[#2d2d2d] text-gray-500"
+                ? "border-[var(--main)] text-[var(--main)]"
+                : "border-[var(--border-dark)] text-[var(--text-muted)]"
             }`}
           >
             <Home size={16} />
           </div>
 
-          <span className="flex-1 text-sm font-semibold text-white">
+          <span className="flex-1 text-sm font-semibold text-[var(--text-primary)]">
             {t("leaveAtMyDoor")}
           </span>
 
           <span
             className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 transition ${
               receiver === "door"
-                ? "border-[#683AD0]"
-                : "border-gray-500"
+                ? "border-[var(--main)]"
+                : "border-[var(--border-dark)]"
             }`}
           >
             {receiver === "door" && (
-              <span className="h-2 w-2 rounded-full bg-[#683AD0]" />
+              <span className="h-2 w-2 rounded-full bg-[var(--main)]" />
             )}
           </span>
         </button>

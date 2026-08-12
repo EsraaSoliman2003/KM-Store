@@ -20,7 +20,7 @@ export default function page() {
       date: "Aug 10, 2026",
       status: t("orderStatusDelivered"),
       statusIcon: CheckCircle2,
-      statusClass: "text-green-500 bg-green-500/10",
+      statusClass: "text-[var(--success)] bg-[var(--success)]/10",
       image: "/phone.png",
       products: [
         {
@@ -39,7 +39,7 @@ export default function page() {
       date: "Aug 7, 2026",
       status: t("orderStatusOnTheWay"),
       statusIcon: Truck,
-      statusClass: "text-[#9b6cff] bg-[#683AD0]/10",
+      statusClass: "text-[var(--main)] bg-[var(--main)]/10",
       image: "/phone.png",
       products: [
         {
@@ -58,7 +58,7 @@ export default function page() {
       date: "Aug 2, 2026",
       status: t("orderStatusProcessing"),
       statusIcon: Clock3,
-      statusClass: "text-yellow-400 bg-yellow-400/10",
+      statusClass: "text-[var(--warning)] bg-[var(--warning)]/10",
       image: "/phone.png",
       products: [
         {
@@ -74,11 +74,11 @@ export default function page() {
     <main className="container mt-18 py-5 md:py-10">
       {/* Page Header */}
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-white sm:text-3xl">
+        <h1 className="text-2xl font-bold text-[var(--text-primary)] sm:text-3xl">
           {t("myOrders")}
         </h1>
 
-        <p className="mt-1 text-sm text-gray-400">
+        <p className="mt-1 text-sm text-[var(--text-muted)]">
           {t("myOrdersSubtitle")}
         </p>
       </div>
@@ -91,21 +91,21 @@ export default function page() {
           return (
             <div
               key={order.id}
-              className="overflow-hidden rounded-2xl border border-[#2d2d2d] bg-[#151515]"
+              className="overflow-hidden rounded-2xl border border-(--border-dark) bg-(--bg-tertiary)"
             >
               {/* Order Header */}
-              <div className="flex flex-col gap-3 border-b border-[#2d2d2d] px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
+              <div className="flex flex-col gap-3 border-b border-(--border-dark) px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#683AD0]/10 text-[#9b6cff]">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--main)]/10 text-[var(--main)]">
                     <Package size={19} />
                   </div>
 
                   <div>
-                    <p className="text-sm font-semibold text-white">
+                    <p className="text-sm font-semibold text-[var(--text-primary)]">
                       {t("orderLabel")} {order.id}
                     </p>
 
-                    <p className="mt-0.5 text-xs text-gray-500">
+                    <p className="mt-0.5 text-xs text-[var(--text-muted)]">
                       {order.date}
                     </p>
                   </div>
@@ -123,7 +123,7 @@ export default function page() {
               <div className="p-4 sm:p-5">
                 <div className="flex gap-4">
                   {/* Product Image */}
-                  <div className="h-[105px] w-[90px] shrink-0 overflow-hidden rounded-xl bg-black sm:h-[120px] sm:w-[105px]">
+                  <div className="h-[105px] w-[90px] shrink-0 overflow-hidden rounded-xl bg-[var(--bg-tertiary)] sm:h-[120px] sm:w-[105px]">
                     <img
                       src={order.image}
                       alt={t("orderProductImageAlt")}
@@ -139,20 +139,20 @@ export default function page() {
                           key={index}
                           className="mb-2 flex min-w-0 items-start gap-2 last:mb-0"
                         >
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#683AD0]" />
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--main)]" />
 
-                          <p className="min-w-0 truncate text-sm font-medium text-white">
+                          <p className="min-w-0 truncate text-sm font-medium text-[var(--text-primary)]">
                             {product.name}
                           </p>
 
-                          <span className="shrink-0 text-xs text-gray-500">
+                          <span className="shrink-0 text-xs text-[var(--text-muted)]">
                             ×{product.quantity}
                           </span>
                         </div>
                       ))}
                     </div>
 
-                    <p className="mt-3 text-xs text-gray-500">
+                    <p className="mt-3 text-xs text-[var(--text-muted)]">
                       {order.products.length}{" "}
                       {order.products.length === 1 ? t("orderProductLabel") : t("orderProductsLabel")} {t("inThisOrder")}
                     </p>
@@ -160,17 +160,17 @@ export default function page() {
                 </div>
 
                 {/* Bottom */}
-                <div className="mt-5 flex flex-col gap-3 border-t border-[#2d2d2d] pt-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="mt-5 flex flex-col gap-3 border-t border-(--border-dark) pt-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <p className="text-xs text-gray-500">{t("orderTotalLabel")}</p>
-                    <p className="mt-0.5 text-lg font-bold text-white">
+                    <p className="text-xs text-[var(--text-muted)]">{t("orderTotalLabel")}</p>
+                    <p className="mt-0.5 text-lg font-bold text-[var(--text-primary)]">
                       {order.total}
                     </p>
                   </div>
 
                   <Link
                     href={"/track-your-order"}
-                    className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#683AD0] px-5 text-sm font-medium text-white transition hover:bg-[#5a30bd] sm:w-auto"
+                    className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-[var(--main)] px-5 text-sm font-medium text-[var(--text-white)] transition hover:bg-[var(--main-hover)] sm:w-auto"
                   >
                     {t("trackYourOrderButton")}
                     <ChevronRight size={16} />

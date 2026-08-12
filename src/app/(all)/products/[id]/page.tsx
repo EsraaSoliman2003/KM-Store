@@ -44,7 +44,7 @@ export default function page() {
                 </section>
 
                 {/* ================= DIVIDER ================= */}
-                <div className="my-20 h-px bg-[#363636]" />
+                <div className="my-20 h-px bg-[var(--border-dark)]" />
 
                 {/* ================= TABS ================= */}
                 <Tabs product={product} />
@@ -52,4 +52,3 @@ export default function page() {
         </main>
     );
 }
-

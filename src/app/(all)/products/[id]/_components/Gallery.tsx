@@ -9,7 +9,7 @@ export default function Gallery({ product }: Prop) {
     return (
         <div className="min-w-0">
             {/* Main Image */}
-            <div className="relative mx-auto aspect-square w-full max-w-[470px] overflow-hidden rounded-[14px] border border-[#333] bg-[#0d0d0d] shadow-[0_10px_40px_rgba(0,0,0,0.25)]">
+            <div className="relative mx-auto aspect-square w-full max-w-[470px] overflow-hidden rounded-[14px] border border-[var(--border-dark)] bg-[var(--bg-tertiary)] shadow-[0_10px_40px_rgba(0,0,0,0.25)]">
                 <img
                     src={product.images[selectedImage]}
                     alt={product.title}
@@ -24,10 +24,11 @@ export default function Gallery({ product }: Prop) {
                         key={index}
                         type="button"
                         onClick={() => setSelectedImage(index)}
-                        className={`relative aspect-square min-w-0 overflow-hidden rounded-[9px] border bg-[#111] transition-all duration-200 ${selectedImage === index
-                            ? "border-[#7438df] shadow-[0_0_0_1px_#7438df]"
-                            : "border-[#333] hover:border-[#666]"
-                            }`}
+                        className={`relative aspect-square min-w-0 overflow-hidden rounded-[9px] border bg-[var(--bg-tertiary)] transition-all duration-200 ${
+                            selectedImage === index
+                                ? "border-[var(--main)] shadow-[0_0_0_1px_var(--main)]"
+                                : "border-[var(--border-dark)] hover:border-[var(--text-muted)]"
+                        }`}
                     >
                         <img
                             src={image}
@@ -36,7 +37,7 @@ export default function Gallery({ product }: Prop) {
                         />
 
                         {selectedImage === index && (
-                            <span className="absolute inset-0 bg-[#7438df]/5" />
+                            <span className="absolute inset-0 bg-[var(--main)]/5" />
                         )}
                     </button>
                 ))}

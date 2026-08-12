@@ -4,7 +4,7 @@ import React from "react";
 
 type Props = {};
 
-export default function CoverTrackYourOrder({}: Props) {
+export default function CoverTrackYourOrder({ }: Props) {
     const t = useTranslations();
 
     return (
@@ -26,7 +26,7 @@ export default function CoverTrackYourOrder({}: Props) {
                 </div>
 
                 {/* Title */}
-                <h1 className="text-3xl font-bold leading-tight sm:text-5xl">
+                <h1 className="text-3xl font-bold leading-tight sm:text-5xl text-white">
                     {t("trackYourOrder")}
                 </h1>
 

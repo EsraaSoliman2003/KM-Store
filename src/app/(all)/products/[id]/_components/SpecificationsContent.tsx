@@ -16,21 +16,21 @@ export function SpecificationsContent() {
 
     return (
         <div className="">
-            <h2 className="text-[24px] font-semibold text-[#7c42dd]">
+            <h2 className="text-[24px] font-semibold text-[var(--main)]">
                 {t("technicalSpecifications")}
             </h2>
 
-            <div className="mt-4 overflow-hidden rounded-[8px] border border-[#333]">
+            <div className="mt-4 overflow-hidden rounded-[8px] border border-[var(--border-dark)]">
                 {specifications.map(([label, value]) => (
                     <div
                         key={label}
-                        className="grid grid-cols-2 border-b border-[#333] last:border-0"
+                        className="grid grid-cols-2 border-b border-[var(--border-dark)] last:border-0"
                     >
-                        <div className="bg-[#202020] px-4 py-3 text-[14px] font-medium text-[#888] sm:px-5 sm:text-[15px]">
+                        <div className="bg-[var(--bg-dark-secondary)] px-4 py-3 text-[14px] font-medium text-[var(--text-secondary)] sm:px-5 sm:text-[15px]">
                             {label}
                         </div>
 
-                        <div className="px-4 py-3 text-[14px] text-[#ccc] sm:px-5 sm:text-[15px]">
+                        <div className="px-4 py-3 text-[14px] text-[var(--text-primary)]/80 sm:px-5 sm:text-[15px]">
                             {value}
                         </div>
                     </div>

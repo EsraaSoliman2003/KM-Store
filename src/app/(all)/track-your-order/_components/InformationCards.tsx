@@ -13,7 +13,7 @@ export default function InformationCards() {
     const t = useTranslations();
 
     return (
-        <section className="mt-4 grid gap-4 md:grid-cols-2">
+        <section className="mt-4 grid gap-4 md:grid-cols-2 text-white">
             {/* Delivery */}
             <div className="relative min-h-[230px] overflow-hidden rounded-[12px] border border-[#333] bg-[#191919]">
                 <Image

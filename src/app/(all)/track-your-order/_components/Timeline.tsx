@@ -89,11 +89,11 @@ export default function Timeline() {
                                 <div className="flex w-[105px] shrink-0 flex-col items-center text-center">
                                     {/* Icon */}
                                     <div
-                                        className={`flex h-8 w-8 items-center justify-center rounded-full ${step.active
+                                        className={`flex h-8 w-8 items-center justify-center rounded-full text-white ${step.active
                                                 ? "bg-[#683AD0] shadow-[0_0_15px_rgba(104,58,208,.7)]"
                                                 : step.completed
                                                     ? "bg-[#683AD0]"
-                                                    : "bg-[#777]"
+                                                    : "bg-(--border-dark)"
                                             }`}
                                     >
                                         <Icon size={14} />

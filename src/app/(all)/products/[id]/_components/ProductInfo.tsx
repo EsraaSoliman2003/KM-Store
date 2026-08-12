@@ -9,7 +9,7 @@ import {
     Zap,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { FeatureBadge } from "./FeatureBadge";
+import { FeatureBadge } from "./FeatureBadge"; // افترض أنه ملف منفصل
 import Variants from "./Variants";
 
 type Props = {
@@ -22,7 +22,7 @@ export default function ProductInfo({ product }: Props) {
     return (
         <div className="min-w-0">
             {/* Title */}
-            <h1 className="max-w-[700px] text-[24px] font-semibold leading-[1.3] text-white sm:text-[28px] lg:text-[30px]">
+            <h1 className="max-w-[700px] text-[24px] font-semibold leading-[1.3] text-[var(--text-primary)] sm:text-[28px] lg:text-[30px]">
                 {product.title}
             </h1>
 
@@ -46,11 +46,11 @@ export default function ProductInfo({ product }: Props) {
             </div>
 
             {/* Divider */}
-            <div className="my-4 h-px bg-[#252525]" />
+            <div className="my-4 h-px bg-[var(--border-dark)]/40" />
 
             {/* Price */}
             <div className="flex flex-wrap items-center gap-2.5">
-                <span className="text-[25px] font-semibold text-[#7137dc] sm:text-[27px]">
+                <span className="text-[25px] font-semibold text-[var(--main)] sm:text-[27px]">
                     ${product.price.toFixed(2)}
                 </span>
 
@@ -58,7 +58,7 @@ export default function ProductInfo({ product }: Props) {
                     ${product.oldPrice.toFixed(2)}
                 </span>
 
-                <span className="rounded-[5px] border border-[#7137dc]/50 bg-[#7137dc]/10 px-2 py-1 text-[11px] font-medium text-[#a06df0]">
+                <span className="rounded-[5px] border border-[var(--main)]/50 bg-[var(--main)]/10 px-2 py-1 text-[11px] font-medium text-[var(--main)]">
                     {t("productDiscountLabel", { discount: product.discount })}
                 </span>
             </div>
@@ -70,14 +70,14 @@ export default function ProductInfo({ product }: Props) {
                         <Star
                             key={star}
                             size={17}
-                            fill="#f59e0b"
+                            fill="var(--warning)"
                             strokeWidth={0}
-                            className="text-[#f59e0b]"
+                            className="text-[var(--warning)]"
                         />
                     ))}
                 </div>
 
-                <span className="text-[13px] font-medium text-white">
+                <span className="text-[13px] font-medium text-[var(--text-primary)]">
                     {product.rating.toFixed(1)}
                 </span>
 
@@ -87,7 +87,7 @@ export default function ProductInfo({ product }: Props) {
             </div>
 
             {/* Short Description */}
-            <p className="mt-4 max-w-[680px] text-[14px] leading-[1.7] text-[#999] sm:text-[15px]">
+            <p className="mt-4 max-w-[680px] text-[14px] leading-[1.7] text-[var(--text-muted)] sm:text-[15px]">
                 {t("productShortDescription")}
             </p>
 
@@ -111,28 +111,27 @@ export default function ProductInfo({ product }: Props) {
 
             <Variants product={product} />
 
-
             {/* Quantity */}
             <div className="mt-6">
-                <p className="mb-2 text-[15px] text-[#999]">
+                <p className="mb-2 text-[15px] text-[var(--text-muted)]">
                     {t("quantityLabel")}
                 </p>
 
-                <div className="flex h-[46px] w-fit items-center gap-8 rounded-[9px] border border-[#683AD0] bg-[#111] px-3">
+                <div className="flex h-[46px] w-fit items-center gap-8 rounded-[9px] border border-[var(--main)] bg-[var(--bg-tertiary)] px-3">
                     <button
                         type="button"
-                        className="flex h-7 w-7 items-center justify-center rounded-full border border-[#777] text-white transition hover:border-[#7438df] hover:bg-[#683AD0]/20"
+                        className="flex h-7 w-7 items-center justify-center rounded-full border border-[var(--border-dark)] text-[var(--text-primary)] transition hover:border-[var(--main)] hover:bg-[var(--main)]/20"
                     >
                         <Minus size={14} />
                     </button>
 
-                    <span className="min-w-[20px] text-center text-[14px] font-medium text-white">
+                    <span className="min-w-[20px] text-center text-[14px] font-medium text-[var(--text-primary)]">
                         01
                     </span>
 
                     <button
                         type="button"
-                        className="flex h-7 w-7 items-center justify-center rounded-full border border-[#777] text-white transition hover:border-[#7438df] hover:bg-[#683AD0]/20"
+                        className="flex h-7 w-7 items-center justify-center rounded-full border border-[var(--border-dark)] text-[var(--text-primary)] transition hover:border-[var(--main)] hover:bg-[var(--main)]/20"
                     >
                         <Plus size={14} />
                     </button>
@@ -143,7 +142,7 @@ export default function ProductInfo({ product }: Props) {
             <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 <button
                     type="button"
-                    className="flex min-h-[50px] items-center justify-center gap-2 rounded-[11px] bg-[#7137dc] px-5 text-[15px] font-medium text-white transition hover:bg-[#8249e8] active:scale-[0.99]"
+                    className="flex min-h-[50px] items-center justify-center gap-2 rounded-[11px] bg-[var(--main)] px-5 text-[15px] font-medium text-[var(--text-white)] transition hover:bg-[var(--main-hover)] active:scale-[0.99]"
                 >
                     <ShoppingCart size={19} />
                     {t("addToCart")}
@@ -151,7 +150,7 @@ export default function ProductInfo({ product }: Props) {
 
                 <button
                     type="button"
-                    className="flex min-h-[50px] items-center justify-center gap-2 rounded-[11px] border border-[#7137dc] px-5 text-[15px] font-medium text-[#9a63ed] transition hover:bg-[#7137dc]/10 active:scale-[0.99]"
+                    className="flex min-h-[50px] items-center justify-center gap-2 rounded-[11px] border border-[var(--main)] px-5 text-[15px] font-medium text-[var(--main)] transition hover:bg-[var(--main)]/10 active:scale-[0.99]"
                 >
                     <Zap size={17} />
                     {t("buyNow")}
