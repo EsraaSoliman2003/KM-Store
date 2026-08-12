@@ -32,11 +32,6 @@ export const getSteps = (t: Translate) => [
         active: true,
     },
     {
-        title: t("outForDelivery"),
-        date: "Aug 10, 2026",
-        icon: Box,
-    },
-    {
         title: t("delivered"),
         date: "--",
         icon: Check,

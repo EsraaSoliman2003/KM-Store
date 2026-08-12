@@ -18,14 +18,14 @@ export default function Timeline() {
                         return (
                             <div
                                 key={step.title}
-                                className="relative flex min-h-[60px] items-start"
+                                className={`relative flex ${isLast ? "min-h-[30px]" : "min-h-[60px]"} items-start`}
                             >
                                 {/* Vertical Line */}
                                 {!isLast && (
                                     <div
                                         className={`absolute left-[9px] top-6 h-[44px] w-px ${index < 3
-                                                ? "bg-[#683AD0]"
-                                                : "border-l border-dashed border-[#555]"
+                                            ? "bg-[#683AD0]"
+                                            : "border-l border-dashed border-[#555]"
                                             }`}
                                     />
                                 )}
@@ -33,10 +33,10 @@ export default function Timeline() {
                                 {/* Icon */}
                                 <div
                                     className={`relative z-10 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${step.active
-                                            ? "border-[#683AD0] bg-transparent"
-                                            : step.completed
-                                                ? "border-[#683AD0] bg-[#683AD0]"
-                                                : "border-[#999] bg-[#191919]"
+                                        ? "border-[#683AD0] bg-transparent"
+                                        : step.completed
+                                            ? "border-[#683AD0] bg-[#683AD0]"
+                                            : "border-[#999] bg-[#191919]"
                                         }`}
                                 >
                                     <Icon
@@ -55,8 +55,8 @@ export default function Timeline() {
                                 <div className="ml-5 flex min-w-0 flex-1 items-start justify-between gap-4">
                                     <p
                                         className={`text-sm font-medium ${step.active
-                                                ? "text-[#9b6cff]"
-                                                : "text-gray-300"
+                                            ? "text-[#9b6cff]"
+                                            : "text-gray-300"
                                             }`}
                                     >
                                         {step.title}
@@ -64,8 +64,8 @@ export default function Timeline() {
 
                                     <p
                                         className={`shrink-0 text-xs ${step.active
-                                                ? "text-[#9b6cff]"
-                                                : "text-gray-500"
+                                            ? "text-[#9b6cff]"
+                                            : "text-gray-500"
                                             }`}
                                     >
                                         {step.date}
@@ -90,10 +90,10 @@ export default function Timeline() {
                                     {/* Icon */}
                                     <div
                                         className={`flex h-8 w-8 items-center justify-center rounded-full text-white ${step.active
-                                                ? "bg-[#683AD0] shadow-[0_0_15px_rgba(104,58,208,.7)]"
-                                                : step.completed
-                                                    ? "bg-[#683AD0]"
-                                                    : "bg-(--border-dark)"
+                                            ? "bg-[#683AD0] shadow-[0_0_15px_rgba(104,58,208,.7)]"
+                                            : step.completed
+                                                ? "bg-[#683AD0]"
+                                                : "bg-(--border-dark)"
                                             }`}
                                     >
                                         <Icon size={14} />
@@ -102,8 +102,8 @@ export default function Timeline() {
                                     {/* Title */}
                                     <p
                                         className={`mt-2 text-lg font-medium ${step.active
-                                                ? "text-[#9b6cff]"
-                                                : "text-gray-300"
+                                            ? "text-[#9b6cff]"
+                                            : "text-gray-300"
                                             }`}
                                     >
                                         {step.title}
@@ -112,8 +112,8 @@ export default function Timeline() {
                                     {/* Date */}
                                     <p
                                         className={`mt-0.5 text-sm ${step.active
-                                                ? "text-[#9b6cff]"
-                                                : "text-gray-500"
+                                            ? "text-[#9b6cff]"
+                                            : "text-gray-500"
                                             }`}
                                     >
                                         {step.date}
@@ -124,8 +124,8 @@ export default function Timeline() {
                                 {!isLast && (
                                     <div
                                         className={`mt-4 h-px flex-1 ${index < 3
-                                                ? "bg-[#683AD0]"
-                                                : "border-t border-dashed border-[#555]"
+                                            ? "bg-[#683AD0]"
+                                            : "border-t border-dashed border-[#555]"
                                             }`}
                                     />
                                 )}

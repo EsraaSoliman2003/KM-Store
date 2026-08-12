@@ -354,5 +354,6 @@
   "ordersOrderDetails": "تفاصيل الطلب",
   "ordersBuyAgain": "شراء مرة أخرى",
   "ordersCancelOrder": "إلغاء الطلب",
-  "ordersOrder": "طلب"
+  "ordersOrder": "طلب",
+  "orderDetailsSubtitle": "تفاصيل الطلب"
 }
