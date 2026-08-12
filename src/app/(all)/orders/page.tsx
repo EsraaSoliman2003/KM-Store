@@ -224,22 +224,6 @@ export default function Page() {
                         </div>
                       )}
                     </div>
-
-                    {/* Product Names */}
-                    <div>
-                      <p className="text-[16px] font-semibold text-[var(--text-primary)]">
-                        {order.itemsCount} {t("ordersItems")}
-                      </p>
-
-                      <div className="mt-1 max-w-[220px] text-[14px] leading-[19px] text-[var(--text-secondary)]">
-                        {order.products.map((p, i) => (
-                          <span key={i} className="inline-block truncate">
-                            {p.name}
-                            {i < order.products.length - 1 && ", "}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
                   </div>
 
                   {/* Order Status + Delivery Date */}
