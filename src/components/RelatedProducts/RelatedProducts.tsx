@@ -13,7 +13,7 @@ export default function RelatedProducts() {
             {/* Header */}
             <div className="mb-8 flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-center lg:justify-between">
                 <div className="text-center lg:text-start">
-                    <h2 className="text-3xl font-bold text-white sm:text-4xl">
+                    <h2 className="text-3xl font-bold  sm:text-4xl">
                         {t("relatedProducts")}
                     </h2>
 
