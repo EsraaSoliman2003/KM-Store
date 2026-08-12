@@ -15,12 +15,12 @@ export default function FlashSales() {
         {/* Header */}
         <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div className="text-center lg:text-left">
-            <h2 className="flex items-center justify-center gap-2 text-3xl font-bold text-white sm:text-4xl lg:justify-start">
-              <FiZap className="text-orange-400" />
+            <h2 className="flex items-center justify-center gap-2 text-3xl font-bold text-[var(--text-primary)] sm:text-4xl lg:justify-start">
+              <FiZap className="text-[var(--warning)]" />
               {t("flashSalesTitle")}
             </h2>
 
-            <p className="mt-2 text-sm text-white/50">
+            <p className="mt-2 text-sm text-[var(--text-muted)]">
               {t("flashSalesSubtitle")}
             </p>
           </div>

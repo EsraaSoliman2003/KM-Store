@@ -126,19 +126,20 @@ export default function Content({ activeProduct }: Props) {
 
                 <button
                     className="
-            inline-flex flex-1 items-center justify-center gap-2
-            rounded-[12px]
-            border border-white/[0.12]
-            bg-white/[0.06]
-            px-9 py-4
-            text-[18px] font-medium leading-none text-white
-            backdrop-blur-md
-            transition-all duration-300
-            hover:border-white/[0.20]
-            hover:bg-white/[0.10]
-            active:scale-95
-            whitespace-nowrap
-        "
+                        inline-flex flex-1 items-center justify-center gap-2
+                        rounded-[12px]
+                        border border-[rgba(var(--border-color-rgb),0.12)]
+                        bg-[rgba(var(--bg-primary-rgb),0.06)]
+                        px-9 py-4
+                        text-[18px] font-medium leading-none text-[var(--text-primary)]
+                        backdrop-blur-md
+                        transition-all duration-300
+                        hover:border-[rgba(var(--border-color-rgb),0.20)]
+                        hover:bg-[rgba(var(--bg-primary-rgb),0.10)]
+                        active:scale-95
+                        whitespace-nowrap
+                    "
+                    style={{ borderColor: activeProduct.color }}
                 >
                     {t("learnMore")}
                 </button>
