@@ -1,4 +1,5 @@
 import { useSearchParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import React from 'react'
 import { IoChevronDown } from 'react-icons/io5';
 
@@ -6,16 +7,17 @@ type Props = {
     updateFilter: any;
 }
 
-const brands = [
-    { label: "All Brands", value: "" },
-    { label: "Apple", value: "apple" },
-    { label: "Samsung", value: "samsung" },
-    { label: "Sony", value: "sony" },
-];
-
 export default function BrandFilter({ updateFilter }: Props) {
+    const t = useTranslations();
     const searchParams = useSearchParams();
     const brand = searchParams.get("brand") || "";
+
+    const brands = [
+        { label: t("allBrands"), value: "" },
+        { label: t("appleBrand"), value: "apple" },
+        { label: t("samsungBrand"), value: "samsung" },
+        { label: t("sonyBrand"), value: "sony" },
+    ];
 
     return (
         <div className="mb-5">

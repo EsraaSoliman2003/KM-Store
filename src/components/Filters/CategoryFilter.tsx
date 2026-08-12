@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 import { FiFilter } from "react-icons/fi";
 import { IoChevronDown } from "react-icons/io5";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -7,16 +8,17 @@ type Props = {
     updateFilter: any;
 }
 
-const categories = [
-    { label: "All Categories", value: "" },
-    { label: "Smart Phones", value: "smart-phones" },
-    { label: "Laptops", value: "laptops" },
-    { label: "Audio", value: "audio" },
-];
-
 export default function CategoryFilter({ updateFilter }: Props) {
+    const t = useTranslations();
     const searchParams = useSearchParams();
     const category = searchParams.get("category") || "";
+
+    const categories = [
+        { label: t("allCategories"), value: "" },
+        { label: t("smartPhones"), value: "smart-phones" },
+        { label: t("laptops"), value: "laptops" },
+        { label: t("audio"), value: "audio" },
+    ];
 
     return (
         <div className="mb-3">

@@ -1,4 +1,5 @@
 import { Minus, Plus, Trash2 } from 'lucide-react';
+import { useTranslations } from "next-intl";
 import React from 'react'
 
 type Props = {
@@ -6,6 +7,8 @@ type Props = {
 }
 
 export default function MobileCard({ product }: Props) {
+    const t = useTranslations();
+
     return (
         <div className="flex gap-3.5 md:hidden">
             {/* Product Image */}
@@ -22,7 +25,7 @@ export default function MobileCard({ product }: Props) {
                 {/* Brand + Delete */}
                 <div className="flex items-start justify-between gap-4">
                     <span className="text-[11px] text-[#683AD0]">
-                        Apple
+                        {t("appleBrand")}
                     </span>
 
                     <button
@@ -40,7 +43,7 @@ export default function MobileCard({ product }: Props) {
 
                 {/* Specs */}
                 <p className="mt-0.5 truncate text-[10px] text-gray-400">
-                    256 GB · Purple black
+                    {t("phoneSpec")}
                 </p>
 
                 {/* Price + Quantity */}
@@ -80,7 +83,7 @@ export default function MobileCard({ product }: Props) {
 
                 {/* Delivery */}
                 <div className="mt-1.5 text-[10px] text-gray-400">
-                    Get it by{" "}
+                    {t("getItBy")}{" "}
                     <span className="text-[#9b6cff]">
                         {product.delivery}
                     </span>

@@ -1,12 +1,14 @@
 "use client";
 
 import React from "react";
+import { useTranslations } from "next-intl";
 import { LogOut } from "lucide-react";
 import { useAppSelector } from "@/rtk/hooks";
 import { logoutUser } from "@/rtk/slices/authSlice";
 import { useLogout } from "@/hooks/useLogout";
 
 export default function Page() {
+  const t = useTranslations();
   const { loading, profile } = useAppSelector(
     (state) => state.profile
   );
@@ -18,7 +20,7 @@ export default function Page() {
   if (loading) {
     return (
       <div className="flex min-h-[400px] items-center justify-center">
-        <p className="text-gray-500">Loading...</p>
+        <p className="text-gray-500">{t("loading")}</p>
       </div>
     );
   }
@@ -26,7 +28,7 @@ export default function Page() {
   if (!user) {
     return (
       <div className="flex min-h-[400px] items-center justify-center">
-        <p className="text-gray-500">No profile data found.</p>
+        <p className="text-gray-500">{t("noProfileDataFound")}</p>
       </div>
     );
   }
@@ -56,7 +58,7 @@ export default function Page() {
               </h1>
 
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                {user.email || "No email"}
+                {user.email || t("noEmail")}
               </p>
             </div>
           </div>
@@ -68,7 +70,7 @@ export default function Page() {
             className="flex items-center gap-2 rounded-xl bg-red-500 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-red-600"
           >
             <LogOut size={18} />
-            <span>Logout</span>
+            <span>{t("logout")}</span>
           </button>
         </div>
 
@@ -76,7 +78,7 @@ export default function Page() {
         <div className="space-y-4">
           <div>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              Name
+              {t("name")}
             </p>
 
             <p className="font-medium text-gray-900 dark:text-white">
@@ -86,7 +88,7 @@ export default function Page() {
 
           <div>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              Phone
+              {t("phoneNumber")}
             </p>
 
             <p className="font-medium text-gray-900 dark:text-white">
@@ -96,23 +98,23 @@ export default function Page() {
 
           <div>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              Email
+              {t("email")}
             </p>
 
             <p className="font-medium text-gray-900 dark:text-white">
-              {user.email || "Not provided"}
+              {user.email || t("notProvided")}
             </p>
           </div>
 
           <div>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              Location
+              {t("location")}
             </p>
 
             <p className="font-medium text-gray-900 dark:text-white">
               {user.latitude && user.longitude
                 ? `${user.latitude}, ${user.longitude}`
-                : "Not provided"}
+                : t("notProvided")}
             </p>
           </div>
         </div>

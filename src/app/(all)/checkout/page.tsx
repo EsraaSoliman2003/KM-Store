@@ -5,13 +5,16 @@ import ProductsCart from "@/components/Cart/ProductsCart";
 import Address from "@/components/Address/Address";
 import Receiver from "@/components/Receiver/Receiver";
 import Payment from "@/components/Payment/Payment";
+import { useTranslations } from "next-intl";
 
 export default function Page() {
+  const t = useTranslations();
+
   return (
     <section className="container mt-18 py-5 md:py-10">
       {/* Header */}
       <div className="mb-6 flex flex-row items-center justify-between gap-4 sm:mb-8">
-        <h2 className="text-2xl font-semibold sm:text-4xl">Checkout</h2>
+        <h2 className="text-2xl font-semibold sm:text-4xl">{t("checkoutTitle")}</h2>
       </div>
 
       {/* Checkout Content */}
@@ -27,7 +30,7 @@ export default function Page() {
         {/* Right */}
         <aside className="w-full xl:sticky xl:top-18">
           <Summary
-            text="Place order"
+            text={"placeOrder"}
             href="/order-confirmed"
             className="h-fit"
           />

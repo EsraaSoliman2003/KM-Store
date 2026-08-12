@@ -1,10 +1,5 @@
 "use client";
 
-import React from "react";
-import {
-    Headphones,
-    ArrowRight,
-} from "lucide-react";
 import CoverTrackYourOrder from "@/components/CoverTrackYourOrder/CoverTrackYourOrder";
 import ProductSummary from "./_components/ProductSummary";
 import OrderStatus from "./_components/OrderStatus";

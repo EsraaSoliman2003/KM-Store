@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { FiFilter, FiX } from "react-icons/fi";
 import {
   usePathname,
@@ -18,6 +19,7 @@ type Prop = {
 }
 
 export default function MobileFilter({ noCats = false }: Prop) {
+  const t = useTranslations();
   const [open, setOpen] = useState(false);
 
   const router = useRouter();
@@ -52,10 +54,10 @@ export default function MobileFilter({ noCats = false }: Prop) {
       <button
         onClick={() => setOpen(true)}
         className="flex h-10 items-center gap-2 rounded-xl border border-[#7040dc] px-4 text-sm font-medium text-[#7040dc] transition hover:bg-[#7040dc] hover:text-white active:scale-95 lg:hidden"
-        aria-label="Open filters"
+        aria-label={t("openFilters")}
       >
         <FiFilter size={17} />
-        <span>Filters</span>
+        <span>{t("filters")}</span>
       </button>
 
       {/* Overlay */}
@@ -76,7 +78,7 @@ export default function MobileFilter({ noCats = false }: Prop) {
           <div className="flex items-center gap-2">
             <FiFilter size={18} />
             <h2 className="text-base font-semibold">
-              Filters
+              {t("filters")}
             </h2>
           </div>
 
@@ -85,7 +87,7 @@ export default function MobileFilter({ noCats = false }: Prop) {
               onClick={clearAll}
               className="text-xs text-[#7040dc] hover:text-[#8756ef]"
             >
-              Clear All
+              {t("clearAll")}
             </button>
 
             <button
@@ -127,7 +129,7 @@ export default function MobileFilter({ noCats = false }: Prop) {
           onClick={() => setOpen(false)}
           className="mt-6 h-11 w-full rounded-xl bg-[#7040dc] text-sm font-medium text-white transition hover:bg-[#8756ef]"
         >
-          Show Results
+          {t("showResults")}
         </button>
       </div>
     </>

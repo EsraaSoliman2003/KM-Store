@@ -5,10 +5,13 @@ import {
     Truck,
     CalendarDays,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { wallpaper1, wallpaper2 } from "@/assets";
 import Image from "next/image";
 
 export default function InformationCards() {
+    const t = useTranslations();
+
     return (
         <section className="mt-4 grid gap-4 md:grid-cols-2">
             {/* Delivery */}
@@ -28,7 +31,7 @@ export default function InformationCards() {
                             </div>
 
                             <h3 className="text-sm font-semibold sm:text-lg">
-                                Delivery information
+                                {t("deliveryInformation")}
                             </h3>
                         </div>
 
@@ -54,7 +57,7 @@ export default function InformationCards() {
                                     size={20}
                                     className="shrink-0 text-gray-400"
                                 />
-                                Expected Delivery:
+                                {t("expectedDelivery")}:
                                 <span className="font-semibold text-white">
                                     Aug 13, 2026
                                 </span>
@@ -81,7 +84,7 @@ export default function InformationCards() {
                             </div>
 
                             <h3 className="text-sm font-semibold sm:text-lg">
-                                Shipping Details
+                                {t("shippingDetails")}
                             </h3>
                         </div>
 
@@ -91,7 +94,7 @@ export default function InformationCards() {
                                     size={20}
                                     className="shrink-0 text-gray-400"
                                 />
-                                Standard Delivery
+                                {t("standardDelivery")}
                             </p>
 
                             <p className="flex items-center gap-2">
@@ -99,7 +102,7 @@ export default function InformationCards() {
                                     size={20}
                                     className="shrink-0 text-gray-400"
                                 />
-                                Tracking ID: TRK-9283874
+                                {t("trackingId", { id: "TRK-9283874" })}
                             </p>
 
                             <p className="flex items-center gap-2">
@@ -107,7 +110,7 @@ export default function InformationCards() {
                                     size={20}
                                     className="shrink-0 text-gray-400"
                                 />
-                                Carrier: MK Express
+                                {t("carrierName", { name: "MK Express" })}
                             </p>
                         </div>
                     </div>

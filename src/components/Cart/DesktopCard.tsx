@@ -1,4 +1,5 @@
 import { Dot, Minus, Plus, ShieldCheck, Star, Trash2, Truck } from 'lucide-react'
+import { useTranslations } from "next-intl";
 import React from 'react'
 
 type Props = {
@@ -6,6 +7,8 @@ type Props = {
 }
 
 export default function DesktopCard({ product }: Props) {
+    const t = useTranslations();
+
     return (
         <div className="hidden md:flex gap-4">
             {/* Product Image */}
@@ -24,7 +27,7 @@ export default function DesktopCard({ product }: Props) {
                     {/* Stock Status */}
                     <div className="flex items-center gap-2 rounded-full bg-green-500/10 py-3 pl-2 pr-3.5 text-xs font-medium text-green-500">
                         <Dot size={16} strokeWidth={6} />
-                        <span>In Stock</span>
+                        <span>{t("inStock")}</span>
                     </div>
 
                     {/* Delete */}
@@ -71,7 +74,7 @@ export default function DesktopCard({ product }: Props) {
                                 </span>
 
                                 <span className="text-gray-400">
-                                    10% OFF
+                                    {t("tenPercentOff")}
                                 </span>
                             </div>
                         </div>
@@ -87,7 +90,7 @@ export default function DesktopCard({ product }: Props) {
                 <div className="mt-auto flex flex-col gap-2">
                     {/* Delivery */}
                     <div className="w-fit rounded-full border border-[#683AD0] bg-[#683AD040] px-2 py-1 text-[12px] text-white">
-                        Get it by{" "}
+                        {t("getItBy")} {" "}
                         <span className="text-[#9b6cff]">
                             {product.delivery}
                         </span>
@@ -98,13 +101,13 @@ export default function DesktopCard({ product }: Props) {
                             {/* Free Shipping */}
                             <div className="flex items-center gap-2 rounded-[10px] border border-[#683AD0] bg-[#683AD040] px-2 py-1.5 text-[12px] text-white">
                                 <Truck size={24} />
-                                <span>Free Shipping</span>
+                                <span>{t("freeShipping")}</span>
                             </div>
 
                             {/* Warranty */}
                             <div className="flex items-center gap-2 rounded-[10px] border border-[#683AD0] bg-[#683AD040] px-2 py-1.5 text-[12px] text-white">
                                 <ShieldCheck size={24} />
-                                <span>2 Years Warranty</span>
+                                <span>{t("twoYearsWarranty")}</span>
                             </div>
                         </div>
 

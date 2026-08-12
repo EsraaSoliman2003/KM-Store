@@ -1,15 +1,17 @@
 "use client";
 
 import { Home } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 export default function Receiver() {
+  const t = useTranslations();
   const [receiver, setReceiver] = useState<"person" | "door">("person");
 
   return (
     <section className="mb-7">
       <h2 className="mb-3 text-xl font-semibold text-white">
-        Who will receive this order
+        {t("whoWillReceiveThisOrder")}
       </h2>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -25,11 +27,11 @@ export default function Receiver() {
         >
           <div className="min-w-0">
             <p className="text-sm font-semibold text-white">
-              Hossam Hassan
+              {t("receiverPersonName")}
             </p>
 
             <p className="mt-1 text-sm text-gray-400">
-              +20-1234567890
+              {t("receiverPersonPhone")}
             </p>
           </div>
 
@@ -67,7 +69,7 @@ export default function Receiver() {
           </div>
 
           <span className="flex-1 text-sm font-semibold text-white">
-            Leave at my door
+            {t("leaveAtMyDoor")}
           </span>
 
           <span

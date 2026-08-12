@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 import { DescriptionContent } from "./DescriptionContent";
 import { SpecificationsContent } from "./SpecificationsContent";
 import { ReviewsContent } from "./ReviewsContent";
@@ -10,9 +11,10 @@ type Prop = {
 }
 
 export default function Tabs({ product }: Prop) {
-    const [activeTab, setActiveTab] = useState("Description");
+    const t = useTranslations();
+    const [activeTab, setActiveTab] = useState(t("descriptionTab"));
 
-    const tabs = ["Description", "Specifications", "Reviews"];
+    const tabs = [t("descriptionTab"), t("specificationsTab"), t("reviewsTab")];
     return (
         <section>
             <div className="flex w-full gap-5 border-b border-[#484848] sm:gap-8">
@@ -37,15 +39,15 @@ export default function Tabs({ product }: Prop) {
 
             {/* ================= TAB CONTENT ================= */}
             <div className="pt-8">
-                {activeTab === "Description" && (
+                {activeTab === t("descriptionTab") && (
                     <DescriptionContent />
                 )}
 
-                {activeTab === "Specifications" && (
+                {activeTab === t("specificationsTab") && (
                     <SpecificationsContent />
                 )}
 
-                {activeTab === "Reviews" && (
+                {activeTab === t("reviewsTab") && (
                     <ReviewsContent reviews={product.reviews} />
                 )}
             </div>

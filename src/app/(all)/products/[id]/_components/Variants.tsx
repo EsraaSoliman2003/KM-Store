@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { useTranslations } from "next-intl";
 
 type Props = {
     product: any;
 }
 
 export default function Variants({ product }: Props) {
+    const t = useTranslations();
     const [selectedColor, setSelectedColor] = useState("Deep Purple");
 
     return (
@@ -12,7 +14,7 @@ export default function Variants({ product }: Props) {
             {/* Color */}
             <div className="mt-6">
                 <div className="text-[15px] text-[#999]">
-                    Color:{" "}
+                    {t("colorLabel")}: {" "}
                     <span className="font-medium text-white">
                         {selectedColor}
                     </span>
@@ -24,7 +26,7 @@ export default function Variants({ product }: Props) {
                             key={color.name}
                             type="button"
                             title={color.name}
-                            aria-label={`Select ${color.name}`}
+                            aria-label={`${t("selectColor")} ${color.name}`}
                             onClick={() =>
                                 setSelectedColor(color.name)
                             }

@@ -21,7 +21,7 @@ export default function ProductCard({ product }: Props) {
       <div className="relative h-40 md:h-56 w-full lg:aspect-square overflow-hidden">
         <Image
           src={product.image}
-          alt={t(product.title)}
+          alt={product.title}
           fill
           sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 50vw"
           loading="eager"
@@ -64,7 +64,7 @@ export default function ProductCard({ product }: Props) {
         </div>
 
         <h3 className="pb-2 sm:pb-3 text-xs sm:text-sm text-(--text-primary) transition-colors duration-300 group-hover:text-(--main) line-clamp-2">
-          {t(product.title)}
+          {product.title}
         </h3>
 
         <div className="mt-3 flex items-end gap-2">

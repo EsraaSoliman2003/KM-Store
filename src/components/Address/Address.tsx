@@ -1,16 +1,18 @@
 "use client";
 
 import { MapPin, Plus, Check } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useState } from "react";
 
 export default function Address() {
+  const t = useTranslations();
   const [selected, setSelected] = useState(true);
 
   return (
     <section className="mb-7">
       <h2 className="mb-3 text-xl font-semibold text-white">
-        Address
+        {t("addressTitle")}
       </h2>
 
       <div className="overflow-hidden rounded-2xl border border-[#2d2d2d] bg-[#151515]">
@@ -35,12 +37,11 @@ export default function Address() {
           {/* Address Info */}
           <div className="min-w-0 flex-1">
             <p className="text-sm font-semibold text-white">
-              Deliver to Home
+              {t("deliverToHome")}
             </p>
 
             <p className="mt-1 max-w-[600px] text-xs leading-5 text-gray-400 sm:text-sm">
-              Al Hnaoi St - Al Mahalah Al Kubra (Part 2) - El Mahalla El
-              Kubra 1 - Gharbia Governorate, Gharbia, Egypt
+              {t("deliveryAddress")}
             </p>
           </div>
 
@@ -73,7 +74,7 @@ export default function Address() {
             <Plus size={15} />
           </span>
 
-          Add Address
+          {t("addAddress")}
         </Link>
       </div>
     </section>

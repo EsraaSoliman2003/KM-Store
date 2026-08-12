@@ -1,8 +1,12 @@
 import CategoryCard from '@/components/CategoryCard/CategoryCard'
+import { useTranslations } from 'next-intl'
 import React from 'react'
-import { categories } from './data'
+import { getCategories } from './data'
 
 export default function DesignCategories() {
+    const t = useTranslations();
+    const categories = getCategories(t);
+
     return (
         <>
             <div className="hidden h-[247px] grid-cols-5 gap-3 lg:grid">

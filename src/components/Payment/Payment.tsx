@@ -30,7 +30,7 @@ export default function Payment() {
     return (
         <section className="mb-2">
             <h2 className="mb-4 text-xl font-bold text-white sm:text-2xl">
-                Pay with
+                {t("payWith")}
             </h2>
 
             {/* Payment Methods */}
@@ -45,7 +45,7 @@ export default function Payment() {
                         }`}
                 >
                     <CreditCard size={19} />
-                    <span className="text-xs">Card</span>
+                    <span className="text-xs">{t("paymentCard")}</span>
                 </button>
 
                 {/* Wallet */}
@@ -58,7 +58,7 @@ export default function Payment() {
                         }`}
                 >
                     <Wallet size={19} />
-                    <span className="text-xs">Wallet</span>
+                    <span className="text-xs">{t("paymentWallet")}</span>
                 </button>
 
                 {/* Cash */}
@@ -71,7 +71,7 @@ export default function Payment() {
                         }`}
                 >
                     <Truck size={19} />
-                    <span className="text-xs">On-Delivery</span>
+                    <span className="text-xs">{t("paymentOnDelivery")}</span>
                 </button>
             </div>
 
@@ -82,13 +82,13 @@ export default function Payment() {
                         {/* Card Number */}
                         <div>
                             <label className="mb-2 block text-xs font-medium text-white">
-                                Card Number
+                                {t("cardNumber")}
                             </label>
 
                             <div className="relative">
                                 <input
                                     type="text"
-                                    placeholder="1234-5678-9123-4567"
+                                    placeholder={t("cardNumberPlaceholder")}
                                     className="h-11 w-full rounded-xl border border-[#2d2d2d] bg-[#111111] px-4 pr-10 text-sm text-white outline-none transition placeholder:text-gray-500 focus:border-[#683AD0]"
                                 />
 
@@ -104,7 +104,7 @@ export default function Payment() {
                             {/* Expiry */}
                             <div>
                                 <label className="mb-2 block text-xs font-medium text-white">
-                                    Expiry date
+                                    {t("expiryDate")}
                                 </label>
 
                                 <div
@@ -127,12 +127,12 @@ export default function Payment() {
                             {/* CVC */}
                             <div>
                                 <label className="mb-2 block text-xs font-medium text-white">
-                                    CVC
+                                    {t("cvc")}
                                 </label>
 
                                 <input
                                     type="password"
-                                    placeholder="***"
+                                    placeholder={t("cvcPlaceholder")}
                                     className="h-11 w-full rounded-xl border border-[#2d2d2d] bg-[#111111] px-4 text-sm text-white outline-none transition placeholder:text-gray-500 focus:border-[#683AD0]"
                                 />
                             </div>
@@ -147,7 +147,7 @@ export default function Payment() {
                     <div className="space-y-4">
                         <div>
                             <label className="mb-2 block text-xs font-medium text-white">
-                                Wallet Number
+                                {t("walletNumber")}
                             </label>
 
                             <PhoneInput
@@ -175,7 +175,7 @@ export default function Payment() {
             {/* Cash */}
             {paymentMethod === "cash" && (
                 <div className="mt-5 rounded-2xl border border-[#2d2d2d] bg-[#151515] p-5 text-sm text-gray-400">
-                    Pay when your order is delivered to your address.
+                    {t("cashDeliveryMessage")}
                 </div>
             )}
         </section>

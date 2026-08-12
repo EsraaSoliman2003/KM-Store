@@ -11,7 +11,7 @@ export default function Page() {
       <CoverCategories />
 
       {/* ================= PRODUCTS ================= */}
-      <Products text="Earpods" noCats />
+      <Products text={t("earpods")} noCats />
       
     </main>
   );

@@ -7,21 +7,21 @@ type Prop = {
   href?: string;
 }
 
-export default function Summary({ text = "Proceed to Checkout", className, href = "/checkout" }: Prop) {
+export default function Summary({ text = "proceedToCheckout", className, href = "/checkout" }: Prop) {
   const t = useTranslations();
 
   return (
     <div className={`flex w-full flex-col gap-6 rounded-2xl border border-[#2d2d2d] bg-[#151515] p-5 sm:p-6 ${className}`}>
       {/* Header */}
       <h2 className="text-xl font-bold text-white">
-        {t("Order Summary")}
+        {t("orderSummary")}
       </h2>
 
       {/* Details */}
       <div className="space-y-4 border-b border-white/20 pb-5">
         <div className="flex items-center justify-between gap-4 text-sm sm:text-[18px]">
           <span className="text-gray-400">
-            {t("Subtotal")} (3 items)
+            {t("subtotal")} (3) {t("items")}
           </span>
 
           <span className="shrink-0 font-bold text-white">
@@ -31,18 +31,18 @@ export default function Summary({ text = "Proceed to Checkout", className, href 
 
         <div className="flex items-center justify-between gap-4 text-sm sm:text-[18px]">
           <span className="text-gray-400">
-            {t("Shipping Fee")}
+            {t("shippingFee")}
           </span>
 
           <span className="shrink-0 font-bold text-[#7C3AED]">
-            {t("Free")}
+            {t("free")}
           </span>
         </div>
       </div>
 
       {/* Total */}
       <div className="flex items-center justify-between gap-4 text-xl font-bold text-white sm:text-2xl">
-        <span>{t("Total")}</span>
+        <span>{t("total")}</span>
 
         <span className="shrink-0">
           EGP 1626.95

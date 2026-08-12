@@ -1,6 +1,9 @@
 import { Star } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export function ReviewsContent({ reviews }: { reviews: number }) {
+    const t = useTranslations();
+
     return (
         <div className="w-full max-w-[700px]">
             {/* Rating Summary */}
@@ -24,24 +27,22 @@ export function ReviewsContent({ reviews }: { reviews: number }) {
                 </div>
 
                 <div className="text-[14px] text-[#777]">
-                    Based on{" "}
+                    {t("basedOn")}{" "}
                     <span className="text-[#aaa]">
                         {reviews.toLocaleString()}
                     </span>{" "}
-                    reviews
+                    {t("reviewsLabel")}
                 </div>
             </div>
 
             {/* Review */}
             <div className="mt-6 rounded-[8px] border border-[#333] bg-[#1d1d1d] p-4 sm:p-5">
                 <p className="text-[14px] leading-[1.7] text-[#aaa] sm:text-[15px]">
-                    “Excellent sound quality and the noise cancellation is
-                    amazing. The headphones are comfortable even after several
-                    hours.”
+                    {t("reviewQuote")}
                 </p>
 
                 <p className="mt-3 text-[12px] text-[#666] sm:text-[13px]">
-                    Verified customer
+                    {t("verifiedCustomer")}
                 </p>
             </div>
         </div>

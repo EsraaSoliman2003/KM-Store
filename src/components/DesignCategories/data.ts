@@ -1,47 +1,49 @@
-export const categories = [
+type Translate = (key: string, values?: Record<string, string | number>) => string;
+
+export const getCategories = (t: Translate) => [
   {
-    title: "Smart Phones",
-    products: "+840 Products",
+    title: t("smartPhones"),
+    products: t("productsCountPlus", { count: 840 }),
     image: "/phone.png",
   },
   {
-    title: "Laptops",
-    products: "+640 Products",
+    title: t("laptops"),
+    products: t("productsCountPlus", { count: 640 }),
     image: "/phone.png",
   },
   {
-    title: "Audio",
-    products: "+840 Products",
+    title: t("audio"),
+    products: t("productsCountPlus", { count: 840 }),
     image: "/phone.png",
   },
   {
-    title: "Smart Watches",
-    products: "+840 Products",
+    title: t("smartWatches"),
+    products: t("productsCountPlus", { count: 840 }),
     image: "/phone.png",
   },
   {
-    title: "Cameras",
-    products: "+540 Products",
+    title: t("cameras"),
+    products: t("productsCountPlus", { count: 540 }),
     image: "/phone.png",
   },
   {
-    title: "Tablets",
-    products: "+490 Products",
+    title: t("tablets"),
+    products: t("productsCountPlus", { count: 490 }),
     image: "/phone.png",
   },
   {
-    title: "Smart",
-    products: "+640 Products",
+    title: t("smart"),
+    products: t("productsCountPlus", { count: 640 }),
     image: "/phone.png",
   },
   {
-    title: "Gaming",
-    products: "+740 Products",
+    title: t("gaming"),
+    products: t("productsCountPlus", { count: 740 }),
     image: "/phone.png",
   },
   {
-    title: "Tablets",
-    products: "+900 Products",
+    title: t("tablets"),
+    products: t("productsCountPlus", { count: 900 }),
     image: "/phone.png",
   },
 ];

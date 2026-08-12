@@ -21,7 +21,7 @@ export default function Gallery({ product }: Prop) {
             <div className="mt-4 grid grid-cols-5 gap-2 sm:gap-3">
                 {product.images.map((image: string, index: number) => (
                     <button
-                        key={image}
+                        key={index}
                         type="button"
                         onClick={() => setSelectedImage(index)}
                         className={`relative aspect-square min-w-0 overflow-hidden rounded-[9px] border bg-[#111] transition-all duration-200 ${selectedImage === index

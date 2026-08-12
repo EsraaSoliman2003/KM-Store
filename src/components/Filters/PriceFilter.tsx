@@ -1,10 +1,12 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import React, { useState } from 'react'
 
 const MIN = 0;
 const MAX = 3000;
 
 export default function PriceFilter() {
+    const t = useTranslations();
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -57,7 +59,7 @@ export default function PriceFilter() {
     return (
         <div className="mb-5">
             <h3 className="mb-3 text-sm font-semibold ">
-                Price range
+                {t("priceRange")}
             </h3>
 
             <div className="relative mx-1 h-6">

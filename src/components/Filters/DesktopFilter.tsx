@@ -1,6 +1,7 @@
 "use client";
 
 import { FiFilter } from "react-icons/fi";
+import { useTranslations } from "next-intl";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import CategoryFilter from "./CategoryFilter";
 import BrandFilter from "./BrandFilter";
@@ -12,6 +13,7 @@ type Prop = {
 }
 
 export default function DesktopFilter({ noCats = false }: Prop) {
+  const t = useTranslations();
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -46,14 +48,14 @@ export default function DesktopFilter({ noCats = false }: Prop) {
       <div className="mb-5 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <FiFilter size={16} />
-          <h2 className="text-sm font-semibold ">Filters</h2>
+          <h2 className="text-sm font-semibold ">{t("filters")}</h2>
         </div>
 
         <button
           onClick={clearAll}
           className="text-[12px] text-[#7040dc] transition hover:text-[#8756ef]"
         >
-          Clear All
+          {t("clearAll")}
         </button>
       </div>
 

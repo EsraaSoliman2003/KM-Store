@@ -15,8 +15,8 @@ export default function Categories() {
         </h2>
 
         <div className="grid grid-cols-2 gap-4 sm:gap-5 xl:grid-cols-3">
-          {categories.map((item) => (
-            <CategoryCard item={item} className="h-[170px] sm:h-[200px] lg:h-[220px]" />
+          {categories.map((item, index) => (
+            <CategoryCard key={index} item={item} className="h-[170px] sm:h-[200px] lg:h-[220px]" />
           ))}
         </div>
       </div>

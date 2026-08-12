@@ -1,24 +1,25 @@
 import { useSearchParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import React from 'react'
 
 type Props = {
     updateFilter: any;
 }
 
-const ratings = [
-    { label: "5 Stars", value: "5" },
-    { label: "4 Stars", value: "4" },
-    { label: "3 Stars & below", value: "3" },
-];
-
-
 export default function RatingFilter({ updateFilter }: Props) {
+    const t = useTranslations();
     const searchParams = useSearchParams();
     const rating = searchParams.get("rating") || "";
 
+    const ratings = [
+        { label: t("rating5Stars"), value: "5" },
+        { label: t("rating4Stars"), value: "4" },
+        { label: t("rating3StarsBelow"), value: "3" },
+    ];
+
     return (
         <div>
-            <h3 className="mb-3 text-sm font-semibold">Rating</h3>
+            <h3 className="mb-3 text-sm font-semibold">{t("ratingLabel")}</h3>
 
             <div className="space-y-2">
                 {ratings.map((item) => {

@@ -1,7 +1,11 @@
 import React from 'react'
-import { steps } from './steps';
+import { useTranslations } from 'next-intl';
+import { getSteps } from './steps';
 
 export default function Timeline() {
+    const t = useTranslations();
+    const steps = getSteps(t);
+
     return (
         <div className="mt-6">
             {/* ================= MOBILE TIMELINE ================= */}

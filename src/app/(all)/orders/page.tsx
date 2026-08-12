@@ -8,75 +8,78 @@ import {
   Package,
   Truck,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
-const orders = [
-  {
-    id: "#10245",
-    date: "Aug 10, 2026",
-    status: "Delivered",
-    statusIcon: CheckCircle2,
-    statusClass: "text-green-500 bg-green-500/10",
-    image: "/phone.png",
-    products: [
-      {
-        name: "Arion 43-Inch Full HD Smart Android TV",
-        quantity: 1,
-      },
-      {
-        name: "Wireless Earbuds",
-        quantity: 2,
-      },
-    ],
-    total: "EGP 1,626.95",
-  },
-  {
-    id: "#10244",
-    date: "Aug 7, 2026",
-    status: "On the way",
-    statusIcon: Truck,
-    statusClass: "text-[#9b6cff] bg-[#683AD0]/10",
-    image: "/phone.png",
-    products: [
-      {
-        name: "Arion Smart Android TV",
-        quantity: 1,
-      },
-      {
-        name: "Wireless Earbuds",
-        quantity: 1,
-      },
-    ],
-    total: "EGP 950.00",
-  },
-  {
-    id: "#10243",
-    date: "Aug 2, 2026",
-    status: "Processing",
-    statusIcon: Clock3,
-    statusClass: "text-yellow-400 bg-yellow-400/10",
-    image: "/phone.png",
-    products: [
-      {
-        name: "Wireless Earbuds",
-        quantity: 1,
-      },
-    ],
-    total: "EGP 400.00",
-  },
-];
-
 export default function page() {
+  const t = useTranslations();
+
+  const orders = [
+    {
+      id: "#10245",
+      date: "Aug 10, 2026",
+      status: t("orderStatusDelivered"),
+      statusIcon: CheckCircle2,
+      statusClass: "text-green-500 bg-green-500/10",
+      image: "/phone.png",
+      products: [
+        {
+          name: t("productArionTV"),
+          quantity: 1,
+        },
+        {
+          name: t("productWirelessEarbuds"),
+          quantity: 2,
+        },
+      ],
+      total: "EGP 1,626.95",
+    },
+    {
+      id: "#10244",
+      date: "Aug 7, 2026",
+      status: t("orderStatusOnTheWay"),
+      statusIcon: Truck,
+      statusClass: "text-[#9b6cff] bg-[#683AD0]/10",
+      image: "/phone.png",
+      products: [
+        {
+          name: t("productArionSmartTV"),
+          quantity: 1,
+        },
+        {
+          name: t("productWirelessEarbuds"),
+          quantity: 1,
+        },
+      ],
+      total: "EGP 950.00",
+    },
+    {
+      id: "#10243",
+      date: "Aug 2, 2026",
+      status: t("orderStatusProcessing"),
+      statusIcon: Clock3,
+      statusClass: "text-yellow-400 bg-yellow-400/10",
+      image: "/phone.png",
+      products: [
+        {
+          name: t("productWirelessEarbuds"),
+          quantity: 1,
+        },
+      ],
+      total: "EGP 400.00",
+    },
+  ];
+
   return (
     <main className="container mt-18 py-5 md:py-10">
       {/* Page Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-white sm:text-3xl">
-          My Orders
+          {t("myOrders")}
         </h1>
 
         <p className="mt-1 text-sm text-gray-400">
-          View your recent orders and track their status.
+          {t("myOrdersSubtitle")}
         </p>
       </div>
 
@@ -99,7 +102,7 @@ export default function page() {
 
                   <div>
                     <p className="text-sm font-semibold text-white">
-                      Order {order.id}
+                      {t("orderLabel")} {order.id}
                     </p>
 
                     <p className="mt-0.5 text-xs text-gray-500">
@@ -123,7 +126,7 @@ export default function page() {
                   <div className="h-[105px] w-[90px] shrink-0 overflow-hidden rounded-xl bg-black sm:h-[120px] sm:w-[105px]">
                     <img
                       src={order.image}
-                      alt="Order product"
+                      alt={t("orderProductImageAlt")}
                       className="h-full w-full object-cover"
                     />
                   </div>
@@ -151,8 +154,7 @@ export default function page() {
 
                     <p className="mt-3 text-xs text-gray-500">
                       {order.products.length}{" "}
-                      {order.products.length === 1 ? "product" : "products"} in
-                      this order
+                      {order.products.length === 1 ? t("orderProductLabel") : t("orderProductsLabel")} {t("inThisOrder")}
                     </p>
                   </div>
                 </div>
@@ -160,7 +162,7 @@ export default function page() {
                 {/* Bottom */}
                 <div className="mt-5 flex flex-col gap-3 border-t border-[#2d2d2d] pt-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <p className="text-xs text-gray-500">Order Total</p>
+                    <p className="text-xs text-gray-500">{t("orderTotalLabel")}</p>
                     <p className="mt-0.5 text-lg font-bold text-white">
                       {order.total}
                     </p>
@@ -170,7 +172,7 @@ export default function page() {
                     href={"/track-your-order"}
                     className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#683AD0] px-5 text-sm font-medium text-white transition hover:bg-[#5a30bd] sm:w-auto"
                   >
-                    Track Your Order
+                    {t("trackYourOrderButton")}
                     <ChevronRight size={16} />
                   </Link>
                 </div>

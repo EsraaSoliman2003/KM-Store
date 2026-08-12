@@ -1,9 +1,12 @@
 import { Truck } from "lucide-react";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 type Props = {};
 
 export default function CoverTrackYourOrder({}: Props) {
+    const t = useTranslations();
+
     return (
         <section className="relative flex min-h-[420px] items-center justify-center overflow-hidden bg-black px-4 sm:min-h-[390px]">
             {/* Background */}
@@ -19,17 +22,17 @@ export default function CoverTrackYourOrder({}: Props) {
                 {/* Badge */}
                 <div className="mx-auto mb-5 flex w-fit items-center gap-2 rounded-sm border border-main bg-(--main)/10 px-3 py-1 text-base text-gray-200 sm:text-lg">
                     <Truck size={22} className="shrink-0 sm:h-6 sm:w-6" />
-                    <span>Stay Updated</span>
+                    <span>{t("stayUpdated")}</span>
                 </div>
 
                 {/* Title */}
                 <h1 className="text-3xl font-bold leading-tight sm:text-5xl">
-                    Track your order
+                    {t("trackYourOrder")}
                 </h1>
 
                 {/* Description */}
                 <p className="mt-4 text-sm leading-relaxed text-gray-400 sm:text-[18px]">
-                    Follow your order from confirmation to delivery
+                    {t("followYourOrder")}
                 </p>
             </div>
         </section>

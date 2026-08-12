@@ -1,9 +1,12 @@
 import { bags } from "@/assets";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 export default function Page() {
+    const t = useTranslations();
+
     return (
         <section className="container mt-18 min-h-[calc(100vh-72px)] py-5 md:py-10">
             {/* Main Content */}
@@ -15,7 +18,7 @@ export default function Page() {
 
                     <Image
                         src={bags}
-                        alt="Order confirmed"
+                        alt={t("orderConfirmedAlt")}
                         fill
                         priority
                         className="relative object-contain"
@@ -25,15 +28,15 @@ export default function Page() {
                 {/* Confirmation Message */}
                 <div className="w-full max-w-[440px] px-4 text-center sm:px-0">
                     <h1 className="text-lg font-semibold leading-tight sm:text-xl md:text-2xl">
-                        Your order has been Confirmed
+                        {t("orderConfirmedTitle")}
                     </h1>
 
                     <p className="mt-2 text-xs leading-5 text-gray-400 sm:text-sm">
-                        Your order has been successfully placed
+                        {t("orderConfirmedPlaced")}
                     </p>
 
                     <p className="text-xs leading-5 text-gray-400 sm:text-sm">
-                        We&apos;re now preparing your items for shipment
+                        {t("orderConfirmedPreparing")}
                     </p>
                 </div>
 
@@ -44,7 +47,7 @@ export default function Page() {
                         href={`/orders`}
                         className="h-11 w-full rounded-lg flex justify-center items-center border border-[var(--main)] px-4 text-sm font-medium text-[var(--main)] transition-all duration-200 hover:bg-[var(--main)]/10 active:scale-[0.99] sm:h-12"
                     >
-                        Track your order
+                        {t("trackYourOrder")}
                     </Link>
 
                     {/* Continue Shopping */}
@@ -52,7 +55,7 @@ export default function Page() {
                         href={"/products"}
                         className="h-11 w-full rounded-lg flex justify-center items-center bg-[var(--main)] px-4 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:bg-[var(--main-hover)] hover:shadow-md active:scale-[0.99] sm:h-12"
                     >
-                        Continue Shopping
+                        {t("continueShopping")}
                     </Link>
                 </div>
             </div>

@@ -1,19 +1,22 @@
 import React from "react";
+import { useTranslations } from "next-intl";
 import Timeline from "./Timeline";
 import { Truck } from "lucide-react";
 
 export default function OrderStatus() {
+    const t = useTranslations();
+
     return (
         <section className="mt-4 rounded-[12px] border border-[#333] bg-[#191919]">
             <div className="p-3 sm:p-5">
                 {/* Header */}
                 <div className="flex flex-wrap items-center justify-between gap-3">
                     <h2 className="text-lg font-semibold sm:text-xl">
-                        Order Status
+                        {t("orderStatus")}
                     </h2>
 
                     <span className="shrink-0 rounded-full border border-[#683AD0]/60 bg-[#683AD0]/10 px-2.5 py-1 text-[10px] text-[#b99cff] sm:text-xs">
-                        Order e.g. TN-84957
+                        {t("orderExample")}
                     </span>
                 </div>
 
@@ -31,12 +34,11 @@ export default function OrderStatus() {
 
                             <div className="min-w-0">
                                 <p className="text-base font-medium sm:text-xl">
-                                    Your order is on the way
+                                    {t("yourOrderOnTheWay")}
                                 </p>
 
                                 <p className="mt-1 text-xs text-gray-500">
-                                    Your package has left the distribution center and is
-                                    heading to you
+                                    {t("packageLeftDistributionCenter")}
                                 </p>
                             </div>
                         </div>
@@ -48,7 +50,7 @@ export default function OrderStatus() {
 
                                 <div className="min-w-0">
                                     <p className="text-base font-medium sm:text-xl">
-                                        Latest Update
+                                        {t("latestUpdate")}
                                     </p>
 
                                     <p className="mt-1 text-xs text-gray-500">
@@ -56,7 +58,7 @@ export default function OrderStatus() {
                                     </p>
 
                                     <p className="mt-1 text-xs text-gray-400">
-                                        Package departed from Cairo Distribution
+                                        {t("packageDepartedFromCairoDistribution")}
                                     </p>
                                 </div>
                             </div>

@@ -1,19 +1,23 @@
+import { useTranslations } from "next-intl";
+
 export function SpecificationsContent() {
+    const t = useTranslations();
+
     const specifications = [
-        ["Driver", "40mm Premium Neodymium"],
-        ["Frequency Response", "20Hz – 40kHz"],
-        ["Noise Cancellation", "42dB Adaptive ANC"],
-        ["Bluetooth", "5.3"],
-        ["Codecs", "aptX HD, LDAC, AAC, SBC"],
-        ["Battery Life", "Up to 40 hours"],
-        ["Charging", "USB-C Fast Charging"],
-        ["Weight", "265g"],
+        [t("specDriver"), t("specDriverValue")],
+        [t("specFrequencyResponse"), t("specFrequencyResponseValue")],
+        [t("specNoiseCancellation"), t("specNoiseCancellationValue")],
+        [t("specBluetooth"), t("specBluetoothValue")],
+        [t("specCodecs"), t("specCodecsValue")],
+        [t("specBatteryLife"), t("specBatteryLifeValue")],
+        [t("specCharging"), t("specChargingValue")],
+        [t("specWeight"), t("specWeightValue")],
     ];
 
     return (
         <div className="">
             <h2 className="text-[24px] font-semibold text-[#7c42dd]">
-                Technical Specifications
+                {t("technicalSpecifications")}
             </h2>
 
             <div className="mt-4 overflow-hidden rounded-[8px] border border-[#333]">

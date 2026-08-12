@@ -78,11 +78,11 @@ export default function CategoryCard({
                                 `}
                         `}
                     >
-                        {t(item.title)}
+                        {item.title}
                     </h3>
 
                     <p className={`${isSmall ? "mt-1 text-[9px] text-white/70" : "mt-1 text-white/75 transition-colors duration-300 group-hover:text-white sm:mt-2 text-xs sm:text-sm"}`}>
-                        {t(item.products)}
+                        {item.products}
                     </p>
                 </div>
 

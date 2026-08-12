@@ -8,6 +8,7 @@ import {
     ShoppingCart,
     Zap,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { FeatureBadge } from "./FeatureBadge";
 import Variants from "./Variants";
 
@@ -16,6 +17,7 @@ type Props = {
 }
 
 export default function ProductInfo({ product }: Props) {
+    const t = useTranslations();
 
     return (
         <div className="min-w-0">
@@ -27,7 +29,7 @@ export default function ProductInfo({ product }: Props) {
             {/* Model / SKU */}
             <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] text-[#777] sm:text-[14px]">
                 <span>
-                    Model:{" "}
+                    {t("modelLabel")}: {" "}
                     <span className="text-[#9a9a9a]">
                         {product.model}
                     </span>
@@ -36,7 +38,7 @@ export default function ProductInfo({ product }: Props) {
                 <span className="text-[#444]">•</span>
 
                 <span>
-                    SKU:{" "}
+                    {t("skuLabel")}: {" "}
                     <span className="text-[#9a9a9a]">
                         {product.sku}
                     </span>
@@ -57,7 +59,7 @@ export default function ProductInfo({ product }: Props) {
                 </span>
 
                 <span className="rounded-[5px] border border-[#7137dc]/50 bg-[#7137dc]/10 px-2 py-1 text-[11px] font-medium text-[#a06df0]">
-                    {product.discount}% off
+                    {t("productDiscountLabel", { discount: product.discount })}
                 </span>
             </div>
 
@@ -80,32 +82,30 @@ export default function ProductInfo({ product }: Props) {
                 </span>
 
                 <span className="text-[13px] text-[#666]">
-                    ({product.reviews} reviews)
+                    ({product.reviews} {t("reviewsLabel")})
                 </span>
             </div>
 
             {/* Short Description */}
             <p className="mt-4 max-w-[680px] text-[14px] leading-[1.7] text-[#999] sm:text-[15px]">
-                Experience unparalleled sound with 40mm premium drivers,
-                40-hour battery life, and second-generation adaptive ANC.
-                Crafted for audiophiles who accept no compromises.
+                {t("productShortDescription")}
             </p>
 
             {/* Features */}
             <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-3">
                 <FeatureBadge
                     icon={<Truck size={21} />}
-                    text="Free Shipping"
+                    text={t("freeShipping")}
                 />
 
                 <FeatureBadge
                     icon={<CreditCard size={21} />}
-                    text="Pay in 3 methods"
+                    text={t("payIn3Methods")}
                 />
 
                 <FeatureBadge
                     icon={<RotateCcw size={21} />}
-                    text="Easy Returns"
+                    text={t("easyReturns")}
                 />
             </div>
 
@@ -115,7 +115,7 @@ export default function ProductInfo({ product }: Props) {
             {/* Quantity */}
             <div className="mt-6">
                 <p className="mb-2 text-[15px] text-[#999]">
-                    Quantity
+                    {t("quantityLabel")}
                 </p>
 
                 <div className="flex h-[46px] w-fit items-center gap-8 rounded-[9px] border border-[#683AD0] bg-[#111] px-3">
@@ -146,7 +146,7 @@ export default function ProductInfo({ product }: Props) {
                     className="flex min-h-[50px] items-center justify-center gap-2 rounded-[11px] bg-[#7137dc] px-5 text-[15px] font-medium text-white transition hover:bg-[#8249e8] active:scale-[0.99]"
                 >
                     <ShoppingCart size={19} />
-                    Add to cart
+                    {t("addToCart")}
                 </button>
 
                 <button
@@ -154,7 +154,7 @@ export default function ProductInfo({ product }: Props) {
                     className="flex min-h-[50px] items-center justify-center gap-2 rounded-[11px] border border-[#7137dc] px-5 text-[15px] font-medium text-[#9a63ed] transition hover:bg-[#7137dc]/10 active:scale-[0.99]"
                 >
                     <Zap size={17} />
-                    Buy now
+                    {t("buyNow")}
                 </button>
             </div>
         </div>
