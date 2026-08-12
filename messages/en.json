@@ -394,5 +394,6 @@
   "orderDetailsNeedHelpDescription": "If you have any question about your order, our support team is here to help.",
   "orderDetailsContactSupport": "Contact Support",
   "orderDetailsDownloadInvoice": "Download invoice",
-  "orderDetailsSubtitle": "Order Details"
+  "orderDetailsSubtitle": "Order Details",
+  "Wishlist": "Wishlist"
 }
