@@ -338,5 +338,21 @@
   "reviewQuote": "“جودة الصوت ممتازة وإلغاء الضوضاء مذهل. السماعات مريحة حتى بعد ساعات عديدة.”",
   "verifiedCustomer": "عميل موثوق",
   "items": "منتجات",
-  "relatedProducts": "منتجات مشابهه"
+  "relatedProducts": "منتجات مشابهه",
+  "ordersEstimatedDelivery": "التوصيل المتوقع",
+  "ordersCancelledOn": "تم الإلغاء في",
+  "ordersShippedStatus": "تم الشحن",
+  "ordersDeliveredStatus": "تم التوصيل",
+  "ordersProcessingStatus": "قيد المعالجة",
+  "ordersCancelledStatus": "ملغي",
+  "ordersProductIphone15ProMax": "آيفون 15 برو ماكس",
+  "ordersProductMacbookAirM2": "ماك بوك إير M2",
+  "ordersProductIpadPro": "آيباد برو",
+  "orderDetails": "تفاصيل الطلب",
+  "ordersItems": "منتجات",
+  "ordersTrackYourOrder": "تتبع الطلب",
+  "ordersOrderDetails": "تفاصيل الطلب",
+  "ordersBuyAgain": "شراء مرة أخرى",
+  "ordersCancelOrder": "إلغاء الطلب",
+  "ordersOrder": "طلب"
 }

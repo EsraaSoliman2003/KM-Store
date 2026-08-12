@@ -5,181 +5,335 @@ import {
   CheckCircle2,
   ChevronRight,
   Clock3,
-  Package,
+  Plus,
+  ShoppingCart,
   Truck,
+  X,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 
-export default function page() {
+type OrderStatus = "shipped" | "delivered" | "processing" | "cancelled";
+
+type Order = {
+  id: string;
+  date: string;
+  total: string;
+  itemsCount: number;
+  products: {
+    name: string;
+    image: string;
+  }[];
+  status: OrderStatus;
+  deliveryLabel: string;
+  deliveryDate: string;
+};
+
+export default function Page() {
   const t = useTranslations();
 
-  const orders = [
+  const orders: Order[] = [
     {
-      id: "#10245",
+      id: "#TN-84921",
       date: "Aug 10, 2026",
-      status: t("orderStatusDelivered"),
-      statusIcon: CheckCircle2,
-      statusClass: "text-[var(--success)] bg-[var(--success)]/10",
-      image: "/phone.png",
+      total: "1199.00 $",
+      itemsCount: 3,
+      status: "shipped",
+      deliveryLabel: t("ordersEstimatedDelivery"),
+      deliveryDate: "Aug 13, 2026",
       products: [
         {
-          name: t("productArionTV"),
-          quantity: 1,
+          name: t("ordersProductIphone15ProMax"),
+          image: "/2.png",
         },
         {
-          name: t("productWirelessEarbuds"),
-          quantity: 2,
+          name: t("ordersProductMacbookAirM2"),
+          image: "/2.png",
+        },
+        {
+          name: t("ordersProductIpadPro"),
+          image: "/2.png",
         },
       ],
-      total: "EGP 1,626.95",
     },
     {
-      id: "#10244",
-      date: "Aug 7, 2026",
-      status: t("orderStatusOnTheWay"),
-      statusIcon: Truck,
-      statusClass: "text-[var(--main)] bg-[var(--main)]/10",
-      image: "/phone.png",
+      id: "#TN-84922",
+      date: "Aug 10, 2026",
+      total: "1199.00 $",
+      itemsCount: 2,
+      status: "delivered",
+      deliveryLabel: t("ordersEstimatedDelivery"),
+      deliveryDate: "Aug 13, 2026",
       products: [
         {
-          name: t("productArionSmartTV"),
-          quantity: 1,
+          name: t("ordersProductIphone15ProMax"),
+          image: "/2.png",
         },
         {
-          name: t("productWirelessEarbuds"),
-          quantity: 1,
+          name: t("ordersProductMacbookAirM2"),
+          image: "/2.png",
         },
       ],
-      total: "EGP 950.00",
     },
     {
-      id: "#10243",
-      date: "Aug 2, 2026",
-      status: t("orderStatusProcessing"),
-      statusIcon: Clock3,
-      statusClass: "text-[var(--warning)] bg-[var(--warning)]/10",
-      image: "/phone.png",
+      id: "#TN-84923",
+      date: "Aug 10, 2026",
+      total: "1199.00 $",
+      itemsCount: 2,
+      status: "processing",
+      deliveryLabel: t("ordersEstimatedDelivery"),
+      deliveryDate: "Aug 13, 2026",
       products: [
         {
-          name: t("productWirelessEarbuds"),
-          quantity: 1,
+          name: t("ordersProductIphone15ProMax"),
+          image: "/2.png",
+        },
+        {
+          name: t("ordersProductMacbookAirM2"),
+          image: "/2.png",
         },
       ],
-      total: "EGP 400.00",
+    },
+    {
+      id: "#TN-84924",
+      date: "Aug 10, 2026",
+      total: "1199.00 $",
+      itemsCount: 2,
+      status: "cancelled",
+      deliveryLabel: t("ordersCancelledOn"),
+      deliveryDate: "Aug 13, 2026",
+      products: [
+        {
+          name: t("ordersProductIphone15ProMax"),
+          image: "/2.png",
+        },
+        {
+          name: t("ordersProductMacbookAirM2"),
+          image: "/2.png",
+        },
+      ],
     },
   ];
 
+  const statusConfig = {
+    shipped: {
+      label: t("ordersShippedStatus"),
+      icon: Truck,
+      className:
+        "border-[var(--main)] bg-[rgba(104,58,208,0.08)] text-[var(--main)]",
+    },
+
+    delivered: {
+      label: t("ordersDeliveredStatus"),
+      icon: CheckCircle2,
+      className:
+        "border-[var(--success)] bg-[rgba(34,197,94,0.08)] text-[var(--success)]",
+    },
+
+    processing: {
+      label: t("ordersProcessingStatus"),
+      icon: Clock3,
+      className:
+        "border-[var(--warning)] bg-[rgba(245,158,11,0.08)] text-[var(--warning)]",
+    },
+
+    cancelled: {
+      label: t("ordersCancelledStatus"),
+      icon: Truck,
+      className:
+        "border-[var(--error)] bg-[rgba(239,68,68,0.08)] text-[var(--error)]",
+    },
+  };
+
   return (
-    <main className="container mt-18 py-5 md:py-10">
-      {/* Page Header */}
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-[var(--text-primary)] sm:text-3xl">
-          {t("myOrders")}
-        </h1>
+    <main className="min-h-screen py-6 text-(--text-primary) transition-colors duration-300 mt-18">
+      <div className="container">
 
-        <p className="mt-1 text-sm text-[var(--text-muted)]">
-          {t("myOrdersSubtitle")}
-        </p>
-      </div>
+        {/* Breadcrumb */}
+        <div className="mb-5 flex items-center gap-3 text-[14px] text-(--text-muted)">
+          <Link href="/" className="transition-colors hover:text-[var(--text-primary)]">
+            {t("home")}
+          </Link>
+          <ChevronRight size={15} className="text-[var(--text-muted)]" />
+          <Link href="/" className="transition-colors hover:text-[var(--text-primary)]">
+            {t("profile")}
+          </Link>
+          <ChevronRight size={15} className="text-[var(--text-muted)]" />
+          <span className="font-medium text-[var(--text-primary)]">
+            {t("myOrders")}
+          </span>
+        </div>
 
-      {/* Orders */}
-      <div className="flex flex-col gap-5">
-        {orders.map((order) => {
-          const StatusIcon = order.statusIcon;
+        {/* Page Header */}
+        <div className="mb-9">
+          <h1 className="text-[26px] font-bold leading-tight text-[var(--text-primary)] sm:text-[28px]">
+            {t("myOrders")}
+          </h1>
+          <p className="mt-1.5 text-[15px] text-[var(--text-secondary)]">
+            {t("myOrdersSubtitle")}
+          </p>
+        </div>
 
-          return (
-            <div
-              key={order.id}
-              className="overflow-hidden rounded-2xl border border-(--border-dark) bg-(--bg-tertiary)"
-            >
-              {/* Order Header */}
-              <div className="flex flex-col gap-3 border-b border-(--border-dark) px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--main)]/10 text-[var(--main)]">
-                    <Package size={19} />
-                  </div>
+        {/* قائمة الطلبات */}
+        <div className="flex flex-col gap-6">
+          {orders.map((order, index) => {
+            const config = statusConfig[order.status];
+            const StatusIcon = config.icon;
 
-                  <div>
-                    <p className="text-sm font-semibold text-[var(--text-primary)]">
-                      {t("orderLabel")} {order.id}
+            return (
+              <section
+                key={`${order.id}-${index}`}
+                className="rounded-[var(--radius-sm)] border border-[var(--border-dark)] bg-[var(--bg-tertiary)] p-4 transition-colors duration-300 sm:p-5"
+              >
+                {/* شبكة مرنة للشاشات الكبيرة */}
+                <div className="grid grid-cols-1 gap-5 lg:grid-cols-[auto_1fr_auto_auto] lg:gap-6">
+
+                  {/* 1. معلومات الطلب (رقم، تاريخ، إجمالي) */}
+                  <div className="flex flex-col justify-center border-b border-[var(--border-dark)] pb-4 lg:border-b-0 lg:border-r lg:pr-6 lg:pb-0">
+                    <p className="text-[18px] font-semibold text-[var(--text-primary)]">
+                       {t("ordersOrder")} {order.id}
                     </p>
-
-                    <p className="mt-0.5 text-xs text-[var(--text-muted)]">
+                    <p className="mt-1 text-[12px] text-[var(--text-muted)]">
                       {order.date}
                     </p>
-                  </div>
-                </div>
-
-                <div
-                  className={`flex w-fit items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium ${order.statusClass}`}
-                >
-                  <StatusIcon size={14} />
-                  {order.status}
-                </div>
-              </div>
-
-              {/* Order Body */}
-              <div className="p-4 sm:p-5">
-                <div className="flex gap-4">
-                  {/* Product Image */}
-                  <div className="h-[105px] w-[90px] shrink-0 overflow-hidden rounded-xl bg-[var(--bg-tertiary)] sm:h-[120px] sm:w-[105px]">
-                    <img
-                      src={order.image}
-                      alt={t("orderProductImageAlt")}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-
-                  {/* Products */}
-                  <div className="flex min-w-0 flex-1 flex-col justify-between">
-                    <div>
-                      {order.products.map((product, index) => (
-                        <div
-                          key={index}
-                          className="mb-2 flex min-w-0 items-start gap-2 last:mb-0"
-                        >
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--main)]" />
-
-                          <p className="min-w-0 truncate text-sm font-medium text-[var(--text-primary)]">
-                            {product.name}
-                          </p>
-
-                          <span className="shrink-0 text-xs text-[var(--text-muted)]">
-                            ×{product.quantity}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
-                    <p className="mt-3 text-xs text-[var(--text-muted)]">
-                      {order.products.length}{" "}
-                      {order.products.length === 1 ? t("orderProductLabel") : t("orderProductsLabel")} {t("inThisOrder")}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Bottom */}
-                <div className="mt-5 flex flex-col gap-3 border-t border-(--border-dark) pt-4 sm:flex-row sm:items-center sm:justify-between">
-                  <div>
-                    <p className="text-xs text-[var(--text-muted)]">{t("orderTotalLabel")}</p>
-                    <p className="mt-0.5 text-lg font-bold text-[var(--text-primary)]">
+                    <p className="mt-2 text-[18px] font-semibold text-[var(--text-primary)]">
                       {order.total}
                     </p>
                   </div>
 
-                  <Link
-                    href={"/track-your-order"}
-                    className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-[var(--main)] px-5 text-sm font-medium text-[var(--text-white)] transition hover:bg-[var(--main-hover)] sm:w-auto"
-                  >
-                    {t("trackYourOrderButton")}
-                    <ChevronRight size={16} />
-                  </Link>
+                  {/* 2. المنتجات (صور + أسماء) */}
+                  <div className="flex min-w-0 flex-col justify-center gap-3 border-b border-[var(--border-dark)] pb-4 lg:border-b-0 lg:border-r lg:pr-6 lg:pb-0">
+                    {/* Product Images */}
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      {order.products.slice(0, 2).map((product, i) => (
+                        <div
+                          key={i}
+                          className="relative h-[80px] w-[80px] overflow-hidden rounded-[var(--radius-sm)] border border-[var(--border-dark)] bg-[var(--bg-primary)]"
+                        >
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="h-full w-full object-contain p-1"
+                          />
+                        </div>
+                      ))}
+
+                      {order.itemsCount > 2 && (
+                        <div className="flex h-[80px] w-[80px] items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border-dark)] bg-[var(--bg-primary)] text-[14px] font-medium text-[var(--text-primary)]">
+                          +{order.itemsCount - 2}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Product Names */}
+                    <div>
+                      <p className="text-[16px] font-semibold text-[var(--text-primary)]">
+                        {order.itemsCount} {t("ordersItems")}
+                      </p>
+
+                      <div className="mt-1 max-w-[220px] text-[14px] leading-[19px] text-[var(--text-secondary)]">
+                        {order.products.map((p, i) => (
+                          <span key={i} className="inline-block truncate">
+                            {p.name}
+                            {i < order.products.length - 1 && ", "}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Order Status + Delivery Date */}
+                  <div className="flex flex-col justify-center border-b border-[var(--border-dark)] pb-4 lg:border-b-0 lg:border-r lg:pr-6 lg:pb-0">
+                    <div
+                      className={`inline-flex items-center gap-2 rounded-[var(--radius-sm)] border px-3 py-2 text-[14px] font-medium ${config.className}`}
+                    >
+                      <StatusIcon size={18} />
+                      <span>{config.label}</span>
+                    </div>
+
+                    <p className="mt-2 text-[12px] text-[var(--text-muted)]">
+                      {order.deliveryLabel}
+                    </p>
+
+                    <p className="text-[13px] font-semibold text-[var(--text-primary)]">
+                      {order.deliveryDate}
+                    </p>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex min-w-[160px] flex-col justify-center gap-2">
+                    {order.status === "shipped" && (
+                      <>
+                        <Link
+                          href="/track-your-order"
+                          className="flex h-[46px] w-full items-center justify-center gap-2 rounded-[var(--radius-sm)] bg-[var(--main)] px-4 text-[15px] font-medium text-[var(--text-white)] transition-colors hover:bg-[var(--main-hover)]"
+                        >
+                          <Truck size={19} />
+                          {t("ordersTrackYourOrder")}
+                        </Link>
+
+                        <Link
+                          href={`/orders/${order.id.replace("#", "")}`}
+                          className="flex h-[46px] w-full items-center justify-center rounded-[var(--radius-sm)] border border-[var(--main)] bg-transparent px-4 text-[15px] font-medium text-[var(--main)] transition-colors hover:bg-[var(--main)]/10"
+                        >
+                          {t("ordersOrderDetails")}
+                        </Link>
+                      </>
+                    )}
+
+                    {order.status === "delivered" && (
+                      <>
+                        <Link
+                          href={`/orders/${order.id.replace("#", "")}`}
+                          className="flex h-[46px] w-full items-center justify-center rounded-[var(--radius-sm)] border border-[var(--main)] bg-transparent px-4 text-[15px] font-medium text-[var(--main)] transition-colors hover:bg-[var(--main)]/10"
+                        >
+                          {t("ordersOrderDetails")}
+                        </Link>
+
+                        <button
+                          type="button"
+                          className="flex h-[46px] w-full items-center justify-center gap-2 rounded-[var(--radius-sm)] bg-[var(--main)] px-4 text-[15px] font-medium text-[var(--text-white)] transition-colors hover:bg-[var(--main-hover)]"
+                        >
+                          <ShoppingCart size={19} />
+                          {t("ordersBuyAgain")}
+                        </button>
+                      </>
+                    )}
+
+                    {order.status === "processing" && (
+                      <>
+                        <Link
+                          href={`/orders/${order.id.replace("#", "")}`}
+                          className="flex h-[46px] w-full items-center justify-center rounded-[var(--radius-sm)] border border-[var(--main)] bg-transparent px-4 text-[15px] font-medium text-[var(--main)] transition-colors hover:bg-[var(--main)]/10"
+                        >
+                          {t("ordersOrderDetails")}
+                        </Link>
+
+                        <button
+                          type="button"
+                          className="flex h-[46px] w-full items-center justify-center gap-2 rounded-[var(--radius-sm)] border border-[var(--error)] bg-transparent px-4 text-[15px] font-medium text-[var(--error)] transition-colors hover:bg-[var(--error)]/10"
+                        >
+                          <X size={19} />
+                          {t("ordersCancelOrder")}
+                        </button>
+                      </>
+                    )}
+
+                    {order.status === "cancelled" && (
+                      <Link
+                        href={`/orders/${order.id.replace("#", "")}`}
+                        className="flex h-[46px] w-full items-center justify-center rounded-[var(--radius-sm)] border border-[var(--main)] bg-transparent px-4 text-[15px] font-medium text-[var(--main)] transition-colors hover:bg-[var(--main)]/10"
+                      >
+                        {t("ordersOrderDetails")}
+                      </Link>
+                    )}
+                  </div>
+
                 </div>
-              </div>
-            </div>
-          );
-        })}
+              </section>
+            );
+          })}
+        </div>
       </div>
     </main>
   );
