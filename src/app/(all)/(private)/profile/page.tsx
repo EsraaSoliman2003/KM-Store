@@ -40,41 +40,14 @@ export default function Page() {
   }
 
   return (
-    <main className="mt-18 min-h-screen py-6 text-(--text-primary) transition-colors duration-300">
-      <div className="container">
-
-        <Breadcrumb
-          items={[
-            {
-              label: t("settings"),
-              href: "/account-menu",
-              mobileOnly: true,
-            },
-            {
-              label: t("profile"),
-            },
-          ]}
-        />
-
-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-4">
-
-          {/* ================= SIDEBAR ================= */}
-          <Sidebar />
-
-          {/* ================= MAIN CONTENT ================= */}
-          <div className="col-span-1 lg:col-span-3">
-            <div className="min-w-0 mb-10">
-              <Header />
-              <ProfileStats />
-              <Info />
-              <Address />
-              <Payment />
-              <Setting />
-              <Help />
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
+    <div className="min-w-0 mb-10">
+      <Header />
+      <ProfileStats />
+      <Info />
+      <Address />
+      <Payment />
+      <Setting />
+      <Help />
+    </div>
   );
 }

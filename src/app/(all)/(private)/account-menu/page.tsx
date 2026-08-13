@@ -35,12 +35,12 @@ export default function page() {
         {
             label: t("address"),
             icon: MapPin,
-            href: "/profile/address",
+            href: "/address",
         },
         {
             label: t("paymentMethod"),
             icon: CreditCard,
-            href: "/profile/payment-methods",
+            href: "/payment-methods",
         },
         {
             label: t("wishlist"),
@@ -65,7 +65,7 @@ export default function page() {
         {
             label: t("accountSettings"),
             icon: Settings,
-            href: "/profile/settings",
+            href: "/settings",
         },
         {
             label: t("helpCenter"),
