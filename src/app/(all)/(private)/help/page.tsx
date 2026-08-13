@@ -170,7 +170,7 @@ export default function Page() {
                 <button
                   key={topic.id}
                   type="button"
-                  className={`group flex min-h-[72px] items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-white/[0.02] ${index < helpTopics.length - 2
+                  className={`group flex min-h-[72px] items-center gap-3 px-4 py-3 text-start transition-colors hover:bg-white/[0.02] ${index < helpTopics.length - 2
                     ? "border-b border-(--border-dark)"
                     : ""
                     }`}
