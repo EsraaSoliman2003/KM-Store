@@ -431,5 +431,15 @@
   "notificationSettings": "Notification Settings",
   "deleteAccount": "Delete Account",
   "supportDescription": "If you have any questions or need assistance, our support team is here to help.",
-  "settings": "Settings"
+  "settings": "Settings",
+  "subTitleAddress": "Manage your personal information and account detai",
+  "setAsDefault": "Set as default",
+  "deleteAddress": "Delete address",
+  "currentBalance": "Current Balance",
+  "savedCards": "Saved Cards",
+  "mastercardEndingIn": "Mastercard ending in",
+  "deletePaymentMethod": "Delete payment method",
+  "paymentInformationSecure": "Your payment information is secure",
+  "paymentSecurityDescription": "We use 256-bit SSL encryption to protect your card details. TechNova never stores your full card number.",
+  "WishlistSubTitle": "6 Items Saved For later"
 }
