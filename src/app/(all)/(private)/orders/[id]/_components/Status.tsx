@@ -1,8 +1,8 @@
-import Timeline from '@/app/(all)/track-your-order/_components/Timeline';
 import { ArrowRight, Check, Clock3 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import React from 'react'
+import Timeline from '../../../track-your-order/_components/Timeline';
 
 type OrderStatus = {
     label: string;
