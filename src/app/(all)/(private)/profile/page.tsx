@@ -56,6 +56,18 @@ export default function Page() {
             className="text-(--text-muted)"
           />
 
+          <Link
+            href="/account-menu"
+            className="lg:hidden transition-colors hover:text-(--text-primary)"
+          >
+            {t("settings")}
+          </Link>
+
+          <ChevronRight
+            size={14}
+            className="lg:hidden text-(--text-muted)"
+          />
+
           <span className="font-medium text-(--text-primary)">
             {t("profile")}
           </span>

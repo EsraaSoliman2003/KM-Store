@@ -91,10 +91,7 @@ export default function page() {
                             <Link
                                 key={item.label}
                                 href={item.href}
-                                className={`flex items-center gap-4 rounded-[5px] p-4 text-lg transition-all ${item.active
-                                    ? "bg-[rgba(104,58,208,0.16)] text-(--main)"
-                                    : "text-(--text-secondary) hover:bg-(--bg-primary) hover:text-(--text-primary)"
-                                    }`}
+                                className={`flex items-center gap-4 rounded-[5px] p-4 text-lg transition-all text-(--text-secondary) hover:bg-(--main)/10 hover:text-(--text-primary)`}
                             >
                                 <Icon size={24} />
                                 <span>{item.label}</span>
@@ -108,7 +105,7 @@ export default function page() {
                     <button
                         type="button"
                         onClick={logOut}
-                        className="flex w-full items-center gap-2 rounded-[5px] px-2 py-3 justify-center text-lg text-(--error) transition-colors hover:bg-[rgba(239,68,68,0.08)]"
+                        className="flex w-full items-center gap-2 rounded-[5px] p-4 justify-center text-lg text-(--error) transition-colors hover:bg-[rgba(239,68,68,0.08)]"
                     >
                         <LogOut size={24} />
                         <span>{t("logout")}</span>

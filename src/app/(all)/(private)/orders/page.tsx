@@ -155,7 +155,18 @@ export default function Page() {
             {t("home")}
           </Link>
           <ChevronRight size={15} className="text-[var(--text-muted)]" />
-          <Link href="/" className="transition-colors hover:text-[var(--text-primary)]">
+          <Link
+            href="/account-menu"
+            className="lg:hidden transition-colors hover:text-(--text-primary)"
+          >
+            {t("settings")}
+          </Link>
+
+          <ChevronRight
+            size={14}
+            className="lg:hidden text-(--text-muted)"
+          />
+          <Link href="/profile" className="transition-colors hover:text-[var(--text-primary)]">
             {t("profile")}
           </Link>
           <ChevronRight size={15} className="text-[var(--text-muted)]" />
@@ -191,7 +202,7 @@ export default function Page() {
                   {/* 1. معلومات الطلب (رقم، تاريخ، إجمالي) */}
                   <div className="flex flex-col justify-center border-b border-[var(--border-dark)] pb-4 lg:border-b-0 lg:border-r lg:pr-6 lg:pb-0">
                     <p className="text-[18px] font-semibold text-[var(--text-primary)]">
-                       {t("ordersOrder")} {order.id}
+                      {t("ordersOrder")} {order.id}
                     </p>
                     <p className="mt-1 text-[12px] text-[var(--text-muted)]">
                       {order.date}
