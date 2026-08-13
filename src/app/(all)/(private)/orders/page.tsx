@@ -213,7 +213,7 @@ export default function Page() {
                   </div>
 
                   {/* 2. المنتجات (صور + أسماء) */}
-                  <div className="flex min-w-0 flex-col justify-center gap-3 border-b border-[var(--border-dark)] pb-4 lg:border-b-0 lg:border-r lg:pr-6 lg:pb-0">
+                  <div className="flex min-w-0 flex-col justify-center lg:items-center gap-3 border-b border-[var(--border-dark)] pb-4 lg:border-b-0 lg:border-r lg:pr-6 lg:pb-0">
                     {/* Product Images */}
                     <div className="flex flex-wrap items-center gap-2.5">
                       {order.products.slice(0, 2).map((product, i) => (
