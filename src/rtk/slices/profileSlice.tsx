@@ -46,7 +46,9 @@ const profileSlice = createSlice({
   name: "profile",
   initialState,
 
-  reducers: {},
+  reducers: {
+    resetAuthState: () => initialState,
+  },
 
   extraReducers: (builder) => {
     builder

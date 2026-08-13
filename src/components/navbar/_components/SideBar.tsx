@@ -9,8 +9,9 @@ import {
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslations } from "next-intl";
 import { links } from "./links";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Settings } from "lucide-react";
+import { useAppSelector } from "@/rtk/hooks";
 
 type Props = {
     locale: string;
@@ -29,6 +30,16 @@ export default function SideBar({
 }: Props) {
     const t = useTranslations();
     const pathname = usePathname();
+    const router = useRouter();
+    const { token } = useAppSelector(s => s.auth)
+    const handleRouting = () => {
+        if (token) {
+            router.push("/account-menu")
+        } else {
+            router.push("/login")
+        }
+        setIsSidebarOpen(false)
+    }
 
     return (
         <div
@@ -106,8 +117,8 @@ export default function SideBar({
                                     href={item.href}
                                     onClick={() => setIsSidebarOpen(false)}
                                     className={`block rounded-xl px-5 py-3 text-sm font-medium transition-all duration-200 ${isActive
-                                            ? "text-(--main)"
-                                            : "text-(--text-primary) hover:text-(--main)"
+                                        ? "text-(--main)"
+                                        : "text-(--text-primary) hover:text-(--main)"
                                         }`}
                                 >
                                     {t(item.title)}
@@ -120,9 +131,8 @@ export default function SideBar({
 
                     {/* Profile */}
                     <div>
-                        <Link
-                            href="/account-menu"
-                            onClick={() => setIsSidebarOpen(false)}
+                        <button
+                            onClick={handleRouting}
                             className="group flex items-center gap-4 rounded-2xl px-5 py-3.5 text-(--text-primary) transition-all duration-200 hover:text-(--main)"
                         >
                             <Settings
@@ -130,7 +140,7 @@ export default function SideBar({
                                 className="transition-transform duration-200 group-hover:scale-110"
                             />
                             <span className="font-medium">{t("settings")}</span>
-                        </Link>
+                        </button>
                     </div>
 
                     <div className="mt-5 border-t border-(--border-color) pt-5" />
