@@ -11,6 +11,7 @@ import Help from "./_components/Help";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import Sidebar from "./_components/Sidebar";
+import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 
 export default function Page() {
   const t = useTranslations();
@@ -42,36 +43,18 @@ export default function Page() {
     <main className="mt-18 min-h-screen py-6 text-(--text-primary) transition-colors duration-300">
       <div className="container">
 
-        {/* Breadcrumb */}
-        <div className="mb-5 flex items-center gap-2 text-[12px] text-(--text-muted) sm:gap-3 sm:text-[14px]">
-          <Link
-            href="/"
-            className="transition-colors hover:text-(--text-primary)"
-          >
-            {t("home")}
-          </Link>
-
-          <ChevronRight
-            size={14}
-            className="text-(--text-muted)"
-          />
-
-          <Link
-            href="/account-menu"
-            className="lg:hidden transition-colors hover:text-(--text-primary)"
-          >
-            {t("settings")}
-          </Link>
-
-          <ChevronRight
-            size={14}
-            className="lg:hidden text-(--text-muted)"
-          />
-
-          <span className="font-medium text-(--text-primary)">
-            {t("profile")}
-          </span>
-        </div>
+<Breadcrumb
+  items={[
+    {
+      label: t("settings"),
+      href: "/account-menu",
+      mobileOnly: true,
+    },
+    {
+      label: t("profile"),
+    },
+  ]}
+/>
 
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-4">
 

@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 
 type OrderStatus = "shipped" | "delivered" | "processing" | "cancelled";
 
@@ -150,30 +151,22 @@ export default function Page() {
       <div className="container">
 
         {/* Breadcrumb */}
-        <div className="mb-5 flex items-center gap-3 text-[14px] text-(--text-muted)">
-          <Link href="/" className="transition-colors hover:text-[var(--text-primary)]">
-            {t("home")}
-          </Link>
-          <ChevronRight size={15} className="text-[var(--text-muted)]" />
-          <Link
-            href="/account-menu"
-            className="lg:hidden transition-colors hover:text-(--text-primary)"
-          >
-            {t("settings")}
-          </Link>
-
-          <ChevronRight
-            size={14}
-            className="lg:hidden text-(--text-muted)"
-          />
-          <Link href="/profile" className="transition-colors hover:text-[var(--text-primary)]">
-            {t("profile")}
-          </Link>
-          <ChevronRight size={15} className="text-[var(--text-muted)]" />
-          <span className="font-medium text-[var(--text-primary)]">
-            {t("myOrders")}
-          </span>
-        </div>
+        <Breadcrumb
+          items={[
+            {
+              label: t("settings"),
+              href: "/account-menu",
+              mobileOnly: true,
+            },
+            {
+              label: t("profile"),
+              href: "/profile",
+            },
+            {
+              label: t("myOrders"),
+            },
+          ]}
+        />
 
         {/* Page Header */}
         <div className="mb-9">
