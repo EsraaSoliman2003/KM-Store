@@ -121,7 +121,7 @@ export default function Page() {
       label: t("ordersShippedStatus"),
       icon: Truck,
       className:
-        "border-[var(--main)] bg-[rgba(104,58,208,0.08)] text-[var(--main)]",
+        "border-(--main) bg-[rgba(104,58,208,0.08)] text-(--main)",
     },
 
     delivered: {
@@ -147,7 +147,7 @@ export default function Page() {
   };
 
   return (
-    <main className="min-h-screen py-6 text-(--text-primary) transition-colors duration-300 mt-18">
+    <main className="min-h-screen py-6 text-(--text-primary) transition-colors duration-300 mt-18 mb-10">
       <div className="container">
 
         {/* Breadcrumb */}
@@ -170,10 +170,10 @@ export default function Page() {
 
         {/* Page Header */}
         <div className="mb-9">
-          <h1 className="text-[26px] font-bold leading-tight text-[var(--text-primary)] sm:text-[28px]">
+          <h1 className="text-[26px] font-bold leading-tight text-(--text-primary) sm:text-[28px]">
             {t("myOrders")}
           </h1>
-          <p className="mt-1.5 text-[15px] text-[var(--text-secondary)]">
+          <p className="mt-1.5 text-[15px] text-(--text-secondary)">
             {t("myOrdersSubtitle")}
           </p>
         </div>
@@ -187,32 +187,32 @@ export default function Page() {
             return (
               <section
                 key={`${order.id}-${index}`}
-                className="rounded-[var(--radius-sm)] border border-[var(--border-dark)] bg-[var(--bg-tertiary)] p-4 transition-colors duration-300 sm:p-5"
+                className="rounded-sm border border-(--border-dark) bg-(--bg-tertiary) p-4 transition-colors duration-300 sm:p-5"
               >
                 {/* شبكة مرنة للشاشات الكبيرة */}
-                <div className="grid grid-cols-1 gap-5 lg:grid-cols-[auto_1fr_auto_auto] lg:gap-6">
+                <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1fr_2fr_180px_200px] lg:gap-6">
 
                   {/* 1. معلومات الطلب (رقم، تاريخ، إجمالي) */}
-                  <div className="flex flex-col justify-center border-b border-[var(--border-dark)] pb-4 lg:border-b-0 lg:border-r lg:pr-6 lg:pb-0">
-                    <p className="text-[18px] font-semibold text-[var(--text-primary)]">
+                  <div className={`flex flex-col justify-center border-b border-(--border-dark) pb-4 lg:border-b-0 ${t("dir") === "ltr" && "lg:border-r lg:pr-6"} lg:pb-0`}>
+                    <p className="text-[18px] font-semibold text-(--text-primary)">
                       {t("ordersOrder")} {order.id}
                     </p>
-                    <p className="mt-1 text-[12px] text-[var(--text-muted)]">
+                    <p className="mt-1 text-[12px] text-(--text-muted)">
                       {order.date}
                     </p>
-                    <p className="mt-2 text-[18px] font-semibold text-[var(--text-primary)]">
+                    <p className="mt-2 text-[18px] font-semibold text-(--text-primary)">
                       {order.total}
                     </p>
                   </div>
 
                   {/* 2. المنتجات (صور + أسماء) */}
-                  <div className="flex min-w-0 flex-col justify-center lg:items-center gap-3 border-b border-[var(--border-dark)] pb-4 lg:border-b-0 lg:border-r lg:pr-6 lg:pb-0">
+                  <div className="flex min-w-0 flex-col justify-center lg:items-center gap-3 border-b border-(--border-dark) pb-4 lg:border-b-0 lg:border-r lg:pr-6 lg:pb-0">
                     {/* Product Images */}
                     <div className="flex flex-wrap items-center gap-2.5">
                       {order.products.slice(0, 2).map((product, i) => (
                         <div
                           key={i}
-                          className="relative h-[80px] w-[80px] overflow-hidden rounded-[var(--radius-sm)] border border-[var(--border-dark)] bg-[var(--bg-primary)]"
+                          className="relative h-20 w-20 overflow-hidden rounded-sm border border-(--border-dark) bg-(--bg-primary)"
                         >
                           <img
                             src={product.image}
@@ -223,7 +223,7 @@ export default function Page() {
                       ))}
 
                       {order.itemsCount > 2 && (
-                        <div className="flex h-[80px] w-[80px] items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border-dark)] bg-[var(--bg-primary)] text-[14px] font-medium text-[var(--text-primary)]">
+                        <div className="flex h-20 w-20 items-center justify-center rounded-sm border border-(--border-dark) bg-(--bg-primary) text-[14px] font-medium text-(--text-primary)">
                           +{order.itemsCount - 2}
                         </div>
                       )}
@@ -231,30 +231,30 @@ export default function Page() {
                   </div>
 
                   {/* Order Status + Delivery Date */}
-                  <div className="flex flex-col justify-center border-b border-[var(--border-dark)] pb-4 lg:border-b-0 lg:border-r lg:pr-6 lg:pb-0">
+                  <div className="flex flex-col justify-center border-b border-(--border-dark) pb-4 lg:border-b-0 lg:border-r lg:pr-6 lg:pb-0">
                     <div
-                      className={`inline-flex items-center gap-2 rounded-[var(--radius-sm)] border px-3 py-2 text-[14px] font-medium ${config.className}`}
+                      className={`inline-flex items-center gap-2 rounded-sm border px-3 py-2 text-[14px] font-medium ${config.className}`}
                     >
                       <StatusIcon size={18} />
                       <span>{config.label}</span>
                     </div>
 
-                    <p className="mt-2 text-[12px] text-[var(--text-muted)]">
+                    <p className="mt-2 text-[12px] text-(--text-muted)">
                       {order.deliveryLabel}
                     </p>
 
-                    <p className="text-[13px] font-semibold text-[var(--text-primary)]">
+                    <p className="text-[13px] font-semibold text-(--text-primary)">
                       {order.deliveryDate}
                     </p>
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex min-w-[160px] flex-col justify-center gap-2">
+                  <div className={`flex min-w-40 flex-col justify-center gap-2 border-(--border-dark) ${t("dir") === "rtl" && "lg:border-r lg:pr-6"}`}>
                     {order.status === "shipped" && (
                       <>
                         <Link
                           href="/track-your-order"
-                          className="flex h-[46px] w-full items-center justify-center gap-2 rounded-[var(--radius-sm)] bg-[var(--main)] px-4 text-[15px] font-medium text-[var(--text-white)] transition-colors hover:bg-[var(--main-hover)]"
+                          className="flex h-11.5 w-full items-center justify-center gap-2 rounded-sm bg-(--main) px-4 text-[15px] font-medium text-(--text-white) transition-colors hover:bg-(--main-hover)"
                         >
                           <Truck size={19} />
                           {t("ordersTrackYourOrder")}
@@ -262,7 +262,7 @@ export default function Page() {
 
                         <Link
                           href={`/orders/${order.id.replace("#", "")}`}
-                          className="flex h-[46px] w-full items-center justify-center rounded-[var(--radius-sm)] border border-[var(--main)] bg-transparent px-4 text-[15px] font-medium text-[var(--main)] transition-colors hover:bg-[var(--main)]/10"
+                          className="flex h-11.5 w-full items-center justify-center rounded-sm border border-(--main) bg-transparent px-4 text-[15px] font-medium text-(--main) transition-colors hover:bg-(--main)/10"
                         >
                           {t("ordersOrderDetails")}
                         </Link>
@@ -273,14 +273,14 @@ export default function Page() {
                       <>
                         <Link
                           href={`/orders/${order.id.replace("#", "")}`}
-                          className="flex h-[46px] w-full items-center justify-center rounded-[var(--radius-sm)] border border-[var(--main)] bg-transparent px-4 text-[15px] font-medium text-[var(--main)] transition-colors hover:bg-[var(--main)]/10"
+                          className="flex h-11.5 w-full items-center justify-center rounded-sm border border-(--main) bg-transparent px-4 text-[15px] font-medium text-(--main) transition-colors hover:bg-(--main)/10"
                         >
                           {t("ordersOrderDetails")}
                         </Link>
 
                         <button
                           type="button"
-                          className="flex h-[46px] w-full items-center justify-center gap-2 rounded-[var(--radius-sm)] bg-[var(--main)] px-4 text-[15px] font-medium text-[var(--text-white)] transition-colors hover:bg-[var(--main-hover)]"
+                          className="flex h-11.5 w-full items-center justify-center gap-2 rounded-sm bg-(--main) px-4 text-[15px] font-medium text-(--text-white) transition-colors hover:bg-(--main-hover)"
                         >
                           <ShoppingCart size={19} />
                           {t("ordersBuyAgain")}
@@ -292,14 +292,14 @@ export default function Page() {
                       <>
                         <Link
                           href={`/orders/${order.id.replace("#", "")}`}
-                          className="flex h-[46px] w-full items-center justify-center rounded-[var(--radius-sm)] border border-[var(--main)] bg-transparent px-4 text-[15px] font-medium text-[var(--main)] transition-colors hover:bg-[var(--main)]/10"
+                          className="flex h-11.5 w-full items-center justify-center rounded-sm border border-(--main) bg-transparent px-4 text-[15px] font-medium text-(--main) transition-colors hover:bg-(--main)/10"
                         >
                           {t("ordersOrderDetails")}
                         </Link>
 
                         <button
                           type="button"
-                          className="flex h-[46px] w-full items-center justify-center gap-2 rounded-[var(--radius-sm)] border border-[var(--error)] bg-transparent px-4 text-[15px] font-medium text-[var(--error)] transition-colors hover:bg-[var(--error)]/10"
+                          className="flex h-11.5 w-full items-center justify-center gap-2 rounded-sm border border-(--error) bg-transparent px-4 text-[15px] font-medium text-(--error) transition-colors hover:bg-(--error)/10"
                         >
                           <X size={19} />
                           {t("ordersCancelOrder")}
@@ -310,7 +310,7 @@ export default function Page() {
                     {order.status === "cancelled" && (
                       <Link
                         href={`/orders/${order.id.replace("#", "")}`}
-                        className="flex h-[46px] w-full items-center justify-center rounded-[var(--radius-sm)] border border-[var(--main)] bg-transparent px-4 text-[15px] font-medium text-[var(--main)] transition-colors hover:bg-[var(--main)]/10"
+                        className="flex h-11.5 w-full items-center justify-center rounded-sm border border-(--main) bg-transparent px-4 text-[15px] font-medium text-(--main) transition-colors hover:bg-(--main)/10"
                       >
                         {t("ordersOrderDetails")}
                       </Link>

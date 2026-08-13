@@ -66,6 +66,14 @@ export default function Navbar({ locale }: Props) {
     }
   }
 
+  const handleRoutingFav = () => {
+    if (token) {
+      router.push("/wishlist")
+    } else {
+      router.push("/login")
+    }
+  }
+
   return (
     <header className="fixed w-full top-0 z-50 bg-(--bg-primary)">
       <div className="container flex h-18 items-center justify-between">
@@ -90,8 +98,8 @@ export default function Navbar({ locale }: Props) {
                 key={item.title}
                 href={item.href}
                 className={`text-sm font-medium transition-colors duration-200 ${isActive
-                    ? "text-(--main)"
-                    : "text-(--text-primary) hover:text-(--main)"
+                  ? "text-(--main)"
+                  : "text-(--text-primary) hover:text-(--main)"
                   }`}
               >
                 {t(item.title)}
@@ -106,9 +114,9 @@ export default function Navbar({ locale }: Props) {
             <FiSearch size={19} />
           </button>
 
-          <Link href={"/wishlist"} className="text-(--text-primary) transition-colors hover:text-(--main)">
+          <button onClick={handleRoutingFav} className="text-(--text-primary) transition-colors hover:text-(--main)">
             <FiHeart size={19} />
-          </Link>
+          </button>
 
           <Link href={"/cart"} className="text-(--text-primary) transition-colors hover:text-(--main)">
             <FiShoppingCart size={19} />
@@ -133,9 +141,9 @@ export default function Navbar({ locale }: Props) {
             <FiSearch size={19} />
           </button>
 
-          <Link href={"/wishlist"} className="text-(--text-primary) transition-colors hover:text-(--main)">
+          <button onClick={handleRoutingFav} className="text-(--text-primary) transition-colors hover:text-(--main)">
             <FiHeart size={19} />
-          </Link>
+          </button>
 
           <Link href={"/cart"} className="text-(--text-primary) transition-colors hover:text-(--main)">
             <FiShoppingCart size={19} />

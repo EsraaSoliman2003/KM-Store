@@ -43,18 +43,18 @@ export default function Page() {
     <main className="mt-18 min-h-screen py-6 text-(--text-primary) transition-colors duration-300">
       <div className="container">
 
-<Breadcrumb
-  items={[
-    {
-      label: t("settings"),
-      href: "/account-menu",
-      mobileOnly: true,
-    },
-    {
-      label: t("profile"),
-    },
-  ]}
-/>
+        <Breadcrumb
+          items={[
+            {
+              label: t("settings"),
+              href: "/account-menu",
+              mobileOnly: true,
+            },
+            {
+              label: t("profile"),
+            },
+          ]}
+        />
 
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-4">
 

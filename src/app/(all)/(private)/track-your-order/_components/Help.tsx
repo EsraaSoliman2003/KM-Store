@@ -1,4 +1,4 @@
-import { ArrowRight, Headphones } from "lucide-react";
+import { ArrowLeft, ArrowRight, Headphones } from "lucide-react";
 import { useTranslations } from "next-intl";
 import React from "react";
 
@@ -31,7 +31,14 @@ export default function Help() {
                     className="flex w-full sm:w-fit shrink-0 items-center justify-center gap-2 rounded-full border border-[var(--main)] py-2 px-6 text-lg font-medium text-[var(--main)] transition hover:bg-[var(--main)]/10"
                 >
                     {t("contactSupport")}
-                    <ArrowRight size={24} />
+                    {t("dir") === "rtl"
+                        ? <ArrowLeft
+                            size={24}
+                        />
+                        : <ArrowRight
+                            size={24}
+                        />
+                    }
                 </button>
             </div>
         </section>

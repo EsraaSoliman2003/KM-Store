@@ -19,7 +19,7 @@ export default function Receiver() {
         <button
           type="button"
           onClick={() => setReceiver("person")}
-          className={`flex min-h-[72px] items-center justify-between rounded-2xl border bg-[var(--bg-tertiary)] px-4 text-left transition ${
+          className={`flex min-h-[72px] items-center justify-between rounded-2xl border bg-[var(--bg-tertiary)] px-4 text-start transition ${
             receiver === "person"
               ? "border-[var(--main)]"
               : "border-[var(--border-dark)] hover:border-[var(--main)]"
@@ -52,7 +52,7 @@ export default function Receiver() {
         <button
           type="button"
           onClick={() => setReceiver("door")}
-          className={`flex min-h-[72px] items-center gap-3 rounded-2xl border bg-[var(--bg-tertiary)] px-4 text-left transition ${
+          className={`flex min-h-[72px] items-center gap-3 rounded-2xl border bg-[var(--bg-tertiary)] px-4 text-start transition ${
             receiver === "door"
               ? "border-[var(--main)]"
               : "border-[var(--border-dark)] hover:border-[var(--main)]"

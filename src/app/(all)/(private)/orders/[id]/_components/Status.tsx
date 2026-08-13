@@ -1,4 +1,4 @@
-import { ArrowRight, Check, Clock3 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, Clock3 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import React from 'react'
@@ -45,7 +45,10 @@ export default function Status() {
                     className="flex h-10.5 items-center justify-center gap-2 rounded-sm border border-(--main) px-6 text-[18px] font-medium text-(--main) transition-colors hover:bg-(--main)/10"
                 >
                     {t("ordersTrackYourOrder")}
-                    <ArrowRight size={18} />
+                    {t("dir") === "rtl"
+                        ? <ArrowLeft size={18} />
+                        : <ArrowRight size={18} />
+                    }
                 </Link>
             </div>
         </section>

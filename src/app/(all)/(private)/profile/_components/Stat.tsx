@@ -1,5 +1,6 @@
 // Stat.tsx
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 type StatProps = {
@@ -17,6 +18,8 @@ export function Stat({
     linkLabel,
     href,
 }: StatProps) {
+    const t = useTranslations();
+
     return (
         <div className="flex flex-col items-center justify-center text-center space-y-1 md:space-y-2">
             <Icon
@@ -40,7 +43,11 @@ export function Stat({
                     {linkLabel}
                 </span>
 
-                <ArrowRight size={16} className="md:size-[18px]" />
+                {t("dir") === "rtl"
+                    ? <ArrowLeft size={16} className="md:size-[18px]" />
+                    : <ArrowRight size={16} className="md:size-[18px]" />
+                }
+
             </Link>
         </div>
     );

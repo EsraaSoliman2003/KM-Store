@@ -20,7 +20,7 @@ export default function Address() {
         <button
           type="button"
           onClick={() => setSelected((prev) => !prev)}
-          className="flex w-full items-start gap-3 p-4 text-left transition hover:bg-[var(--main)]/5 sm:p-5"
+          className="flex w-full items-start gap-3 p-4 text-start transition hover:bg-[var(--main)]/5 sm:p-5"
           aria-pressed={selected}
         >
           {/* Icon */}

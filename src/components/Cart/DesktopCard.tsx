@@ -24,7 +24,7 @@ export default function DesktopCard({ product }: Props) {
             <div className="flex min-w-0 flex-1 flex-col gap-3">
                 {/* Stock + Rating */}
                 <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 rounded-full bg-[var(--success)]/10 py-3 pl-2 pr-3.5 text-xs font-medium text-[var(--success)]">
+                    <div className={`flex items-center gap-2 rounded-full bg-[var(--success)]/10 py-3 ${t("dir") === "rtl" ? "pr-2 pl-3.5" : "pl-2 pr-3.5"} text-xs font-medium text-[var(--success)]`}>
                         <Dot size={16} strokeWidth={6} />
                         <span>{t("inStock")}</span>
                     </div>

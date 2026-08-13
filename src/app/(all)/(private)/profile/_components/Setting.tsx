@@ -1,4 +1,4 @@
-import { Bell, ChevronRight, KeyRound, Trash2, WalletCards, X } from 'lucide-react';
+import { Bell, ChevronLeft, ChevronRight, KeyRound, Trash2, WalletCards, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { SectionHeader } from './SectionHeader';
@@ -50,11 +50,16 @@ export default function Setting() {
                                     {item.label}
                                 </span>
                             </div>
-
-                            <ChevronRight
-                                size={20}
-                                className="text-(--text-muted)"
-                            />
+                            {t("dir") === "rtl"
+                                ? <ChevronLeft
+                                    size={20}
+                                    className="text-(--text-muted)"
+                                />
+                                : <ChevronRight
+                                    size={20}
+                                    className="text-(--text-muted)"
+                                />
+                            }
                         </Link>
                     );
                 })}
@@ -77,10 +82,16 @@ export default function Setting() {
                         </span>
                     </div>
 
-                    <ChevronRight
-                        size={20}
-                        className="text-(--error)"
-                    />
+                    {t("dir") === "rtl"
+                        ? <ChevronLeft
+                            size={20}
+                            className="text-(--error)"
+                        />
+                        : <ChevronRight
+                            size={20}
+                            className="text-(--error)"
+                        />
+                    }
                 </button>
             </div>
         </section>

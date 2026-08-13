@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import React from "react";
+import Breadcrumb from "../Breadcrumb/Breadcrumb";
 
 type Props = {};
 
@@ -21,19 +22,13 @@ export default function CoverCategories({ }: Props) {
             <div className="container relative z-10 flex h-full min-h-[420px] flex-col justify-center gap-10 py-10 sm:min-h-[390px] sm:gap-12 lg:flex-row lg:items-center lg:justify-between lg:py-0">
                 {/* Left Content */}
                 <div className="w-full text-center lg:w-auto lg:text-start">
-                    {/* Breadcrumb */}
-                    <div className="mb-4 flex items-center justify-center gap-2 text-sm text-gray-400 sm:mb-5 sm:gap-3 sm:text-base lg:justify-start">
-                        <Link
-                            href="/"
-                            className="transition-colors hover:text-white"
-                        >
-                            {t("home")}
-                        </Link>
-
-                        <span className="text-gray-600">›</span>
-
-                        <span className="text-white">{t("categories")}</span>
-                    </div>
+                    <Breadcrumb
+                        items={[
+                            {
+                                label: t("categories"),
+                            },
+                        ]}
+                    />
 
                     {/* Heading */}
                     <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-white">
