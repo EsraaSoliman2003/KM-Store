@@ -430,5 +430,6 @@
   "emailPreferences": "Email Preferences",
   "notificationSettings": "Notification Settings",
   "deleteAccount": "Delete Account",
-  "supportDescription": "If you have any questions or need assistance, our support team is here to help."
+  "supportDescription": "If you have any questions or need assistance, our support team is here to help.",
+  "settings": "Settings"
 }

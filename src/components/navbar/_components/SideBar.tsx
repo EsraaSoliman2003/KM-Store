@@ -10,6 +10,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslations } from "next-intl";
 import { links } from "./links";
 import { usePathname } from "next/navigation";
+import { Settings } from "lucide-react";
 
 type Props = {
     locale: string;
@@ -120,15 +121,15 @@ export default function SideBar({
                     {/* Profile */}
                     <div>
                         <Link
-                            href="/profile"
+                            href="/account-menu"
                             onClick={() => setIsSidebarOpen(false)}
                             className="group flex items-center gap-4 rounded-2xl px-5 py-3.5 text-(--text-primary) transition-all duration-200 hover:text-(--main)"
                         >
-                            <FiUser
+                            <Settings
                                 size={22}
                                 className="transition-transform duration-200 group-hover:scale-110"
                             />
-                            <span className="font-medium">{t("profile")}</span>
+                            <span className="font-medium">{t("settings")}</span>
                         </Link>
                     </div>
 

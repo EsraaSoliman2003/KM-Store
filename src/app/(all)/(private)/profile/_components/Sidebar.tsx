@@ -75,7 +75,7 @@ export default function Sidebar() {
     ];
 
     return (
-        <aside className="col-span-1 lg:col-span-1 h-fit overflow-hidden rounded-2xl border border-(--border-dark) bg-(--bg-tertiary)">
+        <aside className="hidden lg:block col-span-1 lg:col-span-1 h-fit overflow-hidden rounded-2xl border border-(--border-dark) bg-(--bg-tertiary)">
 
             <div className="border-b border-(--border-dark) p-4">
                 <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-(--text-muted)">
