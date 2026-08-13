@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import {
     Bell,
     CreditCard,
@@ -14,10 +15,12 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLogout } from "@/hooks/useLogout";
 
 export default function Sidebar() {
     const t = useTranslations();
+    const pathname = usePathname();
     const logOut = useLogout();
 
     const sidebarItems = [
@@ -25,7 +28,6 @@ export default function Sidebar() {
             label: t("profile"),
             icon: User,
             href: "/profile",
-            active: true,
         },
         {
             label: t("myOrders"),
@@ -75,26 +77,30 @@ export default function Sidebar() {
     ];
 
     return (
-        <aside className="hidden lg:block col-span-1 lg:col-span-1 h-fit overflow-hidden rounded-2xl border border-(--border-dark) bg-(--bg-tertiary)">
-
+        <aside className="col-span-1 hidden h-fit overflow-hidden rounded-2xl border border-(--border-dark) bg-(--bg-tertiary) lg:block">
             <div className="border-b border-(--border-dark) p-4">
                 <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-(--text-muted)">
                     {t("myAccount")}
                 </p>
             </div>
 
-            <nav className="p-2 space-y-1">
+            <nav className="space-y-1 p-2">
                 {sidebarItems.map((item) => {
                     const Icon = item.icon;
 
+                    const isActive =
+                        pathname === item.href ||
+                        pathname.startsWith(`${item.href}/`);
+
                     return (
                         <Link
-                            key={item.label}
+                            key={item.href}
                             href={item.href}
-                            className={`flex items-center gap-2 rounded-[5px] p-4 text-sm transition-all ${item.active
-                                ? "bg-[rgba(104,58,208,0.16)] text-(--main)"
-                                : "text-(--text-secondary) hover:bg-(--bg-primary) hover:text-(--text-primary)"
-                                }`}
+                            className={`flex items-center gap-2 rounded-[5px] p-4 text-sm transition-all ${
+                                isActive
+                                    ? "bg-[rgba(104,58,208,0.16)] text-(--main)"
+                                    : "text-(--text-secondary) hover:bg-(--bg-primary) hover:text-(--text-primary)"
+                            }`}
                         >
                             <Icon size={24} />
                             <span>{item.label}</span>
@@ -115,5 +121,5 @@ export default function Sidebar() {
                 </button>
             </div>
         </aside>
-    )
+    );
 }
