@@ -75,10 +75,10 @@ export default function Sidebar() {
     ];
 
     return (
-        <aside className="col-span-1 lg:col-span-1 h-fit overflow-hidden rounded-2xl border border-[var(--border-dark)] bg-[var(--bg-tertiary)]">
+        <aside className="col-span-1 lg:col-span-1 h-fit overflow-hidden rounded-2xl border border-(--border-dark) bg-(--bg-tertiary)">
 
-            <div className="border-b border-[var(--border-dark)] p-4">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
+            <div className="border-b border-(--border-dark) p-4">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-(--text-muted)">
                     {t("myAccount")}
                 </p>
             </div>
@@ -92,8 +92,8 @@ export default function Sidebar() {
                             key={item.label}
                             href={item.href}
                             className={`flex items-center gap-2 rounded-[5px] p-4 text-sm transition-all ${item.active
-                                ? "bg-[rgba(104,58,208,0.16)] text-[var(--main)]"
-                                : "text-[var(--text-secondary)] hover:bg-[var(--bg-primary)] hover:text-[var(--text-primary)]"
+                                ? "bg-[rgba(104,58,208,0.16)] text-(--main)"
+                                : "text-(--text-secondary) hover:bg-(--bg-primary) hover:text-(--text-primary)"
                                 }`}
                         >
                             <Icon size={24} />
@@ -104,11 +104,11 @@ export default function Sidebar() {
             </nav>
 
             {/* Logout */}
-            <div className="border-t border-[var(--border-dark)] p-1.5">
+            <div className="border-t border-(--border-dark) p-1.5">
                 <button
                     type="button"
                     onClick={logOut}
-                    className="flex w-full items-center gap-2 rounded-[5px] px-2 py-2 text-sm text-[var(--error)] transition-colors hover:bg-[rgba(239,68,68,0.08)]"
+                    className="flex w-full items-center gap-2 rounded-[5px] px-2 py-2 text-sm text-(--error) transition-colors hover:bg-[rgba(239,68,68,0.08)]"
                 >
                     <LogOut size={24} />
                     <span>{t("logout")}</span>
