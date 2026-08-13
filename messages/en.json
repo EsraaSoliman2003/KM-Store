@@ -448,5 +448,16 @@
   "earlierThisWeek": "Earlier this week",
   "view": "View",
   "addToWishlist": "Add to wishlist",
-  "remove": "Remove"
+  "remove": "Remove",
+  "reviewsAndRating": "Reviews & rating",
+  "reviewsAndRatingSubtitle": "Share your experience and help other shoppers",
+  "averageRating": "Average Rating",
+  "published": "Published",
+  "pending": "Pending",
+  "awaitingYourReview": "Awaiting Your Review",
+  "purchased": "Purchased",
+  "writeReview": "Write Review",
+  "peopleFoundThisHelpful": "people found this helpful",
+  "delete": "Delete",
+  "more": "More"
 }
