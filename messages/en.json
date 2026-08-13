@@ -441,5 +441,12 @@
   "deletePaymentMethod": "Delete payment method",
   "paymentInformationSecure": "Your payment information is secure",
   "paymentSecurityDescription": "We use 256-bit SSL encryption to protect your card details. TechNova never stores your full card number.",
-  "WishlistSubTitle": "6 Items Saved For later"
+  "WishlistSubTitle": "6 Items Saved For later",
+  "recentlyViewedSubtitle": "6 Products browsed recently",
+  "today": "Today",
+  "yesterday": "Yesterday",
+  "earlierThisWeek": "Earlier this week",
+  "view": "View",
+  "addToWishlist": "Add to wishlist",
+  "remove": "Remove"
 }

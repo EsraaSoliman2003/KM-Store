@@ -431,5 +431,22 @@
   "notificationSettings": "إعدادات الإشعارات",
   "deleteAccount": "حذف الحساب",
   "supportDescription": "إذا كانت لديك أي أسئلة أو تحتاج إلى مساعدة، فإن فريق الدعم لدينا هنا لمساعدتك.",
-  "settings": "الإعدادات"
+  "settings": "الإعدادات",
+  "subTitleAddress": "إدارة معلوماتك الشخصية وتفاصيل حسابك",
+  "setAsDefault": "تعيين كافتراضي",
+  "deleteAddress": "حذف العنوان",
+  "currentBalance": "الرصيد الحالي",
+  "savedCards": "البطاقات المحفوظة",
+  "mastercardEndingIn": "ماستركارد المنتهية بـ",
+  "deletePaymentMethod": "حذف طريقة الدفع",
+  "paymentInformationSecure": "معلومات الدفع الخاصة بك آمنة",
+  "paymentSecurityDescription": "نستخدم تشفير SSL بمعدل 256 بت لحماية بيانات بطاقتك. لا تحتفظ TechNova برقم بطاقتك الكامل.",
+  "WishlistSubTitle": "6 منتجات محفوظة لوقت لاحق",
+  "recentlyViewedSubtitle": "6 منتجات تمت مشاهدتها مؤخرًا",
+  "today": "اليوم",
+  "yesterday": "أمس",
+  "earlierThisWeek": "في وقت سابق من هذا الأسبوع",
+  "view": "عرض",
+  "addToWishlist": "إضافة إلى المفضلة",
+  "remove": "إزالة"
 }
