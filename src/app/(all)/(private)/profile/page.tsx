@@ -4,9 +4,6 @@ import { useAppSelector } from "@/rtk/hooks";
 import Header from "../_components/Header";
 import ProfileStats from "./_components/ProfileStats";
 import Info from "./_components/Info";
-import Address from "./_components/Address";
-import Payment from "./_components/Payment";
-import Setting from "./_components/Setting";
 import Help from "./_components/Help";
 
 export default function Page() {
@@ -45,9 +42,6 @@ export default function Page() {
       />
       <ProfileStats />
       <Info />
-      <Address />
-      <Payment />
-      <Setting />
       <Help />
     </div>
   );
