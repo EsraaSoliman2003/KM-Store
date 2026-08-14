@@ -1,80 +1,16 @@
 "use client";
 
-import {
-    Bell,
-    CreditCard,
-    Heart,
-    HelpCircle,
-    LogOut,
-    MapPin,
-    Package,
-    Settings,
-    ShoppingBag,
-    Star,
-    User,
-} from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLogout } from "@/hooks/useLogout";
+import { LogOut } from "lucide-react";
+import { sidebarItems } from "./links";
 
 export default function Sidebar() {
     const t = useTranslations();
     const pathname = usePathname();
     const logOut = useLogout();
-
-    const sidebarItems = [
-        {
-            label: t("profile"),
-            icon: User,
-            href: "/profile",
-        },
-        {
-            label: t("myOrders"),
-            icon: ShoppingBag,
-            href: "/orders",
-        },
-        {
-            label: t("address"),
-            icon: MapPin,
-            href: "/address",
-        },
-        {
-            label: t("paymentMethod"),
-            icon: CreditCard,
-            href: "/payment-methods",
-        },
-        {
-            label: t("wishlist"),
-            icon: Heart,
-            href: "/wishlist",
-        },
-        {
-            label: t("recentlyViewed"),
-            icon: Package,
-            href: "/recently-viewed",
-        },
-        {
-            label: t("reviewsAndRatings"),
-            icon: Star,
-            href: "/reviews",
-        },
-        {
-            label: t("notifications"),
-            icon: Bell,
-            href: "/notifications",
-        },
-        {
-            label: t("accountSettings"),
-            icon: Settings,
-            href: "/settings",
-        },
-        {
-            label: t("helpCenter"),
-            icon: HelpCircle,
-            href: "/help",
-        },
-    ];
 
     return (
         <aside className="col-span-1 hidden h-fit overflow-hidden rounded-2xl border border-(--border-dark) bg-(--bg-tertiary) lg:block">
@@ -96,14 +32,13 @@ export default function Sidebar() {
                         <Link
                             key={item.href}
                             href={item.href}
-                            className={`flex items-center gap-2 rounded-[5px] p-4 text-sm transition-all ${
-                                isActive
+                            className={`flex items-center gap-2 rounded-[5px] p-4 text-sm transition-all ${isActive
                                     ? "bg-[rgba(104,58,208,0.16)] text-(--main)"
                                     : "text-(--text-secondary) hover:bg-(--bg-primary) hover:text-(--text-primary)"
-                            }`}
+                                }`}
                         >
                             <Icon size={24} />
-                            <span>{item.label}</span>
+                            <span>{t(item.label)}</span>
                         </Link>
                     );
                 })}

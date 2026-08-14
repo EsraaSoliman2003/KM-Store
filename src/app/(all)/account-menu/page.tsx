@@ -15,64 +15,11 @@ import {
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useLogout } from "@/hooks/useLogout";
+import { sidebarItems } from "../(private)/_components/links";
 
 export default function page() {
     const t = useTranslations();
     const logOut = useLogout();
-
-    const sidebarItems = [
-        {
-            label: t("profile"),
-            icon: User,
-            href: "/profile",
-            active: true,
-        },
-        {
-            label: t("myOrders"),
-            icon: ShoppingBag,
-            href: "/orders",
-        },
-        {
-            label: t("address"),
-            icon: MapPin,
-            href: "/address",
-        },
-        {
-            label: t("paymentMethod"),
-            icon: CreditCard,
-            href: "/payment-methods",
-        },
-        {
-            label: t("wishlist"),
-            icon: Heart,
-            href: "/wishlist",
-        },
-        {
-            label: t("recentlyViewed"),
-            icon: Package,
-            href: "/recently-viewed",
-        },
-        {
-            label: t("reviewsAndRatings"),
-            icon: Star,
-            href: "/reviews",
-        },
-        {
-            label: t("notifications"),
-            icon: Bell,
-            href: "/notifications",
-        },
-        {
-            label: t("accountSettings"),
-            icon: Settings,
-            href: "/settings",
-        },
-        {
-            label: t("helpCenter"),
-            icon: HelpCircle,
-            href: "/help",
-        },
-    ];
 
     return (
         <div className='py-18'>
@@ -94,7 +41,7 @@ export default function page() {
                                 className={`flex items-center gap-4 rounded-[5px] p-4 text-lg transition-all text-(--text-secondary) hover:bg-(--main)/10 hover:text-(--text-primary)`}
                             >
                                 <Icon size={24} />
-                                <span>{item.label}</span>
+                                <span>{t(item.label)}</span>
                             </Link>
                         );
                     })}

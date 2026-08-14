@@ -1,3 +1,12 @@
+import {
+    Check,
+    Percent,
+    ShieldAlert,
+    Star,
+    Tag,
+    Truck,
+} from "lucide-react";
+
 type NotificationType =
     | "success"
     | "sale"
@@ -100,3 +109,36 @@ export const notifications: Notification[] = [
         type: "success",
     },
 ];
+
+export const iconConfig = {
+    success: {
+        icon: Check,
+        className:
+            "border-green-500/40 bg-green-500/10 text-green-500",
+    },
+    sale: {
+        icon: Percent,
+        className:
+            "border-purple-500/40 bg-purple-500/10 text-purple-500",
+    },
+    info: {
+        icon: Truck,
+        className:
+            "border-sky-500/40 bg-sky-500/10 text-sky-500",
+    },
+    warning: {
+        icon: ShieldAlert,
+        className:
+            "border-orange-500/40 bg-orange-500/10 text-orange-500",
+    },
+    coupon: {
+        icon: Tag,
+        className:
+            "border-purple-500/40 bg-purple-500/10 text-purple-500",
+    },
+    review: {
+        icon: Star,
+        className:
+            "border-orange-500/40 bg-orange-500/10 text-orange-500",
+    },
+};
