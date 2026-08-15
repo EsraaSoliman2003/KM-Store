@@ -529,5 +529,10 @@
   "accountAndLoginDescription": "Password, Access issues",
   "orderIssues": "Order Issues",
   "orderIssuesDescription": "Missing, damaged items",
-  "sales": "Sales"
+  "sales": "Sales",
+  "orderFailedTitle": "Payment Failed",
+  "orderFailedPlaced": "we couldn’t process your payment",
+  "orderFailedPreparing": "please try again or use a different payment method",
+  "changePaymentMethod": "Change Payment Method",
+  "tryAgain": "Try Again"
 }

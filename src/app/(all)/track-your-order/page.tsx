@@ -4,7 +4,7 @@ import CoverTrackYourOrder from "@/components/CoverTrackYourOrder/CoverTrackYour
 import ProductSummary from "./_components/ProductSummary";
 import OrderStatus from "./_components/OrderStatus";
 import InformationCards from "./_components/InformationCards";
-import Help from "./_components/Help";
+import Help from "@/components/Help/Help";
 
 export default function page() {
     return (

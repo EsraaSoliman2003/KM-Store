@@ -566,3 +566,44 @@ html[dir="rtl"] .sidebar-close {
   cursor: grab;
   pointer-events: auto;
 }
+
+.payment-loader {
+  border-radius: 50%;
+  padding: 9px;
+  overflow: hidden;
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.payment-loader-gradient {
+  position: absolute;
+  inset: -10%;
+  border-radius: 50%;
+
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      transparent 220deg,
+      rgba(109, 63, 209, 0.08) 245deg,
+      rgba(109, 63, 209, 0.3) 270deg,
+      #6d3fd1 300deg,
+      #8148e5 325deg,
+      #a66cff 345deg,
+      #b982ff 355deg,
+      transparent 360deg);
+
+  animation: payment-loader-spin 1.15s linear infinite;
+}
+
+@keyframes payment-loader-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

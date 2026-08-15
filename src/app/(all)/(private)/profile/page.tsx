@@ -4,7 +4,7 @@ import { useAppSelector } from "@/rtk/hooks";
 import Header from "../_components/Header";
 import ProfileStats from "./_components/ProfileStats";
 import Info from "./_components/Info";
-import Help from "./_components/Help";
+import Help from "../../../../components/Help/Help";
 
 export default function Page() {
   const t = useTranslations();
