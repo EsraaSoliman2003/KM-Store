@@ -1,87 +1,139 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
 import { useTranslations } from "next-intl";
-import { FaWhatsapp } from "react-icons/fa";
+import "react-phone-input-2/lib/style.css";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { forgotPassword } from "@/rtk/slices/authSlice";
+import { useAppSelector } from "@/rtk/hooks";
 import { useRouter } from "next/navigation";
+import PhoneInput, {
+  CountryData,
+} from "react-phone-input-2";
 
-export default function ForgotPasswordPage() {
+export default function Page() {
   const t = useTranslations();
+  const dir = t("dir") === "ltr" ? "ltr" : "rtl";
   const router = useRouter();
 
+  const dispatch = useDispatch();
+  const { loading } = useAppSelector(s => s.auth)
+
   const [phone, setPhone] = useState("");
+  const [countryCode, setCountryCode] = useState("+20");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    try {
-      // استدعاء API لإرسال الكود
+    if (!phone) return;
 
-      // لو نجح
-      router.push("/verify-code");
+    try {
+      const response = await dispatch(
+        forgotPassword({
+          country_code: countryCode,
+          phone,
+        }) as any
+      ).unwrap();
+
+      console.log("Forgot password response:", response);
+
+      router.push(
+        `/verify-otp?country_code=${encodeURIComponent(
+          countryCode
+        )}&phone=${encodeURIComponent(phone)}`
+      );
     } catch (error) {
-      console.error("Error sending code:", error);
+      console.error("Forgot password error:", error);
     }
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-10 dark:bg-gray-950">
-      <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-        <h1 className="text-center text-3xl font-bold text-gray-900 dark:text-white">
-          {t("forgotPasswordTitle")}
-        </h1>
-
-        <p className="mt-2 text-center text-sm leading-6 text-gray-500 dark:text-gray-400">
-          {t("forgotPasswordSubtitle")}
-        </p>
-
-        <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-          <div>
-            <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {t("phoneNumber")}
-            </label>
-
-            <PhoneInput
-              country="eg"
-              value={phone}
-              onChange={setPhone}
-              enableSearch={false}
-              disableCountryCode
-              containerClass="!w-full"
-              inputClass={`
-                !w-full !h-12 !rounded-xl !border !border-gray-300 !bg-white !text-gray-900
-                dark:!border-gray-700 dark:!bg-gray-800 dark:!text-white
-                ${t("dir") === "rtl" ? "!text-right" : "!text-left"}
-                focus:!border-[#259DF3] focus:!ring-2 focus:!ring-[#259DF3]/20
-              `}
-              buttonClass={`
-                !bg-gray-50 dark:!bg-gray-800 !border-gray-300 dark:!border-gray-700
-                hover:!bg-gray-100 dark:hover:!bg-gray-700
-              `}
-              dropdownClass="!rounded-xl dark:!bg-gray-800 dark:!border-gray-700"
-              placeholder={t("phonePlaceholder")}
-            />
+    <main
+      dir={dir}
+      className="flex min-h-screen items-center justify-center bg-(--bg-primary) px-4"
+    >
+      <div className="my-5 w-full rounded-2xl border-(--border-dark) p-3 sm:p-8 md:my-20 md:w-212 md:border">
+        <div className="m-auto md:max-w-171.5">
+          {/* Logo */}
+          <div className="mb-5 flex items-center justify-center">
+            <Link
+              href="/"
+              className="text-4xl font-black tracking-tight transition-all duration-300 hover:scale-105 hover:text-(--main)"
+            >
+              K&M
+            </Link>
           </div>
 
-          <button
-            type="submit"
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] font-medium text-white transition hover:bg-[#1ebe5d] dark:bg-[#1ebe5d] dark:hover:bg-[#1aa854]"
-          >
-            <FaWhatsapp size={20} />
-            {t("sendCode")}
-          </button>
-        </form>
+          {/* Title */}
+          <h1 className="text-center text-xl font-semibold">
+            {t("forgotPasswordTitle")}
+          </h1>
 
-        <div className="mt-6 text-center">
-          <Link
-            href="/login"
-            className="text-sm font-medium text-[#259DF3] transition hover:underline dark:text-[#4DB8FF]"
-          >
-            {t("backToLogin")}
-          </Link>
+          <p className="mt-2 text-center text-sm text-(--text-muted)">
+            {t("forgotPasswordSubtitle")}
+          </p>
+
+          <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+            {/* Phone Number */}
+            <div>
+              <label className="mb-2 block text-sm font-medium">
+                {t("phoneNumber")}
+              </label>
+
+              <PhoneInput
+                country="eg"
+                value={`${countryCode.replace("+", "")}${phone}`}
+                onChange={(value, country) => {
+                  const countryData = country as CountryData;
+
+                  const dialCode = `+${countryData.dialCode}`;
+
+                  setCountryCode(dialCode);
+
+                  const cleanPhone = value
+                    .replace(countryData.dialCode, "")
+                    .replace(/\D/g, "");
+
+                  setPhone(cleanPhone);
+                }}
+                enableSearch={false}
+                containerClass="!w-full"
+                placeholder={t("phonePlaceholder")}
+              />
+            </div>
+
+            {/* Send Button */}
+            <button
+              type="submit"
+              disabled={loading || !phone}
+              className="h-12 w-full rounded-[12px] bg-(--main) font-medium text-white transition hover:bg-(--main)/90 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {loading ? "Loading..." : t("sendCode")}
+            </button>
+          </form>
+
+          {/* Divider */}
+          <div className="my-6 flex items-center gap-4">
+            <div className="h-px flex-1 bg-(--border-dark)" />
+
+            <span className="text-sm text-gray-500">
+              {t("orContinueWith")}
+            </span>
+
+            <div className="h-px flex-1 bg-(--border-dark)" />
+          </div>
+
+          {/* Back To Login */}
+          <p className="mt-6 text-center text-sm text-gray-600">
+            {t("rememberPass")}{" "}
+            <Link
+              href="/login"
+              className="font-semibold text-(--main) hover:underline"
+            >
+              {t("backToLogin")}
+            </Link>
+          </p>
         </div>
       </div>
     </main>

@@ -70,6 +70,98 @@ export const logoutUser = createAsyncThunk<void, void>(
 );
 
 // ===========================
+// Forgot Password
+// ===========================
+
+interface ForgotPasswordPayload {
+  country_code: string;
+  phone: string;
+}
+
+interface ForgotPasswordResponse {
+  code: number;
+  message: string;
+  errors: unknown[];
+  data: {
+    country_code: string;
+    phone: string;
+  };
+}
+
+export const forgotPassword = createAsyncThunk<
+  ForgotPasswordResponse,
+  ForgotPasswordPayload
+>("auth/forgotPassword", async (data) => {
+  const res = await axios.post("auth/forgot-password", data);
+
+  return res.data;
+});
+
+// ===========================
+// Verify Reset Password OTP
+// ===========================
+
+interface VerifyResetPasswordOtpPayload {
+  country_code: string;
+  phone: string;
+  code: string;
+}
+
+interface VerifyResetPasswordOtpResponse {
+  code: number;
+  message: string;
+  errors: unknown[];
+  data: {
+    token: string;
+  };
+}
+
+export const verifyResetPasswordOtp = createAsyncThunk<
+  VerifyResetPasswordOtpResponse,
+  VerifyResetPasswordOtpPayload
+>("auth/verifyResetPasswordOtp", async (data) => {
+  const res = await axios.post(
+    "auth/verify-reset-password-otp",
+    data
+  );
+
+  return res.data;
+});
+
+// ===========================
+// Reset Password
+// ===========================
+
+interface ResetPasswordPayload {
+  country_code: string;
+  phone: string;
+  code: string;
+  password: string;
+  password_confirmation: string;
+}
+
+interface ResetPasswordResponse {
+  code: number;
+  message: string;
+  errors: unknown[];
+  data: {
+    user: User;
+  };
+}
+
+export const resetPassword = createAsyncThunk<
+  ResetPasswordResponse,
+  ResetPasswordPayload
+>("auth/resetPassword", async (data) => {
+  const res = await axios.post(
+    "auth/reset-password",
+    data
+  );
+
+  return res.data;
+});
+
+// ===========================
 // Slice
 // ===========================
 
@@ -144,6 +236,59 @@ const authSlice = createSlice({
       })
 
       .addCase(logoutUser.rejected, (state) => {
+        state.loading = false;
+      })
+
+      // ===========================
+      // FORGOT PASSWORD
+      // ===========================
+
+      .addCase(forgotPassword.pending, (state) => {
+        state.loading = true;
+      })
+
+      .addCase(forgotPassword.fulfilled, (state) => {
+        state.loading = false;
+      })
+
+      .addCase(forgotPassword.rejected, (state) => {
+        state.loading = false;
+      })
+
+      // ===========================
+      // VERIFY RESET PASSWORD OTP
+      // ===========================
+
+      .addCase(verifyResetPasswordOtp.pending, (state) => {
+        state.loading = true;
+      })
+
+      .addCase(
+        verifyResetPasswordOtp.fulfilled,
+        (state, action) => {
+          state.loading = false;
+          state.token = action.payload.data.token;
+        }
+      )
+
+      .addCase(verifyResetPasswordOtp.rejected, (state) => {
+        state.loading = false;
+      })
+
+      // ===========================
+      // RESET PASSWORD
+      // ===========================
+
+      .addCase(resetPassword.pending, (state) => {
+        state.loading = true;
+      })
+
+      .addCase(resetPassword.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload.data.user;
+      })
+
+      .addCase(resetPassword.rejected, (state) => {
         state.loading = false;
       });
   },

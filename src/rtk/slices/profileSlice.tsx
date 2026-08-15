@@ -1,14 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "@/lib/axios";
-import {
-  User,
-  ProfileResponse,
-} from "@/utils/dtos";
+import { ProfileResponse } from "@/utils/dtos";
 
 import {
   loginUser,
   registerUser,
   logoutUser,
+  resetPassword,
 } from "./authSlice";
 
 // ===========================
@@ -80,7 +78,6 @@ const profileSlice = createSlice({
           code: action.payload.code,
           message: action.payload.message,
           errors: action.payload.errors,
-
           data: {
             user: action.payload.data.user,
           },
@@ -96,7 +93,21 @@ const profileSlice = createSlice({
           code: action.payload.code,
           message: action.payload.message,
           errors: action.payload.errors,
+          data: {
+            user: action.payload.data.user,
+          },
+        };
+      })
 
+      // ===========================
+      // RESET PASSWORD
+      // ===========================
+
+      .addCase(resetPassword.fulfilled, (state, action) => {
+        state.profile = {
+          code: action.payload.code,
+          message: action.payload.message,
+          errors: action.payload.errors,
           data: {
             user: action.payload.data.user,
           },

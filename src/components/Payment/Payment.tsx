@@ -11,6 +11,7 @@ import {
 import { useTranslations } from "next-intl";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import "./style.css"
 
 export default function Payment() {
     const t = useTranslations();
@@ -39,11 +40,10 @@ export default function Payment() {
                 <button
                     type="button"
                     onClick={() => setPaymentMethod("card")}
-                    className={`flex h-[70px] flex-col items-center justify-center gap-1.5 rounded-2xl border transition ${
-                        paymentMethod === "card"
-                            ? "border-[var(--main)] bg-[var(--main)]/10 text-[var(--main)]"
-                            : "border-[var(--border-dark)] bg-[var(--bg-tertiary)] text-[var(--text-muted)] hover:border-[var(--main)]"
-                    }`}
+                    className={`flex h-[70px] flex-col items-center justify-center gap-1.5 rounded-2xl border transition ${paymentMethod === "card"
+                        ? "border-[var(--main)] bg-[var(--main)]/10 text-[var(--main)]"
+                        : "border-[var(--border-dark)] bg-[var(--bg-tertiary)] text-[var(--text-muted)] hover:border-[var(--main)]"
+                        }`}
                 >
                     <CreditCard size={19} />
                     <span className="text-xs">{t("paymentCard")}</span>
@@ -53,11 +53,10 @@ export default function Payment() {
                 <button
                     type="button"
                     onClick={() => setPaymentMethod("wallet")}
-                    className={`flex h-[70px] flex-col items-center justify-center gap-1.5 rounded-2xl border transition ${
-                        paymentMethod === "wallet"
-                            ? "border-[var(--main)] bg-[var(--main)]/10 text-[var(--main)]"
-                            : "border-[var(--border-dark)] bg-[var(--bg-tertiary)] text-[var(--text-muted)] hover:border-[var(--main)]"
-                    }`}
+                    className={`flex h-[70px] flex-col items-center justify-center gap-1.5 rounded-2xl border transition ${paymentMethod === "wallet"
+                        ? "border-[var(--main)] bg-[var(--main)]/10 text-[var(--main)]"
+                        : "border-[var(--border-dark)] bg-[var(--bg-tertiary)] text-[var(--text-muted)] hover:border-[var(--main)]"
+                        }`}
                 >
                     <Wallet size={19} />
                     <span className="text-xs">{t("paymentWallet")}</span>
@@ -67,11 +66,10 @@ export default function Payment() {
                 <button
                     type="button"
                     onClick={() => setPaymentMethod("cash")}
-                    className={`flex h-[70px] flex-col items-center justify-center gap-1.5 rounded-2xl border transition ${
-                        paymentMethod === "cash"
-                            ? "border-[var(--main)] bg-[var(--main)]/10 text-[var(--main)]"
-                            : "border-[var(--border-dark)] bg-[var(--bg-tertiary)] text-[var(--text-muted)] hover:border-[var(--main)]"
-                    }`}
+                    className={`flex h-[70px] flex-col items-center justify-center gap-1.5 rounded-2xl border transition ${paymentMethod === "cash"
+                        ? "border-[var(--main)] bg-[var(--main)]/10 text-[var(--main)]"
+                        : "border-[var(--border-dark)] bg-[var(--bg-tertiary)] text-[var(--text-muted)] hover:border-[var(--main)]"
+                        }`}
                 >
                     <Truck size={19} />
                     <span className="text-xs">{t("paymentOnDelivery")}</span>
@@ -162,11 +160,10 @@ export default function Payment() {
                                 disableCountryCode
                                 enableSearch={false}
                                 containerClass="!w-full"
-                                inputClass={`!h-11 !w-full !rounded-xl !border !border-[var(--border-dark)] !bg-[var(--bg-tertiary)] !text-[var(--text-primary)] ${
-                                    t("dir") === "rtl"
-                                        ? "!text-right"
-                                        : "!text-left"
-                                }`}
+                                inputClass={`!h-11 !w-full !rounded-xl !border !border-[var(--border-dark)] !bg-[var(--bg-tertiary)] !text-[var(--text-primary)] ${t("dir") === "rtl"
+                                    ? "!text-right"
+                                    : "!text-left"
+                                    }`}
                                 buttonClass="!rounded-l-xl !border-[var(--border-dark)] !bg-[var(--bg-tertiary)]"
                                 dropdownClass="!rounded-xl"
                                 placeholder={t("phonePlaceholder")}

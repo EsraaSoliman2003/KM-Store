@@ -1,0 +1,76 @@
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
+
+input[type="password"]::-webkit-credentials-auto-fill-button {
+    visibility: hidden;
+    display: none !important;
+    background: transparent;
+}
+
+.react-tel-input {
+    width: 100%;
+    border: 1px solid #333;
+    border-radius: 12px;
+    background: transparent !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.react-tel-input:focus-within {
+    border-color: #259df3;
+    box-shadow: 0 0 0 2px rgba(37, 157, 243, 0.2);
+}
+
+.react-tel-input .form-control {
+    width: 100% !important;
+    height: 48px !important;
+    border-radius: 12px !important;
+    font-size: 14px !important;
+    transition: all 0.2s ease;
+    padding-left: 70px !important;
+
+    border: none !important;
+    box-shadow: none !important;
+
+    background: transparent !important;
+    color: var(--text-primary) !important;
+}
+
+.react-tel-input .form-control:focus {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+.react-tel-input .flag-dropdown {
+    border: none !important;
+    border-right: 1px solid #333 !important;
+    border-radius: 12px 0 0 12px !important;
+    background: transparent !important;
+}
+
+.react-tel-input .selected-flag {
+    width: 55px !important;
+    padding: 0 10px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px 0 0 12px !important;
+    background: transparent !important;
+}
+
+.react-tel-input .country-list {
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    background: white !important;
+}
+
+.react-tel-input .country-list .country {
+    color: #111827 !important;
+    background: transparent !important;
+}
+
+.react-tel-input .country-list .country.highlight {
+    background: rgba(37, 157, 243, 0.08) !important;
+}
