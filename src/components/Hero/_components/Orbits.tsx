@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { orbitProducts } from "./data";
+import { orbitProducts } from "../../../fakeData/data";
 import { useTranslations } from "next-intl";
 
 type Props = {

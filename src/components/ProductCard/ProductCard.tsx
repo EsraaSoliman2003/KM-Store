@@ -14,7 +14,7 @@ export default function ProductCard({ product }: Props) {
 
   return (
     <Link
-      href={`/products/${product.id}`}
+      href={`/categories/${product.cat.id}/${product.id}`}
       className="group block overflow-hidden rounded-2xl border border-(--border-color) bg-(--bg-primary) transition-all duration-300 hover:-translate-y-1 hover:border-(--main) hover:shadow-xl"
     >
       {/* Image */}

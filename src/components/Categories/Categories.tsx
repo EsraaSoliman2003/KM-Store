@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { FiArrowUpRight } from "react-icons/fi";
-import { categories } from "./data";
 import { useTranslations } from "next-intl";
 import CategoryCard from "../CategoryCard/CategoryCard";
+import { categories } from "@/fakeData/data";
 
 export default function Categories() {
   const t = useTranslations();
@@ -15,7 +15,7 @@ export default function Categories() {
         </h2>
 
         <div className="grid grid-cols-2 gap-4 sm:gap-5 xl:grid-cols-3">
-          {categories.map((item, index) => (
+          {categories.slice(0, 3).map((item, index) => (
             <CategoryCard key={index} item={item} className="h-[170px] sm:h-[200px] lg:h-[220px]" />
           ))}
         </div>

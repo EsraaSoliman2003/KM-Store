@@ -6,8 +6,9 @@ import {
   FiChevronLeft,
   FiChevronRight,
 } from "react-icons/fi";
-import { categories } from "../Categories/data";
 import { useTranslations } from "next-intl";
+import { categories } from "@/fakeData/data";
+import Link from "next/link";
 
 export default function Brands() {
   const t = useTranslations();
@@ -23,7 +24,7 @@ export default function Brands() {
             </h2>
           </div>
 
-          <button className="group mx-auto lg:mx-0 flex w-fit items-center gap-2 text-lg text-purple-400 transition-all duration-300 hover:text-purple-300">
+          <Link href={"/brands"} className="group mx-auto lg:mx-0 flex w-fit items-center gap-2 text-lg text-purple-400 transition-all duration-300 hover:text-purple-300">
             <span className="border-b-2 border-purple-500 pb-1">
               {t("showMore")}
             </span>
@@ -39,7 +40,7 @@ export default function Brands() {
                 className="transition-transform duration-300 group-hover:translate-x-1"
               />
             )}
-          </button>
+          </Link>
         </div>
 
         {/* Brands */}

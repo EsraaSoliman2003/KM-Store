@@ -2,10 +2,12 @@
 
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { FiArrowUpRight } from "react-icons/fi";
 
 type Category = {
+    id: number;
     title: string;
     products: string;
     image: string;
@@ -25,7 +27,8 @@ export default function CategoryCard({
     const t = useTranslations();
 
     return (
-        <div
+        <Link
+            href={`/categories/${item.id}`}
             className={`
         group relative
         overflow-hidden
@@ -78,11 +81,11 @@ export default function CategoryCard({
                                 `}
                         `}
                     >
-                        {item.title}
+                        {t(item.title)}
                     </h3>
 
                     <p className={`${isSmall ? "mt-1 text-[9px] text-white/70" : "mt-1 text-white/75 transition-colors duration-300 group-hover:text-white sm:mt-2 text-xs sm:text-sm"}`}>
-                        {item.products}
+                        {t(item.products)}
                     </p>
                 </div>
 
@@ -131,6 +134,6 @@ export default function CategoryCard({
                     <FiArrowUpRight className={`${isSmall ? "text-sm" : "text-base sm:text-lg lg:text-xl"}`} />
                 </button>
             </div>
-        </div>
+        </Link>
     );
 }

@@ -2,8 +2,8 @@ import { useTranslations } from "next-intl";
 import Summary from "@/components/Cart/Summary";
 import Coupon from "@/components/Cart/Coupon";
 import ProductsCart from "@/components/Cart/ProductsCart";
-import { products } from "@/components/FlashSales/data";
 import ProductCard from "@/components/ProductCard/ProductCard";
+import { products } from "@/fakeData/data";
 
 export default function Page() {
   const t = useTranslations();

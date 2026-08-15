@@ -1,11 +1,10 @@
 import CategoryCard from '@/components/CategoryCard/CategoryCard'
+import { categories } from '@/fakeData/data';
 import { useTranslations } from 'next-intl'
 import React from 'react'
-import { getCategories } from './data'
 
 export default function DesignCategories() {
     const t = useTranslations();
-    const categories = getCategories(t);
 
     return (
         <>

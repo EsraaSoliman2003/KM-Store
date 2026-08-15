@@ -1,9 +1,9 @@
-import { products } from '@/components/FlashSales/data';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import { Share } from 'lucide-react';
 import { useTranslations } from 'next-intl'
 import React from 'react'
 import Header from '../_components/Header';
+import { products } from '@/fakeData/data';
 
 export default function page() {
     const t = useTranslations();

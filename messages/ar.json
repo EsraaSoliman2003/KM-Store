@@ -528,5 +528,6 @@
   "accountAndLogin": "الحساب وتسجيل الدخول",
   "accountAndLoginDescription": "كلمة المرور ومشكلات الوصول",
   "orderIssues": "مشكلات الطلبات",
-  "orderIssuesDescription": "المنتجات المفقودة أو التالفة"
+  "orderIssuesDescription": "المنتجات المفقودة أو التالفة",
+  "sales": "تخفيضات"
 }

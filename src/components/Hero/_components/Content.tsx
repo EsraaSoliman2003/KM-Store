@@ -1,6 +1,7 @@
 import { motion, type Variants } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 type Props = {
     activeProduct: any;
@@ -98,18 +99,19 @@ export default function Content({ activeProduct }: Props) {
 
             {/* Buttons */}
             <div className="mt-10 flex gap-5">
-                <button
+                <Link
+                    href={`/categories/${activeProduct.cat.id}/${activeProduct.id}`}
                     className="
-            group
-            inline-flex flex-1 items-center justify-center gap-2
-            rounded-[12px]
-            px-9 py-4
-            text-[18px] font-medium leading-none text-white
-            transition-all duration-300
-            hover:shadow-[0_15px_40px_rgba(239,68,68,.35)]
-            active:scale-95
-            whitespace-nowrap
-        "
+                        group
+                        inline-flex flex-1 items-center justify-center gap-2
+                        rounded-[12px]
+                        px-9 py-4
+                        text-[18px] font-medium leading-none text-white
+                        transition-all duration-300
+                        hover:shadow-[0_15px_40px_rgba(239,68,68,.35)]
+                        active:scale-95
+                        whitespace-nowrap
+                    "
                     style={{ backgroundColor: activeProduct.color }}
                 >
                     <span>{t("buyNow")}</span>
@@ -122,9 +124,10 @@ export default function Content({ activeProduct }: Props) {
                             className="transition-transform duration-300 group-hover:translate-x-1"
                         />
                     }
-                </button>
+                </Link>
 
-                <button
+                <Link
+                    href={`/categories/${activeProduct.cat.id}/${activeProduct.id}`}
                     className="
                         inline-flex flex-1 items-center justify-center gap-2
                         rounded-[12px]
@@ -142,7 +145,7 @@ export default function Content({ activeProduct }: Props) {
                     style={{ borderColor: activeProduct.color }}
                 >
                     {t("learnMore")}
-                </button>
+                </Link>
             </div>
 
             {/* Feature Chips */}

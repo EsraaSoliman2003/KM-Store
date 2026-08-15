@@ -528,5 +528,6 @@
   "accountAndLogin": "Account & Login",
   "accountAndLoginDescription": "Password, Access issues",
   "orderIssues": "Order Issues",
-  "orderIssuesDescription": "Missing, damaged items"
+  "orderIssuesDescription": "Missing, damaged items",
+  "sales": "Sales"
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { orbitProducts } from "./_components/data";
+import { orbitProducts } from "../../fakeData/data";
 import { useEffect, useState } from "react";
 import {
     FiZap,

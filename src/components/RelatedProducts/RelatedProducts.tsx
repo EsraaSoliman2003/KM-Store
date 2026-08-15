@@ -3,7 +3,7 @@
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import ProductCard from "../ProductCard/ProductCard";
 import { useTranslations } from "next-intl";
-import { products } from "../FlashSales/data";
+import { products } from "@/fakeData/data";
 
 export default function RelatedProducts() {
     const t = useTranslations();

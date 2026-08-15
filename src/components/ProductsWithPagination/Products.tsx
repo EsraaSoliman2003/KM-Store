@@ -1,14 +1,13 @@
 "use client";
 
 import ProductCard from "@/components/ProductCard/ProductCard";
-import { products } from "@/components/FlashSales/data";
 import { useState } from "react";
 import PaginationButtons from "./PaginationButtons";
 import MobileFilter from "../Filters/MobileFilter";
 import DesktopFilter from "../Filters/DesktopFilter";
-import { categories } from "../Categories/data";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import { useTranslations } from "next-intl";
+import { categories, products } from "@/fakeData/data";
 
 type Prop = {
     text?: string;
