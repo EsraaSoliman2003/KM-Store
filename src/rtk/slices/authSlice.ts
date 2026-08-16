@@ -162,6 +162,48 @@ export const resetPassword = createAsyncThunk<
 });
 
 // ===========================
+// Google Login
+// ===========================
+
+interface GoogleLoginPayload {
+  google_id: string;
+  name: string;
+  email: string;
+  avatar: string;
+  country_code: string;
+}
+
+export const googleLogin = createAsyncThunk<
+  AuthResponse,
+  GoogleLoginPayload
+>("auth/googleLogin", async (data) => {
+  const res = await axios.post("auth/google-login", data);
+
+  return res.data;
+});
+
+// ===========================
+// Facebook Login
+// ===========================
+
+interface FacebookLoginPayload {
+  facebook_id: string;
+  name: string;
+  email?: string;
+  avatar?: string;
+  country_code: string;
+}
+
+export const facebookLogin = createAsyncThunk<
+  AuthResponse,
+  FacebookLoginPayload
+>("auth/facebookLogin", async (data) => {
+  const res = await axios.post("auth/facebook-login", data);
+
+  return res.data;
+});
+
+// ===========================
 // Slice
 // ===========================
 
@@ -289,6 +331,42 @@ const authSlice = createSlice({
       })
 
       .addCase(resetPassword.rejected, (state) => {
+        state.loading = false;
+      })
+
+      // ===========================
+      // GOOGLE LOGIN
+      // ===========================
+
+      .addCase(googleLogin.pending, (state) => {
+        state.loading = true;
+      })
+
+      .addCase(googleLogin.fulfilled, (state, action) => {
+        state.loading = false;
+        state.token = action.payload.data.token;
+        state.user = action.payload.data.user;
+      })
+
+      .addCase(googleLogin.rejected, (state) => {
+        state.loading = false;
+      })
+
+      // ===========================
+      // FACEBOOK LOGIN
+      // ===========================
+
+      .addCase(facebookLogin.pending, (state) => {
+        state.loading = true;
+      })
+
+      .addCase(facebookLogin.fulfilled, (state, action) => {
+        state.loading = false;
+        state.token = action.payload.data.token;
+        state.user = action.payload.data.user;
+      })
+
+      .addCase(facebookLogin.rejected, (state) => {
         state.loading = false;
       });
   },

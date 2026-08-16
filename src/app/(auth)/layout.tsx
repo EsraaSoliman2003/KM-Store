@@ -1,14 +1,14 @@
+import Providers from "@/providers/Providers";
 import "./style.css";
 
 export default async function RootLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-
-    return (
-        <>
-            {children}
-        </>
-    );
+  return (
+    <Providers>
+      {children}
+    </Providers>
+  );
 }

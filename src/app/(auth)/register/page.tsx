@@ -9,6 +9,8 @@ import "react-phone-input-2/lib/style.css";
 import { Eye, EyeOff } from "lucide-react";
 
 import { useRegisterForm } from "@/hooks/useRegisterForm";
+import GoogleButton from "@/components/GoogleButton/GoogleButton";
+import FacebookButton from "@/components/FacebookButton/FacebookButton";
 
 export default function Page() {
   const t = useTranslations();
@@ -211,27 +213,8 @@ export default function Page() {
           </div>
 
           <div className="flex justify-center gap-4">
-            <button
-              type="button"
-              aria-label="Google"
-              className="flex h-12 w-12 items-center justify-center rounded-[8px] border border-(--border-dark) transition hover:border-[#259DF3] hover:bg-gray-504DB8FF]-800"
-            >
-              <FaGoogle
-                size={20}
-                className="text-[#DB4437]"
-              />
-            </button>
-
-            <button
-              type="button"
-              aria-label="Facebook"
-              className="flex h-12 w-12 items-center justify-center rounded-[8px] border border-(--border-dark) transition hover:border-[#259DF3] hover:bg-gray-504DB8FF]-800"
-            >
-              <FaFacebookF
-                size={20}
-                className="text-[#1877F2]"
-              />
-            </button>
+            <GoogleButton />
+            <FacebookButton />
           </div>
 
           {/* login */}
