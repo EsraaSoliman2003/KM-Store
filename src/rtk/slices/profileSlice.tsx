@@ -7,6 +7,8 @@ import {
   registerUser,
   logoutUser,
   resetPassword,
+  googleLogin,
+  facebookLogin,
 } from "./authSlice";
 
 // ===========================
@@ -104,6 +106,36 @@ const profileSlice = createSlice({
       // ===========================
 
       .addCase(resetPassword.fulfilled, (state, action) => {
+        state.profile = {
+          code: action.payload.code,
+          message: action.payload.message,
+          errors: action.payload.errors,
+          data: {
+            user: action.payload.data.user,
+          },
+        };
+      })
+
+      // ===========================
+      // GOOGLE LOGIN
+      // ===========================
+
+      .addCase(googleLogin.fulfilled, (state, action) => {
+        state.profile = {
+          code: action.payload.code,
+          message: action.payload.message,
+          errors: action.payload.errors,
+          data: {
+            user: action.payload.data.user,
+          },
+        };
+      })
+
+      // ===========================
+      // META LOGIN
+      // ===========================
+
+      .addCase(facebookLogin.fulfilled, (state, action) => {
         state.profile = {
           code: action.payload.code,
           message: action.payload.message,

@@ -170,7 +170,7 @@ interface GoogleLoginPayload {
   name: string;
   email: string;
   avatar: string;
-  country_code: string;
+  country_code?: string;
 }
 
 export const googleLogin = createAsyncThunk<
@@ -191,7 +191,7 @@ interface FacebookLoginPayload {
   name: string;
   email?: string;
   avatar?: string;
-  country_code: string;
+  country_code?: string;
 }
 
 export const facebookLogin = createAsyncThunk<

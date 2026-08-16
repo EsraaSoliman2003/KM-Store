@@ -2,12 +2,14 @@
 
 import React from "react";
 import { FaFacebookF } from "react-icons/fa";
-
 import { useAppDispatch } from "@/rtk/hooks";
 import { facebookLogin } from "@/rtk/slices/authSlice";
+import { setCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 
 export default function FacebookButton() {
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const handleFacebookLogin = async () => {
     try {
@@ -49,20 +51,27 @@ export default function FacebookButton() {
               }
 
               try {
-                await dispatch(
+                const result = await dispatch(
                   facebookLogin({
                     facebook_id: user.id ?? "",
                     name: user.name ?? "",
                     email: user.email ?? "",
                     avatar:
                       user.picture?.data?.url ?? "",
-                    country_code: "+20",
                   })
                 ).unwrap();
 
-                console.log(
-                  "Facebook login successful"
-                );
+                // Store backend token
+                const token = result.data.token;
+
+                setCookie("token", token, {
+                  maxAge: 60 * 60 * 24 * 7,
+                  path: "/",
+                });
+
+                // Redirect after successful login
+                router.replace("/");
+
               } catch (error) {
                 console.error(
                   "Facebook backend login failed:",
