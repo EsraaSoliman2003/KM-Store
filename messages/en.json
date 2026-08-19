@@ -548,5 +548,7 @@
   "otpVerified": "OTP verified successfully.",
   "otpResent": "OTP resent successfully.",
   "PasswordResetSuccessfully": "Password reset successfully.",
-  "UnexpectedError": "Something went wrong. Please try again."
+  "UnexpectedError": "Something went wrong. Please try again.",
+  "noCategories": "No categories available",
+  "noCategoriesDescription": "There are no categories available at the moment."
 }

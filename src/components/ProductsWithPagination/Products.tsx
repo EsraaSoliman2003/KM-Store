@@ -1,13 +1,17 @@
 "use client";
 
 import ProductCard from "@/components/ProductCard/ProductCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PaginationButtons from "./PaginationButtons";
 import MobileFilter from "../Filters/MobileFilter";
 import DesktopFilter from "../Filters/DesktopFilter";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import { useTranslations } from "next-intl";
-import { categories, products } from "@/fakeData/data";
+import { products } from "@/fakeData/data";
+import { useAppDispatch, useAppSelector } from "@/rtk/hooks";
+import { getCategories } from "@/rtk/slices/categoriesSlice";
+import CategoryCardSkeleton from "@/skeleton/CategoryCardSkeleton";
+import EmptyState from "../EmptyState/EmptyState";
 
 type Prop = {
     text?: string;
@@ -30,6 +34,23 @@ export default function Products({ text = "All Products", noCats = false }: Prop
         startIndex,
         startIndex + productsPerPage
     );
+
+    const dispatch = useAppDispatch();
+
+    const { categories, loading } = useAppSelector(
+        (state) => state.categories
+    );
+
+    useEffect(() => {
+        void dispatch(
+            getCategories({
+                page: 1,
+                per_page: 100,
+            })
+        );
+    }, [dispatch]);
+
+    const categoryItems = categories?.data?.categories ?? [];
 
     return (
         <section className="min-h-screen py-8">
@@ -73,9 +94,34 @@ export default function Products({ text = "All Products", noCats = false }: Prop
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 sm:gap-5 xl:grid-cols-3">
-                    {categories.map((item, index) => (
-                        <CategoryCard key={index} item={item} className="h-[170px] sm:h-[200px] lg:h-[220px]" />
-                    ))}
+
+                    {/* ================= SKELETON ================= */}
+                    {loading &&
+                        Array.from({ length: 3 }).map((_, index) => (
+                            <CategoryCardSkeleton
+                                key={index}
+                                className="h-[170px] sm:h-[200px] lg:h-[220px]"
+                            />
+                        ))}
+
+                    {/* ================= CATEGORIES ================= */}
+                    {!loading &&
+                        categoryItems.slice(0, 3).map((item) => (
+                            <CategoryCard
+                                key={item.id}
+                                item={item}
+                                className="h-[170px] sm:h-[200px] lg:h-[220px]"
+                            />
+                        ))}
+
+                    {/* ================= EMPTY ================= */}
+                    {!loading && categoryItems.length === 0 && (
+                        <EmptyState
+                            title={t("noCategories")}
+                            description={t("noCategoriesDescription")}
+                        />
+                    )}
+
                 </div>
             </div>
         </section>

@@ -1,17 +1,11 @@
 "use client";
 
+import { Category } from "@/utils/dtos";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FiArrowUpRight } from "react-icons/fi";
-
-type Category = {
-    id: number;
-    title: string;
-    products: string;
-    image: string;
-};
 
 type Props = {
     item: Category;
@@ -30,23 +24,23 @@ export default function CategoryCard({
         <Link
             href={`/categories/${item.id}`}
             className={`
-        group relative
-        overflow-hidden
-        rounded-2xl
-        border border-transparent
-        transition-all
-        duration-300
-        ease-in-out
-        hover:-translate-y-1
-        hover:border-(--main)
-        hover:shadow-[0_16px_40px_var(--shadow-color)]
-        ${className}
-      `}
+                group relative
+                overflow-hidden
+                rounded-2xl
+                border border-transparent
+                transition-all
+                duration-300
+                ease-in-out
+                hover:-translate-y-1
+                hover:border-(--main)
+                hover:shadow-[0_16px_40px_var(--shadow-color)]
+                ${className}
+            `}
         >
             {/* ================= IMAGE ================= */}
             <Image
                 src={item.image}
-                alt={item.title}
+                alt={String(item.id)}
                 fill
                 sizes="(min-width: 1280px) 33vw, 50vw"
                 loading="eager"
@@ -81,11 +75,11 @@ export default function CategoryCard({
                                 `}
                         `}
                     >
-                        {t(item.title)}
+                        {item.name}
                     </h3>
 
                     <p className={`${isSmall ? "mt-1 text-[9px] text-white/70" : "mt-1 text-white/75 transition-colors duration-300 group-hover:text-white sm:mt-2 text-xs sm:text-sm"}`}>
-                        {t(item.products)}
+                        {item.level}
                     </p>
                 </div>
 

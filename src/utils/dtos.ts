@@ -41,3 +41,26 @@ export interface ProfileResponse {
   };
 }
 
+export interface CategoriesResponse {
+  code: number;
+  message: string;
+  errors: unknown[];
+  data: {
+    categories: Category[];
+  };
+}
+
+export interface Category {
+  id: number;
+  name: string;
+  level: number;
+  first_color: string | null;
+  second_color: string | null;
+  image: string;
+}
+
+export interface Banner {
+  id: number;
+  image: string;
+  link: string | null;
+};
