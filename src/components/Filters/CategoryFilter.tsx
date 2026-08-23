@@ -1,42 +1,49 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslations } from "next-intl";
-import { FiFilter } from "react-icons/fi";
 import { IoChevronDown } from "react-icons/io5";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useAppSelector } from "@/rtk/hooks";
 
 type Props = {
     updateFilter: any;
-}
+};
 
 export default function CategoryFilter({ updateFilter }: Props) {
     const t = useTranslations();
     const searchParams = useSearchParams();
     const category = searchParams.get("category") || "";
 
-    const categories = [
-        { label: t("allCategories"), value: "" },
-        { label: t("smartPhones"), value: "smart-phones" },
-        { label: t("laptops"), value: "laptops" },
-        { label: t("audio"), value: "audio" },
-    ];
+    const { categories, loading } = useAppSelector((s) => s.categories);
+
+    const categoryItems = categories?.data?.categories ?? [];
 
     return (
         <div className="mb-3">
             <label className="relative block">
                 <select
                     value={category}
-                    onChange={(e) => updateFilter("category", e.target.value)}
-                    className="h-10 w-full appearance-none rounded-xl border border-[#444] bg-transparent px-3 pr-8 text-sm text-(--text-muted) outline-none transition focus:border-[#7040dc]"
+                    onChange={(e) =>
+                        updateFilter("category", e.target.value)
+                    }
+                    disabled={loading}
+                    className="h-10 w-full appearance-none rounded-xl border border-[#444] bg-transparent px-3 pr-8 text-sm text-(--text-muted) outline-none transition focus:border-[#7040dc] disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                    {categories.map((item) => (
-                        <option
-                            key={item.value || "all"}
-                            value={item.value}
-                            className="bg-(--bg-primary)"
-                        >
-                            {item.label}
-                        </option>
-                    ))}
+                    <option value="">
+                        {t("allCategories")}
+                    </option>
+                    {loading ? (
+                        <option value="">Loading...</option>
+                    ) : (
+                        categoryItems.map((item) => (
+                            <option
+                                key={item.id || "all"}
+                                value={item.id}
+                                className="bg-(--bg-primary)"
+                            >
+                                {item.name}
+                            </option>
+                        ))
+                    )}
                 </select>
 
                 <IoChevronDown
@@ -45,5 +52,5 @@ export default function CategoryFilter({ updateFilter }: Props) {
                 />
             </label>
         </div>
-    )
+    );
 }
