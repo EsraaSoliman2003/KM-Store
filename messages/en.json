@@ -550,5 +550,12 @@
   "PasswordResetSuccessfully": "Password reset successfully.",
   "UnexpectedError": "Something went wrong. Please try again.",
   "noCategories": "No categories available",
-  "noCategoriesDescription": "There are no categories available at the moment."
+  "noCategoriesDescription": "There are no categories available at the moment.",
+  "updatePasswordDescription": "Update your password to keep your account secure.",
+  "passwordConfirmation": "Confirm Password",
+  "passwordsDoNotMatch": "Passwords do not match",
+  "cancel": "Cancel",
+  "updating": "Updating...",
+  "back": "Back",
+  "passwordUpdatedSuccessfully": "Password updated successfully"
 }

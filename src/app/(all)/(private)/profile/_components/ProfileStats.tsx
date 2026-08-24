@@ -9,6 +9,7 @@ import {
 import { useTranslations } from "next-intl";
 import React from "react";
 import { Stat } from "./Stat";
+import ImageContainer from "./ImageContainer";
 
 export default function ProfileStats() {
     const t = useTranslations();
@@ -19,34 +20,13 @@ export default function ProfileStats() {
     const fullName = user?.name || "Ahmed Hassan";
     const email = user?.email || t("noEmail");
 
-    const initials = fullName
-        .split(" ")
-        .slice(0, 2)
-        .map((name: string) => name.charAt(0))
-        .join("")
-        .toUpperCase();
-
     return (
         <section className="mb-4 overflow-hidden rounded-2xl border border-(--border-dark) bg-(--bg-tertiary)">
             <div className="flex flex-col md:flex-row justify-between p-4">
 
                 {/* User */}
                 <div className="flex items-center gap-3 md:min-w-60 xl:min-w-90">
-                    <div className="relative flex h-18 w-18 sm:h-22 sm:w-22 shrink-0 items-center justify-center rounded-full bg-(--main) text-[13px] font-bold text-(--text-white)">
-                        {user?.avatar ? (
-                            <img
-                                src={user.avatar}
-                                alt={fullName}
-                                className="h-full w-full object-cover rounded-full"
-                            />
-                        ) : (
-                            initials
-                        )}
-
-                        <span className="absolute bottom-0 right-0 flex items-center justify-center rounded-full border border-(--text-white) bg-[#8B5CF6] p-1">
-                            <User size={20} className="sm:size-5" />
-                        </span>
-                    </div>
+                    <ImageContainer />
 
                     <div className="min-w-0">
                         <p className="truncate text-lg sm:text-xl font-semibold text-(--text-primary)">

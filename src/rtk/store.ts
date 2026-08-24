@@ -5,6 +5,7 @@ import sidebarReducer from "./slices/sidebarSlice";
 import profileReducer from "./slices/profileSlice";
 import categoriesReducer from "./slices/categoriesSlice";
 import bannersReducer from "./slices/bannersSlice";
+import addressReducer from "./slices/addressSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,7 +13,8 @@ export const store = configureStore({
     sidebar: sidebarReducer,
     profile: profileReducer,
     categories: categoriesReducer,
-    banners: bannersReducer
+    banners: bannersReducer,
+    address: addressReducer
   },
 });
 

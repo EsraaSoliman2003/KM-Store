@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { SettingRow } from "./SettingRow";
 import { Toggle } from "./Toggle";
+import Link from "next/link";
 
 export default function Security() {
     const t = useTranslations();
@@ -26,10 +27,10 @@ export default function Security() {
                     title={t("changePassword")}
                     description={t("lastChangedPassword")}
                     action={
-                        <button className="flex py-1 items-center gap-2 rounded-[8px] bg-(--main) px-3 text-[14px] font-medium text-(--white) transition-opacity hover:opacity-90">
+                        <Link href={"/change-password"} className="flex py-1 items-center gap-2 rounded-[8px] bg-(--main) px-3 text-[14px] font-medium text-(--white) transition-opacity hover:opacity-90">
                             <Edit3 size={20} />
                             {t("update")}
-                        </button>
+                        </Link>
                     }
                 />
 

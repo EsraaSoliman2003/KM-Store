@@ -548,5 +548,14 @@
   "otpVerified": "تم التحقق من رمز OTP بنجاح.",
   "otpResent": "تم إرسال رمز OTP مرة أخرى بنجاح.",
   "PasswordResetSuccessfully": "تم إعادة تعيين كلمة المرور بنجاح.",
-  "UnexpectedError": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+  "UnexpectedError": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+  "noCategories": "لا توجد فئات متاحة",
+  "noCategoriesDescription": "لا توجد فئات متاحة في الوقت الحالي.",
+  "updatePasswordDescription": "قم بتحديث كلمة المرور للحفاظ على أمان حسابك.",
+  "passwordConfirmation": "تأكيد كلمة المرور",
+  "passwordsDoNotMatch": "كلمتا المرور غير متطابقتين",
+  "cancel": "إلغاء",
+  "updating": "جارٍ التحديث...",
+  "back": "رجوع",
+  "passwordUpdatedSuccessfully": "تم تحديث كلمة المرور بنجاح"
 }

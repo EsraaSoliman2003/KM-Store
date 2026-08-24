@@ -64,3 +64,15 @@ export interface Banner {
   image: string;
   link: string | null;
 };
+
+export interface Address {
+  id: number;
+  address_type: string;
+  name: string;
+  phone: string;
+  city: string;
+  national_address: string;
+  detailed_address: string;
+  postal_code: string;
+  is_default: boolean;
+}
