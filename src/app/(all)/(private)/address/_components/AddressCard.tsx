@@ -1,10 +1,11 @@
+import { Address } from '@/utils/dtos';
 import { Edit3, MapPin, Trash2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import React from 'react'
 
 type Props = {
-    item: any;
+    item: Address;
 }
 
 export default function AddressCard({ item }: Props) {
@@ -20,10 +21,10 @@ export default function AddressCard({ item }: Props) {
                 />
 
                 <p className="text-[16px] font-semibold text-(--text-primary)">
-                    {item.title}
+                    {item.address_type}
                 </p>
 
-                {item.isDefault && (
+                {item.is_default && (
                     <span className="rounded-full border border-(--main) bg-[rgba(104,58,208,0.12)] px-3 py-1.5 text-[12px] font-medium text-(--text-primary)">
                         {t("default")}
                     </span>
@@ -33,7 +34,7 @@ export default function AddressCard({ item }: Props) {
             {/* Address */}
             <div className="mt-6 flex-1">
                 <p className="text-[13px] leading-5 text-(--text-muted)">
-                    {item.address}
+                    {item.detailed_address}-{item.national_address}-{item.postal_code}
                 </p>
 
                 <p className="text-[13px] leading-5 text-(--text-muted)">
@@ -55,7 +56,7 @@ export default function AddressCard({ item }: Props) {
                     {t("edit")}
                 </Link>
 
-                {!item.isDefault && (
+                {!item.is_default && (
                     <>
                         <button
                             type="button"
