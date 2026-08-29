@@ -42,9 +42,9 @@ export default function Page() {
 
       {/* Products */}
       <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
-        {products.slice(0, 4).map((product) => (
+        {/* {products.slice(0, 4).map((product) => (
           <ProductCard key={product.id} product={product} />
-        ))}
+        ))} */}
       </div>
     </section>
   );
