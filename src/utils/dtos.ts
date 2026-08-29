@@ -57,6 +57,10 @@ export interface Category {
   first_color: string | null;
   second_color: string | null;
   image: string;
+  parent?: {
+    id: number;
+    name: string;
+  };
 }
 
 export interface Banner {
@@ -75,4 +79,34 @@ export interface Address {
   detailed_address: string;
   postal_code: string;
   is_default: boolean;
+}
+
+export interface Brand {
+  id: number;
+  name: string;
+  image: string;
+  number_of_products: number | null;
+}
+
+export interface Product {
+  id: number;
+  name: string;
+  price: string;
+  discount_type: string | null;
+  discount_amount: string | null;
+  has_variants: boolean;
+  in_stock: boolean;
+  final_price: number;
+  discount_info: string | null;
+  avg_rating: number;
+  reviews_count: number;
+  sold_quantity?: number;
+  brand: Brand | null;
+  category: Category;
+  primary_image: string;
+  images: string[];
+  description: string;
+  hover_text: string;
+  specifications: unknown[];
+  in_wishlist: boolean;
 }

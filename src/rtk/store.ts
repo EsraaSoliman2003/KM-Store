@@ -6,6 +6,9 @@ import profileReducer from "./slices/profileSlice";
 import categoriesReducer from "./slices/categoriesSlice";
 import bannersReducer from "./slices/bannersSlice";
 import addressReducer from "./slices/addressSlice";
+import productsReducer from "./slices/productsSlice";
+import brandsReducer from "./slices/brandsSlice";
+import wishlistReducer from "./slices/wishlistSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,7 +17,10 @@ export const store = configureStore({
     profile: profileReducer,
     categories: categoriesReducer,
     banners: bannersReducer,
-    address: addressReducer
+    address: addressReducer,
+    products: productsReducer,
+    brands: brandsReducer,
+    wishlist: wishlistReducer,
   },
 });
 

@@ -1,17 +1,33 @@
 "use client";
 
-import Image from "next/image";
 import {
-  FiArrowUpRight,
   FiChevronLeft,
   FiChevronRight,
 } from "react-icons/fi";
 import { useTranslations } from "next-intl";
-import { categories } from "@/fakeData/data";
 import Link from "next/link";
+
+import { useAppDispatch, useAppSelector } from "@/rtk/hooks";
+import { getBrands } from "@/rtk/slices/brandsSlice";
+
+import EmptyState from "../EmptyState/EmptyState";
+
+import { useEffect } from "react";
+import { BrandsSkeleton } from "@/skeleton/HomeSkeleton";
+import BrandsSwiper from "./BrandsSwiper";
 
 export default function Brands() {
   const t = useTranslations();
+
+  const dispatch = useAppDispatch();
+
+  const { data, loading } = useAppSelector((state) => state.brands);
+
+  const brands = data?.data?.items ?? [];
+
+  useEffect(() => {
+    dispatch(getBrands(1));
+  }, [dispatch]);
 
   return (
     <section className="py-14">
@@ -24,7 +40,10 @@ export default function Brands() {
             </h2>
           </div>
 
-          <Link href={"/brands"} className="group mx-auto lg:mx-0 flex w-fit items-center gap-2 text-lg text-purple-400 transition-all duration-300 hover:text-purple-300">
+          <Link
+            href="/brands"
+            className="group mx-auto flex w-fit items-center gap-2 text-lg text-purple-400 transition-all duration-300 hover:text-purple-300 lg:mx-0"
+          >
             <span className="border-b-2 border-purple-500 pb-1">
               {t("showMore")}
             </span>
@@ -43,88 +62,23 @@ export default function Brands() {
           </Link>
         </div>
 
-        {/* Brands */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-5 xl:grid-cols-3">
-          {categories.slice(0, 3).map((item) => (
-            <div
-              key={item.title}
-              className="
-                group relative
-                h-[170px] sm:h-[200px] lg:h-[220px]
-                overflow-hidden rounded-2xl sm:rounded-3xl
-                border border-transparent
-                transition-all duration-300 ease-in-out
-                hover:-translate-y-1
-                hover:border-(--main)
-                hover:shadow-[0_16px_40px_var(--shadow-color)]
-              "
-            >
-              {/* Image */}
-              <Image
-                src={item.image}
-                alt={t(item.title)}
-                fill
-                sizes="(min-width: 1280px) 33vw, 50vw"
-                loading="eager"
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-              />
+        {/* ================= LOADING ================= */}
+        {loading && (
+          <BrandsSkeleton />
+        )}
 
-              {/* Overlay */}
-              <div
-                className="
-                  absolute inset-0
-                  bg-gradient-to-t from-black/80 via-black/20 to-transparent
-                  transition-opacity duration-300
-                  group-hover:opacity-90
-                "
-              />
+        {/* ================= EMPTY / ERROR ================= */}
+        {!loading && brands.length === 0 && (
+          <EmptyState
+            title={t("somethingWentWrong")}
+            description={t("tryAgainLater")}
+          />
+        )}
 
-              {/* Content */}
-              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-3 sm:p-5">
-                <div>
-                  <h3
-                    className="
-                      text-base sm:text-lg lg:text-xl
-                      font-semibold text-white
-                      transition-colors duration-300
-                      group-hover:text-(--main-light)
-                    "
-                  >
-                    {t(item.title)}
-                  </h3>
-
-                  <p className="mt-1 text-xs text-white/75 transition-colors duration-300 group-hover:text-white sm:mt-2 sm:text-sm">
-                    {t(item.products)}
-                  </p>
-                </div>
-
-                <button
-                  className="
-                    flex
-                    h-9 w-9
-                    shrink-0
-                    items-center justify-center
-                    rounded-full
-                    border border-(--border-color)
-                    bg-[rgba(var(--bg-primary-rgb),0.8)]
-                    text-(--text-primary)
-                    backdrop-blur-sm
-                    transition-all duration-300
-                    sm:h-10 sm:w-10
-                    lg:h-11 lg:w-11
-                    group-hover:rotate-12
-                    group-hover:scale-110
-                    group-hover:border-(--main)
-                    group-hover:bg-(--main)
-                    group-hover:text-(--text-white)
-                  "
-                >
-                  <FiArrowUpRight className="text-base sm:text-lg lg:text-xl" />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* ================= BRANDS ================= */}
+        {!loading && brands.length > 0 && (
+          <BrandsSwiper data={brands} />
+        )}
       </div>
     </section>
   );

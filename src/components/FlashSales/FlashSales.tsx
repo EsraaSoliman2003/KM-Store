@@ -1,18 +1,21 @@
 "use client";
 
 import { FiChevronLeft, FiChevronRight, FiZap } from "react-icons/fi";
-import ProductCard from "../ProductCard/ProductCard";
 import Timer from "./Timer";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { products } from "@/fakeData/data";
+import { useAppSelector } from "@/rtk/hooks";
+import ProductsSwiper from "../ProductsSwiper/ProductsSwiper";
 
 export default function FlashSales() {
   const t = useTranslations();
+  const { sections } = useAppSelector((s) => s.products);
+  const products = sections?.more_products ?? [];
 
   return (
     <section className="py-14">
       <div className="container">
+
         {/* Header */}
         <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div className="text-center lg:text-left">
@@ -32,15 +35,16 @@ export default function FlashSales() {
         </div>
 
         {/* Products */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
-          {products.slice(0, 4).map((product: any) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        {products.length > 0 && (
+          <ProductsSwiper data={products} />
+        )}
 
         {/* Footer */}
         <div className="mt-8 flex justify-center lg:justify-end">
-          <Link href={`/sales`} className="group flex items-center gap-2 text-lg text-purple-400 transition-all duration-300 hover:text-purple-300">
+          <Link
+            href="/sales"
+            className="group flex items-center gap-2 text-lg text-purple-400 transition-all duration-300 hover:text-purple-300"
+          >
             <span className="border-b-2 border-purple-500 pb-1">
               {t("showMore")}
             </span>
@@ -58,6 +62,7 @@ export default function FlashSales() {
             )}
           </Link>
         </div>
+
       </div>
     </section>
   );

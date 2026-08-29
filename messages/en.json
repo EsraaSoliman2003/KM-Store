@@ -579,5 +579,8 @@
   "creating": "Creating...",
   "addressCreatedSuccessfully": "Address created successfully",
   "noAddresses": "No Addresses",
-  "noAddressesDescription": "No Addresses Description"
+  "noAddressesDescription": "No Addresses Description",
+  "somethingWentWrong": "Something went wrong",
+  "tryAgainLater": "Please try again later.",
+  "shopByBrand": "Shop By Brand"
 }

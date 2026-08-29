@@ -1,17 +1,20 @@
 "use client";
 
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import ProductCard from "../ProductCard/ProductCard";
 import { useTranslations } from "next-intl";
-import { products } from "@/fakeData/data";
 import Link from "next/link";
+import { useAppSelector } from "@/rtk/hooks";
+import ProductsSwiper from "../ProductsSwiper/ProductsSwiper";
 
 export default function TopRated() {
   const t = useTranslations();
+  const { sections } = useAppSelector((s) => s.products);
+  const products = sections?.top_rated ?? [];
 
   return (
     <section className="py-14">
       <div className="container">
+
         {/* Header */}
         <div className="mb-8 flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="text-center lg:text-start">
@@ -24,7 +27,10 @@ export default function TopRated() {
             </p>
           </div>
 
-          <Link href={"/top-rated"} className="group mx-auto lg:mx-0 flex w-fit items-center gap-2 self-start text-lg text-purple-400 transition-all duration-300 hover:text-purple-300 lg:self-auto">
+          <Link
+            href="/top-rated"
+            className="group mx-auto flex w-fit items-center gap-2 self-start text-lg text-purple-400 transition-all duration-300 hover:text-purple-300 lg:mx-0 lg:self-auto"
+          >
             <span className="border-b-2 border-purple-500 pb-1">
               {t("showMore")}
             </span>
@@ -44,11 +50,10 @@ export default function TopRated() {
         </div>
 
         {/* Products */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
-          {products.slice(0, 4).map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        {products.length > 0 && (
+          <ProductsSwiper data={products} />
+        )}
+
       </div>
     </section>
   );

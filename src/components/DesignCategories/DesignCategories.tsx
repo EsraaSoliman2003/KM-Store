@@ -1,15 +1,13 @@
 "use client";
 
-import CategoryCard from "@/components/CategoryCard/CategoryCard";
-import CategoryCardSkeleton from "@/skeleton/CategoryCardSkeleton";
-import EmptyState from "@/components/EmptyState/EmptyState";
+import { useEffect } from "react";
+import { useTranslations } from "next-intl";
+
 import { useAppDispatch, useAppSelector } from "@/rtk/hooks";
 import { getCategories } from "@/rtk/slices/categoriesSlice";
-import { useTranslations } from "next-intl";
-import React, { useEffect } from "react";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import EmptyState from "@/components/EmptyState/EmptyState";
+import CategoriesSwiper from "./CategoriesSwiper";
 
 export default function DesignCategories() {
     const t = useTranslations();
@@ -18,6 +16,8 @@ export default function DesignCategories() {
     const { categories, loading } = useAppSelector(
         (state) => state.categories
     );
+
+    const categoryItems = categories?.data?.categories ?? [];
 
     useEffect(() => {
         void dispatch(
@@ -28,82 +28,53 @@ export default function DesignCategories() {
         );
     }, [dispatch]);
 
-    const categoryItems = categories?.data?.categories ?? [];
-
-    // ================= LOADING =================
-    if (loading) {
-        return (
-            <Swiper
-                spaceBetween={12}
-                slidesPerView="auto"
-            >
-                {Array.from({ length: 6 }).map((_, index) => (
-                    <SwiperSlide
-                        key={index}
-                        className="
-                        !h-[150px]
-                        sm:!h-[180px]
-                        md:!h-[180px]
-                        lg:!h-[240px]
-
-                        !w-[40%]
-                        sm:!w-[30%]
-                        md:!w-[25%]
-                        lg:!w-[23%]
-                        xl:!w-[21%]
-                    "
-                    >
-                        <CategoryCardSkeleton className="h-full w-full" />
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-        );
-    }
-
-    // ================= EMPTY =================
-    if (categoryItems.length === 0) {
-        return (
-            <div
-                className="
-                    items-center
-                    justify-center
-                    sm:h-[180px]
-                    md:h-[180px]
-                    lg:h-[240px]
-                "
-            >
-                <EmptyState
-                    title={t("noCategories")}
-                    description={t("noCategoriesDescription")}
-                />
-            </div>
-        );
-    }
-
-    // ================= CATEGORIES =================
     return (
-        <Swiper
-            spaceBetween={12}
-            slidesPerView="auto"
-        >
-            {categoryItems.map((item) => (
-                <SwiperSlide
-                    key={item.id}
+        <section className="container py-14">
+            {/* Header */}
+            <div className="mb-8 flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-center lg:justify-between">
+                <div className="text-center lg:text-start">
+                    <h2 className="text-2xl font-bold text-white sm:text-3xl">
+                        {t("shopByCategoryTitle")}
+                    </h2>
+                </div>
+            </div>
+
+            {/* Content */}
+            {loading ? (
+                <div className="grid grid-cols-2 gap-3 sm:gap-5 xl:grid-cols-3">
+                    {Array.from({ length: 3 }).map((_, index) => (
+                        <div
+                            key={index}
+                            className="
+                                h-[170px]
+                                animate-pulse
+                                rounded-2xl
+                                bg-(--bg-secondary)
+                                sm:h-[200px]
+                                sm:rounded-3xl
+                                lg:h-[220px]
+                            "
+                        />
+                    ))}
+                </div>
+            ) : categoryItems.length === 0 ? (
+                <div
                     className="
-                        !h-[150px] sm:!h-[180px] md:!h-[180px] lg:!h-[240px]
-                        !w-[40%]
-                        sm:!w-[30%]
-                        md:!w-[25%]
-                        lg:!w-[23%]
-                        xl:!w-[21%]
+                        items-center
+                        justify-center
+                        sm:h-[180px]
+                        md:h-[180px]
+                        lg:h-[240px]
                     "
                 >
-                    <CategoryCard
-                        item={item}
-                        className="h-full w-full"
+                    <EmptyState
+                        title={t("noCategories")}
+                        description={t("noCategoriesDescription")}
                     />
-                </SwiperSlide>
-            ))}
-        </Swiper>
+                </div>
+            ) : (
+                <CategoriesSwiper data={categoryItems} />
+            )}
+        </section>
     );
 }
