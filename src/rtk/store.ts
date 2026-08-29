@@ -10,6 +10,9 @@ import addressReducer from "./slices/addressSlice";
 import productsReducer from "./slices/productsSlice";
 import brandsReducer from "./slices/brandsSlice";
 import wishlistReducer from "./slices/wishlistSlice";
+import newArrivalReducer from "./slices/newArrivalSlice";
+import bestSellerReducer from "./slices/bestSellerSlice";
+import topRatedReducer from "./slices/topRatedSlice";
 
 export const store = configureStore({
   reducer: {
@@ -23,6 +26,9 @@ export const store = configureStore({
     products: productsReducer,
     brands: brandsReducer,
     wishlist: wishlistReducer,
+    newArrival: newArrivalReducer,
+    bestSeller: bestSellerReducer,
+    topRated: topRatedReducer,
   },
 });
 

@@ -582,5 +582,10 @@
   "noAddressesDescription": "No Addresses Description",
   "somethingWentWrong": "Something went wrong",
   "tryAgainLater": "Please try again later.",
-  "shopByBrand": "Shop By Brand"
+  "shopByBrand": "Shop By Brand",
+  "brandsDescription": "Explore our wide range of trusted brands and find your favorites.",
+  "bestSeller": "Best Sellers",
+  "notificationBestSellerDescription": "Discover our best-selling products loved by our customers.",
+  "topRated": "Top Rated",
+  "topRatedDescription": "Discover our highest-rated products, loved and recommended by our customers."
 }

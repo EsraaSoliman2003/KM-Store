@@ -64,7 +64,22 @@ export default function Brands() {
 
         {/* ================= LOADING ================= */}
         {loading && (
-          <BrandsSkeleton />
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 xl:grid-cols-3">
+            {Array.from({ length: 3 }).map((_, index) => (
+              <div
+                key={index}
+                className="
+                    h-[170px]
+                    animate-pulse
+                    rounded-2xl
+                    bg-(--bg-secondary)
+                    sm:h-[200px]
+                    sm:rounded-3xl
+                    lg:h-[220px]
+                "
+              />
+            ))}
+          </div>
         )}
 
         {/* ================= EMPTY / ERROR ================= */}

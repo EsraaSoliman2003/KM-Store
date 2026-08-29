@@ -2,6 +2,7 @@
 
 import { useAppSelector } from "@/rtk/hooks";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
     index: number;
@@ -9,23 +10,26 @@ type Props = {
 
 export default function HomeBanner({ index }: Props) {
     const { sections } = useAppSelector((s) => s.home);
+
     if (!sections?.banners.length) return null;
 
-    const banner = sections?.banners[index];
+    const banner = sections.banners[index];
 
     if (!banner) return null;
 
     return (
         <section className="container">
-            <div className="relative overflow-hidden rounded-2xl h-50 md:h-90 lg:h-120">
-                <Image
-                    src={banner.image}
-                    alt={String(banner.id) || "Banner"}
-                    fill
-                    className="object-cover"
-                    priority={index === 0}
-                />
-            </div>
+            <Link href={banner.link || "/"} className="block">
+                <div className="relative h-50 overflow-hidden rounded-2xl md:h-90 lg:h-120">
+                    <Image
+                        src={banner.image}
+                        alt={String(banner.id) || "Banner"}
+                        fill
+                        className="object-cover"
+                        priority={index === 0}
+                    />
+                </div>
+            </Link>
         </section>
     );
 }
