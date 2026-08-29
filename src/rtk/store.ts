@@ -13,6 +13,7 @@ import wishlistReducer from "./slices/wishlistSlice";
 import newArrivalReducer from "./slices/newArrivalSlice";
 import bestSellerReducer from "./slices/bestSellerSlice";
 import topRatedReducer from "./slices/topRatedSlice";
+import productDetailsReducer from "./slices/productDetailsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -29,6 +30,8 @@ export const store = configureStore({
     newArrival: newArrivalReducer,
     bestSeller: bestSellerReducer,
     topRated: topRatedReducer,
+    productDetails: productDetailsReducer,
+
   },
 });
 
