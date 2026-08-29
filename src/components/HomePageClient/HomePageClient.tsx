@@ -11,16 +11,16 @@ import WhyUs from "@/components/WhyUs/WhyUs";
 import HomeSkeleton from "@/skeleton/HomeSkeleton";
 
 import { useAppDispatch, useAppSelector } from "@/rtk/hooks";
-import { getProductSections } from "@/rtk/slices/productsSlice";
 import { useEffect } from "react";
 import EmptyState from "../EmptyState/EmptyState";
 import { useTranslations } from "next-intl";
+import { getProductSections } from "@/rtk/slices/homeSlice";
 
 const HomePageClient = () => {
     const t = useTranslations();
     const dispatch = useAppDispatch();
 
-    const { sections, loading } = useAppSelector((s) => s.products);
+    const { sections, loading } = useAppSelector((s) => s.home);
 
     useEffect(() => {
         void dispatch(getProductSections());

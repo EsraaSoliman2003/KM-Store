@@ -7,7 +7,7 @@ import CategoriesSwiper from "../DesignCategories/CategoriesSwiper";
 export default function Categories() {
   const t = useTranslations();
 
-  const { sections } = useAppSelector((s) => s.products);
+  const { sections } = useAppSelector((s) => s.home);
   const categories = sections?.categories ?? [];
 
   return (

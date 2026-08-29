@@ -6,20 +6,6 @@ import { Banner, Category, Product } from "@/utils/dtos";
 // Types
 // ===========================
 
-export interface ProductSectionsResponse {
-    code: number;
-    message: string;
-    errors: unknown[];
-    data: {
-        banners: Banner[];
-        categories: Category[];
-        new_arrivals: Product[];
-        best_sellers: Product[];
-        top_rated: Product[];
-        more_products: Product[];
-    };
-}
-
 export interface ProductsResponse {
     code: number;
     message: string;
@@ -53,40 +39,16 @@ export interface GetProductsParams {
 // ===========================
 
 interface ProductSectionsState {
-    loading: boolean;
     productsLoading: boolean;
-
-    sections: ProductSectionsResponse["data"] | null;
-
     products: Product[];
     pagination: ProductsResponse["data"]["pagination"] | null;
 }
 
 const initialState: ProductSectionsState = {
-    loading: false,
     productsLoading: false,
-
-    sections: null,
-
     products: [],
     pagination: null,
 };
-
-// ===========================
-// Get Product Sections
-// ===========================
-
-export const getProductSections = createAsyncThunk<
-    ProductSectionsResponse,
-    void
->(
-    "products/getProductSections",
-    async () => {
-        const res = await axios.get("/products/sections");
-
-        return res.data;
-    }
-);
 
 // ===========================
 // Get Products
@@ -168,35 +130,6 @@ const productsSlice = createSlice({
 
     extraReducers: (builder) => {
         builder
-
-            // ===========================
-            // Product Sections
-            // ===========================
-
-            .addCase(
-                getProductSections.pending,
-                (state) => {
-                    state.loading = true;
-                }
-            )
-
-            .addCase(
-                getProductSections.fulfilled,
-                (state, action) => {
-                    state.loading = false;
-                    state.sections =
-                        action.payload.data;
-                }
-            )
-
-            .addCase(
-                getProductSections.rejected,
-                (state) => {
-                    state.loading = false;
-                    state.sections = null;
-                }
-            )
-
             // ===========================
             // Products
             // ===========================

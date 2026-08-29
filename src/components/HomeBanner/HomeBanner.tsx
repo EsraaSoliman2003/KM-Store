@@ -8,7 +8,7 @@ type Props = {
 };
 
 export default function HomeBanner({ index }: Props) {
-    const { sections } = useAppSelector((s) => s.products);
+    const { sections } = useAppSelector((s) => s.home);
     if (!sections?.banners.length) return null;
 
     const banner = sections?.banners[index];

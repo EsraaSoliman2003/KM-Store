@@ -9,7 +9,7 @@ import ProductsSwiper from "../ProductsSwiper/ProductsSwiper";
 
 export default function FlashSales() {
   const t = useTranslations();
-  const { sections } = useAppSelector((s) => s.products);
+  const { sections } = useAppSelector((s) => s.home);
   const products = sections?.more_products ?? [];
 
   return (

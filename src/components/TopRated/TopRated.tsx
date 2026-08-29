@@ -8,7 +8,7 @@ import ProductsSwiper from "../ProductsSwiper/ProductsSwiper";
 
 export default function TopRated() {
   const t = useTranslations();
-  const { sections } = useAppSelector((s) => s.products);
+  const { sections } = useAppSelector((s) => s.home);
   const products = sections?.top_rated ?? [];
 
   return (
