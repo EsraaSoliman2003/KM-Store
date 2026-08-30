@@ -1,8 +1,10 @@
+import { useAppSelector } from "@/rtk/hooks";
 import { Star } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-export function ReviewsContent({ reviews }: { reviews: number }) {
+export function ReviewsContent() {
     const t = useTranslations();
+    const { product } = useAppSelector((s) => s.productDetails);
 
     return (
         <div className="w-full max-w-[700px]">
@@ -10,7 +12,7 @@ export function ReviewsContent({ reviews }: { reviews: number }) {
             <div className="flex items-center gap-4">
                 <div>
                     <div className="text-[25px] font-semibold text-[var(--text-primary)]">
-                        5.0
+                        {product?.avg_rating}
                     </div>
 
                     <div className="mt-1 flex gap-[3px]">
@@ -29,7 +31,7 @@ export function ReviewsContent({ reviews }: { reviews: number }) {
                 <div className="text-[14px] text-[var(--text-muted)]">
                     {t("basedOn")}{" "}
                     <span className="text-[var(--text-secondary)]">
-                        {reviews.toLocaleString()}
+                        {product?.reviews_count.toLocaleString()}
                     </span>{" "}
                     {t("reviewsLabel")}
                 </div>

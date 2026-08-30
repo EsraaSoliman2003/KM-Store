@@ -9,21 +9,19 @@ import {
     Zap,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { FeatureBadge } from "./FeatureBadge"; // افترض أنه ملف منفصل
+import { FeatureBadge } from "./FeatureBadge";
 import Variants from "./Variants";
+import { useAppSelector } from "@/rtk/hooks";
 
-type Props = {
-    product: any;
-}
-
-export default function ProductInfo({ product }: Props) {
+export default function ProductInfo() {
     const t = useTranslations();
+    const { product } = useAppSelector((s) => s.productDetails)
 
     return (
         <div className="min-w-0">
             {/* Title */}
             <h1 className="max-w-[700px] text-[24px] font-semibold leading-[1.3] text-[var(--text-primary)] sm:text-[28px] lg:text-[30px]">
-                {product.title}
+                {product?.name}
             </h1>
 
             {/* Model / SKU */}
@@ -31,7 +29,7 @@ export default function ProductInfo({ product }: Props) {
                 <span>
                     {t("modelLabel")}: {" "}
                     <span className="text-[#9a9a9a]">
-                        {product.model}
+                        {product?.id}
                     </span>
                 </span>
 
@@ -40,7 +38,7 @@ export default function ProductInfo({ product }: Props) {
                 <span>
                     {t("skuLabel")}: {" "}
                     <span className="text-[#9a9a9a]">
-                        {product.sku}
+                        {product?.id}
                     </span>
                 </span>
             </div>
@@ -51,15 +49,15 @@ export default function ProductInfo({ product }: Props) {
             {/* Price */}
             <div className="flex flex-wrap items-center gap-2.5">
                 <span className="text-[25px] font-semibold text-[var(--main)] sm:text-[27px]">
-                    ${product.price.toFixed(2)}
+                    ${product?.final_price.toFixed(2)}
                 </span>
 
                 <span className="text-[14px] text-[#666] line-through">
-                    ${product.oldPrice.toFixed(2)}
+                    ${Number(product?.price).toFixed(2)}
                 </span>
 
                 <span className="rounded-[5px] border border-[var(--main)]/50 bg-[var(--main)]/10 px-2 py-1 text-[11px] font-medium text-[var(--main)]">
-                    {t("productDiscountLabel", { discount: product.discount })}
+                    {product?.discount_info}
                 </span>
             </div>
 
@@ -78,17 +76,17 @@ export default function ProductInfo({ product }: Props) {
                 </div>
 
                 <span className="text-[13px] font-medium text-[var(--text-primary)]">
-                    {product.rating.toFixed(1)}
+                    {product?.avg_rating.toFixed(1)}
                 </span>
 
                 <span className="text-[13px] text-[#666]">
-                    ({product.reviews} {t("reviewsLabel")})
+                    ({product?.reviews_count} {t("reviewsLabel")})
                 </span>
             </div>
 
             {/* Short Description */}
             <p className="mt-4 max-w-[680px] text-[14px] leading-[1.7] text-[var(--text-muted)] sm:text-[15px]">
-                {t("productShortDescription")}
+                TEST
             </p>
 
             {/* Features */}
@@ -109,7 +107,7 @@ export default function ProductInfo({ product }: Props) {
                 />
             </div>
 
-            <Variants product={product} />
+            {/* <Variants /> */}
 
             {/* Quantity */}
             <div className="mt-6">

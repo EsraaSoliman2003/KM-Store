@@ -5,6 +5,16 @@ import axios from "@/lib/axios";
 // Types
 // ===========================
 
+export interface keyValue {
+    key: string;
+    value: string;
+}
+
+export interface specificationsItem {
+    title: string;
+    items: keyValue[]
+}
+
 export interface ProductDetails {
     id: number;
     name: string;
@@ -17,7 +27,7 @@ export interface ProductDetails {
     discount_info: string | null;
     avg_rating: number;
     reviews_count: number;
-    
+
     can_review: boolean;
 
     brand: {
@@ -45,9 +55,9 @@ export interface ProductDetails {
     description: string;
     hover_text: string | null;
 
-    specifications: unknown[];
-    variant_options: unknown[];
-    variants: unknown[];
+    specifications: specificationsItem[];
+    variant_options: any[];
+    variants: any[];
 
     in_wishlist: boolean;
 }
@@ -67,7 +77,7 @@ export interface RatingSummary {
 export interface ProductDetailsResponse {
     code: number;
     message: string;
-    errors: unknown[];
+    errors: any[];
     data: {
         product: ProductDetails;
     };
@@ -112,7 +122,7 @@ export const getProductDetails = createAsyncThunk<
         } catch (error: any) {
             return rejectWithValue(
                 error?.response?.data?.message ||
-                    "Failed to get product details"
+                "Failed to get product details"
             );
         }
     }

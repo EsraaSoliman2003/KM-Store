@@ -6,15 +6,11 @@ import { DescriptionContent } from "./DescriptionContent";
 import { SpecificationsContent } from "./SpecificationsContent";
 import { ReviewsContent } from "./ReviewsContent";
 
-type Prop = {
-    product: any;
-}
-
-export default function Tabs({ product }: Prop) {
+export default function Tabs() {
     const t = useTranslations();
     const [activeTab, setActiveTab] = useState(t("descriptionTab"));
-
     const tabs = [t("descriptionTab"), t("specificationsTab"), t("reviewsTab")];
+
     return (
         <section>
             <div className="flex w-full gap-5 border-b border-[var(--border-dark)] sm:gap-8">
@@ -23,11 +19,10 @@ export default function Tabs({ product }: Prop) {
                         key={tab}
                         type="button"
                         onClick={() => setActiveTab(tab)}
-                        className={`relative flex-1 py-2 text-center text-[16px] sm:text-[20px] transition sm:flex-none ${
-                            activeTab === tab
-                                ? "font-medium text-[var(--main)]"
-                                : "text-[var(--text-muted)]/80 hover:text-[var(--text-primary)]"
-                        }`}
+                        className={`relative flex-1 py-2 text-center text-[16px] sm:text-[20px] transition sm:flex-none ${activeTab === tab
+                            ? "font-medium text-[var(--main)]"
+                            : "text-[var(--text-muted)]/80 hover:text-[var(--text-primary)]"
+                            }`}
                     >
                         {tab}
 
@@ -49,7 +44,7 @@ export default function Tabs({ product }: Prop) {
                 )}
 
                 {activeTab === t("reviewsTab") && (
-                    <ReviewsContent reviews={product.reviews} />
+                    <ReviewsContent />
                 )}
             </div>
         </section>
