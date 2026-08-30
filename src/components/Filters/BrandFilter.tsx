@@ -1,41 +1,62 @@
-import { useSearchParams } from 'next/navigation';
-import { useTranslations } from 'next-intl';
-import React from 'react'
-import { IoChevronDown } from 'react-icons/io5';
+"use client";
+
+import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
+import React from "react";
+import { IoChevronDown } from "react-icons/io5";
+import { useAppSelector } from "@/rtk/hooks";
 
 type Props = {
     updateFilter: any;
-}
+};
 
 export default function BrandFilter({ updateFilter }: Props) {
     const t = useTranslations();
     const searchParams = useSearchParams();
     const brand = searchParams.get("brand") || "";
 
-    const brands = [
-        { label: t("allBrands"), value: "" },
-        { label: t("appleBrand"), value: "apple" },
-        { label: t("samsungBrand"), value: "samsung" },
-        { label: t("sonyBrand"), value: "sony" },
-    ];
+    const { data, loading } = useAppSelector(
+        (s) => s.brands
+    );
+
+    const brands = data?.data?.items ?? [];
 
     return (
-        <div className="mb-5">
+        <div className="mb-3">
             <label className="relative block">
                 <select
                     value={brand}
-                    onChange={(e) => updateFilter("brand", e.target.value)}
-                    className="h-10 w-full appearance-none rounded-xl border border-[#444] bg-transparent px-3 pr-8 text-sm text-(--text-muted) outline-none transition focus:border-[#7040dc]"
+                    onChange={(e) =>
+                        updateFilter("brand", e.target.value)
+                    }
+                    disabled={loading}
+                    className="h-10 w-full appearance-none rounded-xl border border-[#444] bg-transparent px-3 pr-8 text-sm text-(--text-muted) outline-none transition focus:border-[#7040dc] disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                    {brands.map((item) => (
+                    <option
+                        value=""
+                        className="bg-(--bg-primary)"
+                    >
+                        {t("allBrands")}
+                    </option>
+
+                    {loading ? (
                         <option
-                            key={item.value || "all"}
-                            value={item.value}
+                            value=""
                             className="bg-(--bg-primary)"
                         >
-                            {item.label}
+                            Loading...
                         </option>
-                    ))}
+                    ) : (
+                        brands.map((item) => (
+                            <option
+                                key={item.id}
+                                value={item.id}
+                                className="bg-(--bg-primary)"
+                            >
+                                {item.name}
+                            </option>
+                        ))
+                    )}
                 </select>
 
                 <IoChevronDown
@@ -44,5 +65,5 @@ export default function BrandFilter({ updateFilter }: Props) {
                 />
             </label>
         </div>
-    )
+    );
 }

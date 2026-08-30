@@ -42,12 +42,14 @@ interface ProductSectionsState {
     productsLoading: boolean;
     products: Product[];
     pagination: ProductsResponse["data"]["pagination"] | null;
+    currentRequestPage: number | null;
 }
 
 const initialState: ProductSectionsState = {
     productsLoading: false,
     products: [],
     pagination: null,
+    currentRequestPage: null,
 };
 
 // ===========================
@@ -130,14 +132,21 @@ const productsSlice = createSlice({
 
     extraReducers: (builder) => {
         builder
-            // ===========================
-            // Products
-            // ===========================
-
             .addCase(
                 getProducts.pending,
-                (state) => {
+                (state, action) => {
                     state.productsLoading = true;
+
+                    const page =
+                        action.meta.arg?.page ?? 1;
+
+                    state.currentRequestPage = page;
+
+                    // New filter / first page
+                    if (page === 1) {
+                        state.products = [];
+                        state.pagination = null;
+                    }
                 }
             )
 
@@ -153,11 +162,9 @@ const productsSlice = createSlice({
                         action.payload.data.pagination
                             .current_page;
 
-                    // First page
                     if (currentPage === 1) {
                         state.products = newProducts;
                     } else {
-                        // Infinite scroll
                         state.products.push(
                             ...newProducts
                         );
@@ -174,7 +181,7 @@ const productsSlice = createSlice({
                     state.productsLoading = false;
                 }
             );
-    },
+    }
 });
 
 export default productsSlice.reducer;
