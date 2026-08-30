@@ -86,7 +86,7 @@ export default function ProductInfo() {
 
             {/* Short Description */}
             <p className="mt-4 max-w-[680px] text-[14px] leading-[1.7] text-[var(--text-muted)] sm:text-[15px]">
-                TEST
+                {product?.hover_text}
             </p>
 
             {/* Features */}
