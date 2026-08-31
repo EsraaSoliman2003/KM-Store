@@ -33,6 +33,13 @@ instance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (axios.isAxiosError(error)) {
+      const method = error.config?.method?.toLowerCase();
+
+      // 🚫 Skip errors coming from GET requests
+      if (method === "get") {
+        return Promise.reject(error);
+      }
+
       const message =
         error.response?.data?.message ||
         error.response?.data?.title ||
