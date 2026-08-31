@@ -30,8 +30,8 @@ export default function ProductCard({ product }: Props) {
         />
 
         {/* Discount */}
-        <span className="absolute left-2 top-2 rounded-full bg-(--secondary) px-2.5 py-1 text-[10px] font-semibold text-(--main) backdrop-blur-sm transition duration-300 sm:left-3 sm:top-3 sm:px-4 sm:py-2 sm:text-[12px]">
-          ${product.discount_amount}
+        <span className="absolute left-2 top-2 rounded-full bg-(--secondary) px-2.5 py-1 text-[10px] font-semibold text-(--error) backdrop-blur-sm transition duration-300 sm:left-3 sm:top-3 sm:px-4 sm:py-2 sm:text-[12px]">
+          {product.discount_info} OFF
         </span>
 
         {/* Favorite */}
@@ -55,20 +55,20 @@ export default function ProductCard({ product }: Props) {
           </div>
 
           <span className="ml-1 text-[11px] sm:text-xs text-(--text-muted)">
-            {product.avg_rating.toFixed(1)}
+            {product.avg_rating > 0 ? product.avg_rating.toFixed(1) : "-"}
           </span>
         </div>
 
-        <h3 className="pb-2 sm:pb-3 text-xs sm:text-sm text-(--text-primary) transition-colors duration-300 group-hover:text-(--main) line-clamp-2">
+        <h3 className="pb-2 sm:pb-3 text-xs sm:text-sm text-(--text-primary) transition-colors duration-300 group-hover:text-(--main) truncate">
           {product.name}
         </h3>
 
-        <div className="mt-3 flex items-end gap-2">
-          <span className="text-xl font-bold text-(--text-primary) sm:text-3xl">
+        <div className="mt-3 flex min-w-0 items-end gap-2">
+          <span className="shrink-0 whitespace-nowrap text-lg font-bold text-(--text-primary) sm:text-3xl">
             ${product.final_price}.00
           </span>
 
-          <span className="pb-1 text-xs sm:text-sm text-(--text-muted) line-through">
+          <span className="min-w-0 truncate pb-1 text-xs text-(--text-muted) line-through sm:text-sm">
             ${product.price}.00
           </span>
         </div>

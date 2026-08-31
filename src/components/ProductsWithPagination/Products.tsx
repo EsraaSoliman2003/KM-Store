@@ -10,6 +10,7 @@ import { useTranslations } from "next-intl";
 import MobileFilter from "@/components/Filters/MobileFilter";
 import DesktopFilter from "@/components/Filters/DesktopFilter";
 import EmptyState from "@/components/EmptyState/EmptyState";
+import SearchBar from "../SearchBar/SearchBar";
 
 type Props = {
     categoryId?: number;
@@ -55,6 +56,8 @@ export default function Products({
             max_price: searchParams.get("maxPrice")
                 ? Number(searchParams.get("maxPrice"))
                 : undefined,
+
+            search: searchParams.get("search") || undefined,
         }),
         [categoryId, query]
     );
@@ -121,6 +124,8 @@ export default function Products({
                     <MobileFilter noCats={noCats} />
                 </div>
 
+                <SearchBar />
+
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
                     <DesktopFilter noCats={noCats} />
 
@@ -153,7 +158,7 @@ export default function Products({
 
                                 {pagination &&
                                     pagination.current_page <
-                                        pagination.last_page && (
+                                    pagination.last_page && (
                                         <div
                                             ref={loadMoreRef}
                                             className="h-10 w-full"

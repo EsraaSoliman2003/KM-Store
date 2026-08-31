@@ -42,7 +42,7 @@ export default function DesktopFilter({ noCats = false }: Prop) {
   };
 
   return (
-    <aside className="shrink-0 rounded-2xl border border-[#4b4b4b] bg-(--bg-primary) p-3 w-75 hidden lg:block">
+    <aside className="shrink-0 rounded-2xl border border-(--border-dark) bg-(--bg-primary) p-3 w-75 hidden lg:block">
 
       {/* Filter Header */}
       <div className="mb-5 flex items-center justify-between">
