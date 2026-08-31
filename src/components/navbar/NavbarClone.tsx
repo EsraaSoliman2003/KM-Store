@@ -74,6 +74,14 @@ export default function Navbar({ locale }: Props) {
     }
   }
 
+  const handleRoutingCart = () => {
+    if (token) {
+      router.push("/cart")
+    } else {
+      router.push("/login")
+    }
+  }
+
   return (
     <header className="fixed w-full top-0 z-50 bg-(--bg-primary)">
       <div className="container flex h-18 items-center justify-between">
@@ -118,9 +126,9 @@ export default function Navbar({ locale }: Props) {
             <FiHeart size={19} />
           </button>
 
-          <Link href={"/cart"} className="text-(--text-primary) transition-colors hover:text-(--main)">
+          <button onClick={handleRoutingCart} className="text-(--text-primary) transition-colors hover:text-(--main)">
             <FiShoppingCart size={19} />
-          </Link>
+          </button>
 
           <button
             onClick={toggleDarkMode}
@@ -145,9 +153,9 @@ export default function Navbar({ locale }: Props) {
             <FiHeart size={19} />
           </button>
 
-          <Link href={"/cart"} className="text-(--text-primary) transition-colors hover:text-(--main)">
+          <button onClick={handleRoutingCart} className="text-(--text-primary) transition-colors hover:text-(--main)">
             <FiShoppingCart size={19} />
-          </Link>
+          </button>
 
           {/* Mobile Menu Button */}
           <button
