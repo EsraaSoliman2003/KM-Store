@@ -54,7 +54,7 @@ interface AddressState {
     loading: boolean;
     creating: boolean;
     updating: boolean;
-    deleting: boolean;
+    deletingAddressId: number | null;
 
     addresses: Address[];
     address: Address | null;
@@ -66,7 +66,7 @@ const initialState: AddressState = {
     loading: false,
     creating: false,
     updating: false,
-    deleting: false,
+    deletingAddressId: null,
 
     addresses: [],
     address: null,
@@ -274,30 +274,27 @@ const addressSlice = createSlice({
             // DELETE ADDRESS
             // ===========================
 
-            .addCase(deleteAddress.pending, (state) => {
-                state.deleting = true;
+            .addCase(deleteAddress.pending, (state, action) => {
+                state.deletingAddressId = action.meta.arg;
                 state.error = null;
             })
 
             .addCase(deleteAddress.fulfilled, (state, action) => {
-                state.deleting = false;
-
-                // We need the deleted ID.
-                // It will be handled below using thunk meta.
                 const deletedId = action.meta.arg;
+
+                state.deletingAddressId = null;
 
                 state.addresses = state.addresses.filter(
                     (item) => item.id !== deletedId
                 );
 
-                // If the deleted address is currently selected
                 if (state.address?.id === deletedId) {
                     state.address = null;
                 }
             })
 
             .addCase(deleteAddress.rejected, (state, action) => {
-                state.deleting = false;
+                state.deletingAddressId = null;
                 state.error =
                     action.error.message || "Failed to delete address";
             });

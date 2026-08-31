@@ -590,5 +590,14 @@
   "topRatedDescription": "Discover our highest-rated products, loved and recommended by our customers.",
   "noProductsFound": "No Products Found",
   "noProductsFoundDescription": "We couldn't find any products matching your selected filters.",
-  "noRecentlyViewed": "No recently viewed products"
+  "noRecentlyViewed": "No recently viewed products",
+  "addressNotFound": "Address Not Found",
+  "addressNotFoundDescription": "The address you are looking for could not be found.",
+  "addressDetails": "Address Details",
+  "viewAddressDetails": "View your address information and details.",
+  "addressInformation": "Address Information",
+  "phone": "Phone",
+  "editAddress": "Edit Address",
+  "editAddressDescription": "Update your address information",
+  "addressUpdatedSuccessfully": "Address updated successfully"
 }
