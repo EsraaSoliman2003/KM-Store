@@ -18,12 +18,15 @@ export default function LanguageSwitcher({ currentLocale }: Props) {
   const dispatch = useAppDispatch();
 
   const { loading } = useAppSelector((state) => state.changeLanguage);
+  const { token } = useAppSelector((state) => state.auth);
 
   const toggleLanguage = async () => {
     const newLocale = currentLocale === "en" ? "ar" : "en";
 
     try {
-      await dispatch(changeLanguage(newLocale)).unwrap();
+      if (token) {
+        await dispatch(changeLanguage(newLocale)).unwrap();
+      }
 
       setCookie("NEXT_LOCALE", newLocale, {
         path: "/",

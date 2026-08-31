@@ -21,8 +21,9 @@ instance.interceptors.request.use(
       config.headers.Authorization = `Bearer ${token}`;
     }
 
-    const lang = getCookie("NEXT_LOCALE") || "en";
-    config.headers["Accept-Language"] = lang;
+    const locale = getCookie("NEXT_LOCALE") || "en";
+
+    config.headers["locale"] = locale;
 
     return config;
   },
@@ -35,7 +36,7 @@ instance.interceptors.response.use(
     if (axios.isAxiosError(error)) {
       const method = error.config?.method?.toLowerCase();
 
-      // 🚫 Skip errors coming from GET requests
+      // Skip errors coming from GET requests
       if (method === "get") {
         return Promise.reject(error);
       }
