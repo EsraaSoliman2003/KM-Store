@@ -3,10 +3,23 @@
 import React, { useEffect, useState } from "react";
 import { Search, X } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { useAppDispatch, useAppSelector } from "@/rtk/hooks";
+import { getSearchHistory } from "@/rtk/slices/searchHistorySlice";
 
 export default function SearchBar() {
     const router = useRouter();
     const searchParams = useSearchParams();
+    const t = useTranslations();
+
+    const dispatch = useAppDispatch();
+
+    const { history, loading } = useAppSelector((s) => s.searchHistory);
+
+    useEffect(() => {
+        dispatch(getSearchHistory());
+    }, [dispatch]);
+
 
     const [search, setSearch] = useState(
         searchParams.get("search") || ""

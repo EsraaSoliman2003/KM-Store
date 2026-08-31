@@ -14,6 +14,7 @@ import newArrivalReducer from "./slices/newArrivalSlice";
 import bestSellerReducer from "./slices/bestSellerSlice";
 import topRatedReducer from "./slices/topRatedSlice";
 import productDetailsReducer from "./slices/productDetailsSlice";
+import searchHistoryReducer from "@/rtk/slices/searchHistorySlice";
 
 export const store = configureStore({
   reducer: {
@@ -31,6 +32,7 @@ export const store = configureStore({
     bestSeller: bestSellerReducer,
     topRated: topRatedReducer,
     productDetails: productDetailsReducer,
+    searchHistory: searchHistoryReducer,
 
   },
 });
