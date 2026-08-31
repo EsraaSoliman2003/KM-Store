@@ -589,5 +589,6 @@
   "topRated": "Top Rated",
   "topRatedDescription": "Discover our highest-rated products, loved and recommended by our customers.",
   "noProductsFound": "No Products Found",
-  "noProductsFoundDescription": "We couldn't find any products matching your selected filters."
+  "noProductsFoundDescription": "We couldn't find any products matching your selected filters.",
+  "noRecentlyViewed": "No recently viewed products"
 }

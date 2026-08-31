@@ -35,7 +35,12 @@ export default function ProductCard({ product }: Props) {
         </span>
 
         {/* Favorite */}
-        <FavoriteButton productId={product.id} isFavorite={product.in_wishlist} />
+        <FavoriteButton
+          productId={product.id}
+          isFavorite={product.in_wishlist}
+          className="absolute right-2 top-2 rounded-[8px] p-1.5 sm:right-3 sm:top-3 sm:p-2"
+          iconClassName="h-4 w-4 sm:h-5 sm:w-5"
+        />
       </div>
 
       {/* Details */}

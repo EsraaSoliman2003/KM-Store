@@ -1,18 +1,22 @@
 "use client";
 
 import { Heart } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/rtk/hooks";
 import { toggleWishlist } from "@/rtk/slices/wishlistSlice";
 
 type Props = {
     productId: number;
     isFavorite: boolean;
+    className?: string;
+    iconClassName?: string;
 };
 
 export default function FavoriteButton({
     productId,
     isFavorite,
+    className = "",
+    iconClassName = "",
 }: Props) {
     const dispatch = useAppDispatch();
 
@@ -21,6 +25,11 @@ export default function FavoriteButton({
     );
 
     const [favorite, setFavorite] = useState(isFavorite);
+
+    // Keep local state synced with the product data
+    useEffect(() => {
+        setFavorite(isFavorite);
+    }, [isFavorite]);
 
     const isLoading = togglingProductId === productId;
 
@@ -47,34 +56,42 @@ export default function FavoriteButton({
                 e.stopPropagation();
                 handleToggle();
             }}
-            className="
-                absolute right-2 top-2
+            className={`
                 flex items-center justify-center
-                rounded-[8px]
                 border border-(--border-color)
                 bg-[rgba(var(--bg-primary-rgb),0.7)]
-                p-1.5
-                text-(--text-primary)
+                text-(--text-muted)
                 backdrop-blur-sm
                 transition-all duration-300
-                hover:scale-110
+                hover:scale-105
                 hover:border-(--main)
-                hover:bg-(--main)
-                hover:text-(--text-white)
+                hover:text-(--main)
                 disabled:pointer-events-none
                 disabled:opacity-60
-                sm:right-3 sm:top-3 sm:p-2
-            "
+                ${className}
+            `}
         >
             {isLoading ? (
-                <div className="h-4 w-4 animate-spin rounded-full border-2 border-(--border-color) border-t-(--main) sm:h-5 sm:w-5" />
+                <div
+                    className={`
+                        h-4 w-4
+                        animate-spin
+                        rounded-full
+                        border-2
+                        border-(--border-color)
+                        border-t-(--main)
+                        ${iconClassName}
+                    `}
+                />
             ) : (
                 <Heart
-                    size={16}
-                    className={`sm:h-5 sm:w-5 ${favorite
+                    className={`
+                        ${favorite
                             ? "fill-(--main) text-(--main)"
                             : ""
-                        }`}
+                        }
+                        ${iconClassName}
+                    `}
                 />
             )}
         </button>
