@@ -13,7 +13,6 @@ import { getBrands } from "@/rtk/slices/brandsSlice";
 import EmptyState from "../EmptyState/EmptyState";
 
 import { useEffect } from "react";
-import { BrandsSkeleton } from "@/skeleton/HomeSkeleton";
 import BrandsSwiper from "./BrandsSwiper";
 
 export default function Brands() {

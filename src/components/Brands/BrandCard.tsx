@@ -4,6 +4,7 @@ import Image from "next/image";
 import { FiArrowUpRight } from "react-icons/fi";
 import { useTranslations } from "next-intl";
 import { Brand } from "@/utils/dtos";
+import Link from "next/link";
 
 interface BrandCardProps {
   item: Brand;
@@ -13,10 +14,12 @@ export default function BrandCard({ item }: BrandCardProps) {
   const t = useTranslations();
 
   return (
-    <div
+    <Link
+      href={`/categories?brand=${item.id}`}
       className="
-        group relative
+        group relative block
         h-[170px] sm:h-[200px] lg:h-[220px]
+        w-full
         overflow-hidden rounded-2xl sm:rounded-3xl
         border border-transparent
         transition-all duration-300 ease-in-out
@@ -59,9 +62,10 @@ export default function BrandCard({ item }: BrandCardProps) {
           p-3 sm:p-5
         "
       >
-        <div>
+        <div className="min-w-0">
           <h3
             className="
+              truncate
               text-base sm:text-lg lg:text-xl
               font-semibold text-white
               transition-colors duration-300
@@ -84,8 +88,7 @@ export default function BrandCard({ item }: BrandCardProps) {
           </p>
         </div>
 
-        <button
-          type="button"
+        <span
           className="
             flex h-9 w-9 shrink-0
             items-center justify-center
@@ -105,8 +108,8 @@ export default function BrandCard({ item }: BrandCardProps) {
           "
         >
           <FiArrowUpRight className="text-base sm:text-lg lg:text-xl" />
-        </button>
+        </span>
       </div>
-    </div>
+    </Link>
   );
 }
