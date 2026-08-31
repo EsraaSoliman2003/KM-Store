@@ -114,7 +114,10 @@ export default function Products({
     ]);
 
     return (
-        <section className="py-8">
+        <section
+            className="scroll-mt-24 py-8"
+            id="search"
+        >
             <div className="container">
                 <div className="mb-7 flex items-center justify-between">
                     <h1 className="text-2xl font-bold sm:text-3xl">

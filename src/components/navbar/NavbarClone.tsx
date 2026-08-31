@@ -110,9 +110,9 @@ export default function Navbar({ locale }: Props) {
 
         {/* Right Icons */}
         <div className="hidden items-center gap-5 lg:flex">
-          <button className="text-(--text-primary) transition-colors hover:text-(--main)">
+          <Link href={"/categories/#search"} className="text-(--text-primary) transition-colors hover:text-(--main)">
             <FiSearch size={19} />
-          </button>
+          </Link>
 
           <button onClick={handleRoutingFav} className="text-(--text-primary) transition-colors hover:text-(--main)">
             <FiHeart size={19} />
@@ -137,9 +137,9 @@ export default function Navbar({ locale }: Props) {
         </div>
 
         <div className="flex items-center gap-5 lg:hidden">
-          <button className="text-(--text-primary) transition-colors hover:text-(--main)">
+          <Link href={"/categories/#search"} className="text-(--text-primary) transition-colors hover:text-(--main)">
             <FiSearch size={19} />
-          </button>
+          </Link>
 
           <button onClick={handleRoutingFav} className="text-(--text-primary) transition-colors hover:text-(--main)">
             <FiHeart size={19} />

@@ -16,7 +16,7 @@ export default function SearchBar() {
 
     const dispatch = useAppDispatch();
 
-    const { history, loading } = useAppSelector(
+    const { history } = useAppSelector(
         (state) => state.searchHistory
     );
 
