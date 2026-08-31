@@ -3,6 +3,9 @@
 import { setCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { useAppDispatch, useAppSelector } from "@/rtk/hooks";
+import { useEffect } from "react";
+import { changeLanguage } from "@/rtk/slices/changeLanguageSlice";
 
 interface Props {
   currentLocale: string;
@@ -12,10 +15,25 @@ export default function LanguageSwitcher({ currentLocale }: Props) {
   const router = useRouter();
   const t = useTranslations();
 
-  const toggleLanguage = () => {
+  const dispatch = useAppDispatch();
+
+  const { loading } = useAppSelector((state) => state.changeLanguage);
+
+  const toggleLanguage = async () => {
     const newLocale = currentLocale === "en" ? "ar" : "en";
-    setCookie("NEXT_LOCALE", newLocale, { path: "/" });
-    router.refresh();
+
+    try {
+      await dispatch(changeLanguage(newLocale)).unwrap();
+
+      setCookie("NEXT_LOCALE", newLocale, {
+        path: "/",
+        maxAge: 60 * 60 * 24 * 365,
+      });
+
+      window.location.reload();
+    } catch (error) {
+      console.error("Failed to change language:", error);
+    }
   };
 
   const localeName = currentLocale === "en" ? "العربية" : "English";

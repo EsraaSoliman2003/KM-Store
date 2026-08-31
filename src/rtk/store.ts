@@ -18,6 +18,7 @@ import productDetailsReducer from "./slices/productDetailsSlice";
 import searchHistoryReducer from "./slices/searchHistorySlice";
 import moreProductsReducer from "./slices/moreProductsSlice";
 import recentlyViewedReducer from "./slices/recentlyViewedSlice";
+import changeLanguageReducer from "./slices/changeLanguageSlice";
 
 export const store = configureStore({
     reducer: {
@@ -38,6 +39,7 @@ export const store = configureStore({
         searchHistory: searchHistoryReducer,
         moreProducts: moreProductsReducer,
         recentlyViewed: recentlyViewedReducer,
+        changeLanguage: changeLanguageReducer,
     },
 });
 
