@@ -4,6 +4,7 @@ import { Heart } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/rtk/hooks";
 import { toggleWishlist } from "@/rtk/slices/wishlistSlice";
+import { useRouter } from "next/navigation";
 
 type Props = {
     productId: number;
@@ -18,11 +19,14 @@ export default function FavoriteButton({
     className = "",
     iconClassName = "",
 }: Props) {
+    const router = useRouter();
     const dispatch = useAppDispatch();
 
     const { togglingProductId } = useAppSelector(
         (state) => state.wishlist
     );
+
+    const { token } = useAppSelector((s) => s.auth)
 
     const [favorite, setFavorite] = useState(isFavorite);
 
@@ -34,6 +38,10 @@ export default function FavoriteButton({
     const isLoading = togglingProductId === productId;
 
     const handleToggle = async () => {
+        if (!token) {
+            router.push("/login")
+            return;
+        }
         if (isLoading) return;
 
         try {
