@@ -31,7 +31,7 @@ export default function ProductCard({ product }: Props) {
 
         {/* Discount */}
         <span className="absolute left-2 top-2 rounded-full bg-(--secondary) px-2.5 py-1 text-[10px] font-semibold text-(--error) backdrop-blur-sm transition duration-300 sm:left-3 sm:top-3 sm:px-4 sm:py-2 sm:text-[12px]">
-          {product.discount_info} OFF
+          {product.discount_info}
         </span>
 
         {/* Favorite */}
