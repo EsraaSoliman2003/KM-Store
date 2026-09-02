@@ -28,7 +28,7 @@ export default function ProductsSwiper({
                         sm:!w-[31%]
                         md:!w-[25%]
                         lg:!w-[23%]
-                        xl:!w-[24%]
+                        xl:!w-[19%]
                     "
                 >
                     <ProductCard product={product} />
