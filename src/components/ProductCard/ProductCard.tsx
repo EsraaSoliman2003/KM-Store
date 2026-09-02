@@ -1,10 +1,11 @@
 "use client";
 
-import { Star } from "lucide-react";
+import { ShoppingCart, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/utils/dtos";
 import FavoriteButton from "./FavoriteButton";
+import { useTranslations } from "next-intl";
 
 type Props = {
   product: Product;
@@ -24,7 +25,16 @@ const stripHtml = (html: string) => {
 };
 
 export default function ProductCard({ product }: Props) {
+  const t = useTranslations();
   const cleanDescription = stripHtml(product.description);
+
+  const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Add to cart logic here
+    console.log("Add to cart:", product.id);
+  };
 
   return (
     <Link
@@ -62,9 +72,9 @@ export default function ProductCard({ product }: Props) {
       </div>
 
       {/* Product Details */}
-      <div className="p-3 sm:p-3.5">
+      <div className="p-2.5 sm:p-3">
         {/* Rating */}
-        <div className="mb-2 flex items-center gap-1.5">
+        {/* <div className="mb-2 flex items-center gap-1.5">
           <div className="flex items-center gap-0.5">
             {Array.from({ length: 5 }).map((_, index) => {
               const rating = product.avg_rating;
@@ -94,7 +104,7 @@ export default function ProductCard({ product }: Props) {
               ? product.avg_rating.toFixed(1)
               : "No rating"}
           </span>
-        </div>
+        </div> */}
 
         {/* Category */}
         <p className="mb-0.5 text-[9px] font-semibold uppercase tracking-wide text-(--main) sm:text-[10px]">
@@ -112,7 +122,7 @@ export default function ProductCard({ product }: Props) {
         </p>
 
         {/* Price */}
-        <div className="mt-3 flex items-center gap-1.5">
+        <div className="mt-1 flex items-center gap-1.5">
           <span className="text-base font-bold tracking-tight text-(--text-primary) sm:text-lg">
             ${product.final_price}.00
           </span>
@@ -123,6 +133,16 @@ export default function ProductCard({ product }: Props) {
             </span>
           )}
         </div>
+
+        {/* Add To Cart */}
+        <button
+          type="button"
+          onClick={handleAddToCart}
+          className="mt-3 flex w-full items-center justify-center gap-2 rounded-[8px] bg-(--main) px-3 py-2 text-xs font-semibold text-white transition-all duration-300 hover:bg-(--main-hover) hover:shadow-md active:scale-[0.98] sm:py-2.5 sm:text-sm"
+        >
+          <ShoppingCart size={15} strokeWidth={2} />
+          <span>{t("addToCart")}</span>
+        </button>
       </div>
     </Link>
   );
