@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useAppSelector } from "@/rtk/hooks";
 import ProductsSwiper from "../ProductsSwiper/ProductsSwiper";
 import ShowMoreButton from "../ShowMoreButton/ShowMoreButton";
+import EmptyState from "../EmptyState/EmptyState";
 
 export default function BestSeller() {
     const t = useTranslations();
@@ -34,6 +35,15 @@ export default function BestSeller() {
                 {/* Products */}
                 {products.length > 0 && (
                     <ProductsSwiper data={products} />
+                )}
+
+                {products.length === 0 && (
+                    <EmptyState
+                        title={t("noProductsFound")}
+                        description={t(
+                            "noProductsFoundDescription"
+                        )}
+                    />
                 )}
 
             </div>
