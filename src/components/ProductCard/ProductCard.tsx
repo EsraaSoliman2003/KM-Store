@@ -61,69 +61,69 @@ export default function ProductCard({ product }: Props) {
         />
       </div>
 
-     {/* Product Details */}
-<div className="p-3 sm:p-3.5">
-  {/* Rating */}
-  <div className="mb-2 flex items-center gap-1.5">
-    <div className="flex items-center gap-0.5">
-      {Array.from({ length: 5 }).map((_, index) => {
-        const rating = product.avg_rating;
+      {/* Product Details */}
+      <div className="p-3 sm:p-3.5">
+        {/* Rating */}
+        <div className="mb-2 flex items-center gap-1.5">
+          <div className="flex items-center gap-0.5">
+            {Array.from({ length: 5 }).map((_, index) => {
+              const rating = product.avg_rating;
 
-        return (
-          <Star
-            key={index}
-            size={12}
-            strokeWidth={1.8}
-            fill={
-              index < Math.floor(rating)
-                ? "currentColor"
-                : "none"
-            }
-            className={
-              index < Math.floor(rating)
-                ? "text-(--warning)"
-                : "text-(--border-color)"
-            }
-          />
-        );
-      })}
-    </div>
+              return (
+                <Star
+                  key={index}
+                  size={12}
+                  strokeWidth={1.8}
+                  fill={
+                    index < Math.floor(rating)
+                      ? "currentColor"
+                      : "none"
+                  }
+                  className={
+                    index < Math.floor(rating)
+                      ? "text-(--warning)"
+                      : "text-(--border-color)"
+                  }
+                />
+              );
+            })}
+          </div>
 
-    <span className="text-[10px] font-medium text-(--text-muted) sm:text-[11px]">
-      {product.avg_rating > 0
-        ? product.avg_rating.toFixed(1)
-        : "No rating"}
-    </span>
-  </div>
+          <span className="text-[10px] font-medium text-(--text-muted) sm:text-[11px]">
+            {product.avg_rating > 0
+              ? product.avg_rating.toFixed(1)
+              : "No rating"}
+          </span>
+        </div>
 
-  {/* Category */}
-  <p className="mb-0.5 text-[9px] font-semibold uppercase tracking-wide text-(--main) sm:text-[10px]">
-    {product.category.name}
-  </p>
+        {/* Category */}
+        <p className="mb-0.5 text-[9px] font-semibold uppercase tracking-wide text-(--main) sm:text-[10px]">
+          {product.category.name}
+        </p>
 
-  {/* Product Name */}
-  <h3 className="line-clamp-1 text-[13px] font-semibold leading-[18px] text-(--text-primary) transition-colors duration-300 group-hover:text-(--main) sm:text-sm">
-    {product.name}
-  </h3>
+        {/* Product Name */}
+        <h3 className="line-clamp-1 text-[13px] font-semibold leading-[18px] text-(--text-primary) transition-colors duration-300 group-hover:text-(--main) sm:text-sm">
+          {product.name}
+        </h3>
 
-  {/* Description */}
-  <p className="mt-1 line-clamp-1 text-[10px] leading-4 text-(--text-muted) sm:text-[11px]">
-    {cleanDescription}
-  </p>
+        {/* Description */}
+        <p className="mt-1 line-clamp-1 text-[10px] leading-4 text-(--text-muted) sm:text-[11px]">
+          {cleanDescription}
+        </p>
 
-  {/* Price */}
-  <div className="mt-3 flex items-center gap-1.5">
-    <span className="text-base font-bold tracking-tight text-(--text-primary) sm:text-lg">
-      ${product.final_price}.00
-    </span>
+        {/* Price */}
+        <div className="mt-3 flex items-center gap-1.5">
+          <span className="text-base font-bold tracking-tight text-(--text-primary) sm:text-lg">
+            ${product.final_price}.00
+          </span>
 
-    {product.price !== product.final_price && (
-      <span className="text-[10px] text-(--text-muted) line-through sm:text-[11px]">
-        ${product.price}.00
-      </span>
-    )}
-  </div>
-</div>
+          {Number(product.price) !== product.final_price && (
+            <span className="text-[10px] text-(--text-muted) line-through sm:text-[11px]">
+              ${product.price}.00
+            </span>
+          )}
+        </div>
+      </div>
     </Link>
   );
 }
