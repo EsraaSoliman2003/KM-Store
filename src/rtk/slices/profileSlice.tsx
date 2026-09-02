@@ -33,10 +33,11 @@ const initialState: ProfileState = {
 
 interface UpdateProfilePayload {
   name?: string;
-  address?: string;
-  city?: string;
-  zip?: string;
-  state?: string;
+  email?: string;
+  country_code?: string;
+  phone?: string;
+  password?: string;
+  confirm_password?: string;
   avatar?: File;
   latitude?: string;
   longitude?: string;
@@ -71,20 +72,24 @@ export const updateProfile = createAsyncThunk<
       formData.append("name", data.name);
     }
 
-    if (data.address !== undefined) {
-      formData.append("address", data.address);
+    if (data.email !== undefined) {
+      formData.append("email", data.email);
     }
 
-    if (data.city !== undefined) {
-      formData.append("city", data.city);
+    if (data.country_code !== undefined) {
+      formData.append("country_code", data.country_code);
     }
 
-    if (data.zip !== undefined) {
-      formData.append("zip", data.zip);
+    if (data.phone !== undefined) {
+      formData.append("phone", data.phone);
     }
 
-    if (data.state !== undefined) {
-      formData.append("state", data.state);
+    if (data.password !== undefined) {
+      formData.append("password", data.password);
+    }
+
+    if (data.confirm_password !== undefined) {
+      formData.append("confirm_password", data.confirm_password);
     }
 
     if (data.avatar) {

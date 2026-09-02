@@ -22,6 +22,7 @@ export default function Info() {
             <SectionHeader
                 title={t("personalInformation")}
                 action={t("edit")}
+                href="/profile/edit"
             />
 
             <div className="divide-y divide-(--border-dark)">
@@ -38,15 +39,6 @@ export default function Info() {
                 <InfoRow
                     label={t("phoneNumber")}
                     value={phone}
-                />
-
-                <InfoRow
-                    label={t("location")}
-                    value={
-                        user?.latitude && user.longitude
-                            ? `${user.latitude}, ${user.longitude}`
-                            : t("notProvided")
-                    }
                 />
             </div>
         </section>

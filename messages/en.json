@@ -599,5 +599,10 @@
   "phone": "Phone",
   "editAddress": "Edit Address",
   "editAddressDescription": "Update your address information",
-  "addressUpdatedSuccessfully": "Address updated successfully"
+  "addressUpdatedSuccessfully": "Address updated successfully",
+  "nameRequired": "Name is required",
+  "phoneRequired": "Phone number is required",
+  "save": "Save",
+  "email_v": "Please enter a valid email address",
+  "profileUpdatedSuccessfully": "Profile updated successfully"
 }
