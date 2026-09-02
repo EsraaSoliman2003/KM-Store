@@ -2,21 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import {
-  FiSearch,
-  FiHeart,
-  FiShoppingCart,
-  FiUser,
-  FiSun,
-  FiMoon,
-  FiMenu,
-} from "react-icons/fi";
-import { links } from "./_components/links";
-import SideBar from "./_components/SideBar";
-import LanguageSwitcher from "./_components/LanguageSwitcher";
 import { useTranslations } from "next-intl";
-import { useAppSelector } from "@/rtk/hooks";
-import { usePathname, useRouter } from "next/navigation";
+import DesktopNav from "./_components/DesktopNav";
+import MobileNav from "./_components/MobileNav";
 
 interface Props {
   locale: string;
@@ -24,19 +12,7 @@ interface Props {
 
 export default function Navbar({ locale }: Props) {
   const t = useTranslations();
-  const [open, setOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
-  const router = useRouter();
-  const { token } = useAppSelector(s => s.auth)
-  const pathname = usePathname();
-
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "unset";
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [open]);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -58,29 +34,6 @@ export default function Navbar({ locale }: Props) {
     document.documentElement.classList.toggle("dark", newTheme);
   };
 
-  const handleRouting = () => {
-    if (token) {
-      router.push("/profile")
-    } else {
-      router.push("/login")
-    }
-  }
-
-  const handleRoutingFav = () => {
-    if (token) {
-      router.push("/wishlist")
-    } else {
-      router.push("/login")
-    }
-  }
-
-  const handleRoutingCart = () => {
-    if (token) {
-      router.push("/cart")
-    } else {
-      router.push("/login")
-    }
-  }
 
   return (
     <header className="fixed w-full top-0 z-50 bg-(--bg-primary)">
@@ -92,90 +45,10 @@ export default function Navbar({ locale }: Props) {
           </div>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-8 lg:flex">
-          {links.map((item) => {
-            const isActive =
-              item.href === "/"
-                ? pathname === `/${locale}` || pathname === "/"
-                : pathname.startsWith(`/${locale}${item.href}`) ||
-                pathname.startsWith(item.href);
-
-            return (
-              <Link
-                key={item.title}
-                href={item.href}
-                className={`text-sm font-medium transition-colors duration-200 ${isActive
-                  ? "text-(--main)"
-                  : "text-(--text-primary) hover:text-(--main)"
-                  }`}
-              >
-                {t(item.title)}
-              </Link>
-            );
-          })}
-        </nav>
-
-        {/* Right Icons */}
-        <div className="hidden items-center gap-5 lg:flex">
-          <Link href={"/categories/#search"} className="text-(--text-primary) transition-colors hover:text-(--main)">
-            <FiSearch size={19} />
-          </Link>
-
-          <button onClick={handleRoutingFav} className="text-(--text-primary) transition-colors hover:text-(--main)">
-            <FiHeart size={19} />
-          </button>
-
-          <button onClick={handleRoutingCart} className="text-(--text-primary) transition-colors hover:text-(--main)">
-            <FiShoppingCart size={19} />
-          </button>
-
-          <button
-            onClick={toggleDarkMode}
-            className="text-(--text-primary) transition-colors hover:text-(--main)"
-          >
-            {darkMode ? <FiSun size={19} /> : <FiMoon size={19} />}
-          </button>
-
-          <button onClick={handleRouting} className="text-(--text-primary) transition-colors hover:text-(--main)">
-            <FiUser size={19} />
-          </button>
-
-          <LanguageSwitcher currentLocale={locale} />
-        </div>
-
-        <div className="flex items-center gap-5 lg:hidden">
-          <Link href={"/categories/#search"} className="text-(--text-primary) transition-colors hover:text-(--main)">
-            <FiSearch size={19} />
-          </Link>
-
-          <button onClick={handleRoutingFav} className="text-(--text-primary) transition-colors hover:text-(--main)">
-            <FiHeart size={19} />
-          </button>
-
-          <button onClick={handleRoutingCart} className="text-(--text-primary) transition-colors hover:text-(--main)">
-            <FiShoppingCart size={19} />
-          </button>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setOpen(true)}
-            className="text-(--text-primary)"
-          >
-            <FiMenu size={25} />
-          </button>
-        </div>
-
+        <DesktopNav locale={locale} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        <MobileNav locale={locale} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
       </div>
-
-      <SideBar
-        locale={locale}
-        isSidebarOpen={open}
-        setIsSidebarOpen={setOpen}
-        darkMode={darkMode}
-        toggleDarkMode={toggleDarkMode}
-      />
     </header>
   );
 }
